@@ -7,11 +7,9 @@ export default function Profile() {
   return (
     <>
       <Main pad="large">
-        <Heading>Hola Roberta!</Heading>
+        <Heading>Hola Roberto!</Heading>
         <Box direction="row"  gap="small">
           <Avatar src="//s.gravatar.com/avatar/b7fb138d53ba0f573212ccce38a7c43b?s=80" />   
-            <User color="accent-1" />
-          </Avatar>
         </Box>
         <Text>Tus rutas favoritas</Text>
         <InfiniteScroll favouriteRoutes={[1, 2, 3, 4, 5, 6, 7]}>
