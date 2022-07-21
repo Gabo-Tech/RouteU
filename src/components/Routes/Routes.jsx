@@ -5,7 +5,7 @@ import { Box, InfiniteScroll, Text, Avatar, Icons, Heading , Main} from 'grommet
 export default function MyRoutes() {
   return (
     <>
-      <Main pad="large">
+      <Main pad="xlarge">
         <Heading>Rutas</Heading>
         <InfiniteScroll allRoutes={[1, 2, 3, 4, 5, 6, 7]}>
           {(item) => (

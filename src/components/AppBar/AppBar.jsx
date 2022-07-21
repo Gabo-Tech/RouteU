@@ -1,16 +1,14 @@
 import React from 'react'
 import { Nav, Anchor} from 'grommet';
 import {HomeRounded, Compass,User } from 'grommet-icons';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 export default function AppBar() {
-  const navigate = useNavigate();
-  const navigateMe = (place) => navigate(place);
   return (
     <>
-      <Nav direction="row" background="brand" pad="medium">
-        <Anchor onClick={navigateMe("/routes")} icon={<HomeRounded />} hoverIndicator />
-        <Anchor onClick={navigateMe("/form")} icon={<Compass />} hoverIndicator />
-        <Anchor onClick={navigateMe("/profile")} icon={<User />} hoverIndicator />
+      <Nav id="AppBar" direction="row" background="brand" pad="medium">
+        <Link to="/routes"><Anchor  icon={<HomeRounded />} hoverIndicator /></Link>
+        <Link to="/form"><Anchor  icon={<Compass />} hoverIndicator /></Link>
+        <Link to="/profile"><Anchor  icon={<User />} hoverIndicator /></Link>
       </Nav>
     </>
   )

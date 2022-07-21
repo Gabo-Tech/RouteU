@@ -1,7 +1,7 @@
 //Registro y inicio de sesión
 import React, { useState } from 'react'
 // import styles from './Auth.module.css';
-import { Box, Form, TextInput, FormField, Button, Menu , Main/*Heading, Grommet, grommet*/ } from 'grommet';
+import { Box, Heading, TextInput, FormField, Button, Menu , Main/*Heading, Grommet, grommet*/ } from 'grommet';
 
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmedPassword: '' };
 
@@ -15,7 +15,8 @@ export default function MyForm() {
 	const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
   return (
     <>
-        <Main pad="large">
+        <Main id="Main" fill="vertical"  pad="xlarge">
+          <Heading>Dejanos conocerte, y te recomedaremos las mejores rutas.</Heading>
           <Box >
           <Menu
             label="Edad"
@@ -83,7 +84,7 @@ export default function MyForm() {
             ]}
           />
           <Menu
-            label="Menu"
+            label="Selecciona tu/s rutas favorita/s"
             items={[
               { label: 'Arbres monumentals i singulars', onClick: () => {} },
               { label: 'Arbres: La volta al món', onClick: () => {} },
