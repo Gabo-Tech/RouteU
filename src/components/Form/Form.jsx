@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 // import styles from './Auth.module.css';
 import { Box, Heading, TextInput, FormField, Button, Menu , Main/*Heading, Grommet, grommet*/ } from 'grommet';
 
-const initialState = { firstName: '', lastName: '', email: '', password: '', confirmedPassword: '' };
+const initialState = { age: 'Edad', gender: 'Género', company: 'Acompañamiento', duration: '¿De cuánto tiempo dispones para realizar la ruta?', price: 'Coste dispuesto a pagar', difficulty: 'Dificultad', transport: 'Transporte', type: 'Tipo de ruta preferida', favouriteRoutes:[] };
 
 export default function MyForm() {
 	const [form, setForm] = useState(initialState);
@@ -19,12 +19,12 @@ export default function MyForm() {
           <Heading>Dejanos conocerte, y te recomedaremos las mejores rutas.</Heading>
           <Box >
           <Menu
-            label="Edad"
+            label={form?.age} 
             items={[
-              { label: '0-18', onClick: () => {} },
-              { label: '19-35', onClick: () => {} },
-              { label: '36-44', onClick: () => {} },
-              { label: '+45', onClick: () => {} }
+              { label: '0-18', onClick: () => {setForm({...form, age: '0-18'}) } },
+              { label: '19-35', onClick: () => {setForm({...form, age: '19-35'}) } },
+              { label: '36-44', onClick: () => {setForm({...form, age: '36-44'}) } },
+              { label: '+45', onClick: () => {setForm({...form, age: '+45'}) } }
             ]}
           />
           <Menu
@@ -36,7 +36,7 @@ export default function MyForm() {
             ]}
           />
           <Menu
-            label="Acompañamiento"
+            label={form?.company}
             items={[
               { label: 'Sólo', onClick: () => {} },
               { label: 'Pareja', onClick: () => {} },
@@ -44,7 +44,7 @@ export default function MyForm() {
             ]}
           />
           <Menu
-            label="¿De cuánto tiempo dispones para realizar la ruta?"
+            label={form?.duration}
             items={[
               { label: '1 - 2 horas', onClick: () => {} },
               { label: '3 - 4 horas', onClick: () => {} },
@@ -53,7 +53,7 @@ export default function MyForm() {
             ]}
           />
           <Menu
-            label="Coste dispuesto a pagar            "
+            label={form?.price}
             items={[
               { label: 'First Action', onClick: () => {} },
               { label: '1 - 50€', onClick: () => {} },
@@ -61,21 +61,21 @@ export default function MyForm() {
             ]}
           />
           <Menu
-            label="Dificultad"
+            label={form?.difficulty}
             items={[
               { label: 'Alta', onClick: () => {} },
               { label: 'Baja', onClick: () => {} }
             ]}
           />
           <Menu
-            label="Transporte"
+            label={form?.transport}
             items={[
               { label: 'Pie', onClick: () => {} },
               { label: 'Bicicleta', onClick: () => {} }
             ]}
           />
           <Menu
-            label="Tipo de ruta preferida"
+            label={form?.type}
             items={[
               { label: 'Histórica', onClick: () => {} },
               { label: 'Turística', onClick: () => {} },
