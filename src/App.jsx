@@ -1,54 +1,24 @@
 import React from 'react';
-
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import AppBar from './components/AppBar/AppBar';
+import Auth from './components/Auth/Auth';
+import MyForm from './components/Form/Form';
+import Profile from './components/Profile/Profile';
+import MyRoutes from './components/Routes/Routes';
 
 export default function App() {
+  // const user = JSON.parse(localStorage.getItem('profile'));
   return (
-    <div className="App">
-      <header className="App-header">
-        
-   
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Navigate to="/auth" />} />
+          <Route path="/routes" element={<MyRoutes />}/>
+          <Route path="/form" element={<MyForm />}/>
+          <Route path="/profile" element={<Profile />}/>
+          <Route path="/auth" element={<Auth />}/>
+          {/* <Route path="*" exact element={NotFound} /> */}
+        </Routes>
+        <AppBar/>
+    </BrowserRouter>
   );
 }
