@@ -95,7 +95,7 @@ const Login = () => {
                         type="submit"
                         className="form-control btn btn-primary submit px-3"
                       >
-                        Sign In
+                        Acceder
                       </button>
                     </div>
                     <div className="form-group d-md-flex"></div>
