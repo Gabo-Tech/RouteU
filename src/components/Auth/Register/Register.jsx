@@ -44,13 +44,13 @@ const Register = () => {
     if (password !== password2) {
       return notification.error({
         message: "Error",
-        description: "Passwords do not match",
+        description: "No coinciden las contraseñas",
       });
     } else {
       dispatch(register(formData));
       notification.success({
-        message: "Success",
-        description: "You have successfully registered",
+        message: "Bien!",
+        description: "Has sido registrado con exito",
       });
       setTimeout(function () {
         navigate("/login");
@@ -64,7 +64,7 @@ const Register = () => {
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-md-6 text-center mb-5">
-                <h2 className="heading-section">RuteU</h2>
+                <h2 className="heading-section">RouteU</h2>
               </div>
             </div>
             <div className="row justify-content-center">
@@ -102,7 +102,7 @@ const Register = () => {
                         type="password"
                         name="password"
                         id="pwd"
-                        placeholder="tu Password"
+                        placeholder="contraseña"
                         onChange={handleChange}
                         value={password}
                         validate={{ regexp: /^([a-zA-Z0-9])/i }}
@@ -119,7 +119,7 @@ const Register = () => {
                         type="password"
                         name="password2"
                         id="pwd2"
-                        placeholder="repita password"
+                        placeholder="repita contraseña"
                         onChange={handleChange}
                         value={password2}
                         validate={{ regexp: /^([a-zA-Z0-9])/i }}

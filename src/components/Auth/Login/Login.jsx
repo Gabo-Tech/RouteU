@@ -1,55 +1,106 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { login, reset } from "../../../features/auth/authSlice";
+import { Link, useNavigate } from "react-router-dom";
+import { notification } from "antd";
 import "./Login.scss";
-import { Link } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 
-function Login() {
+const Login = () => {
+  // const { user } = useSelector((state) => state.auth);
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const { email, password } = formData;
+  const navigate = useNavigate();
+  const { isError, isSuccess, message } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    dispatch(login(formData));
+  };
+
+  useEffect(() => {
+    if (isError) {
+      notification.error({ message: "Error", description: message });
+    }
+
+    if (isSuccess) {
+      notification.success({ message: "Exito", description: message });
+
+      setTimeout(() => {
+        navigate("/routes");
+      }, 2000);
+    }
+
+    dispatch(reset());
+  }, [isError, isSuccess, message]);
+
   return (
     <>
-      <body class="img js-fullheight principal">
-        <section class="ftco-section">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-md-6 text-center mb-5">
-                <h2 class="heading-section">RuteU</h2>
+      <body className="img js-fullheight principal">
+        <section className="ftco-section">
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className="col-md-6 text-center mb-5">
+                <h2 className="heading-section">RouteU</h2>
               </div>
             </div>
-            <div class="row justify-content-center">
-              <div class="col-md-6 col-lg-4">
-                <div class="login-wrap p-0">
-                  <h3 class="mb-4 text-center">Tienes una cuenta?</h3>
-                  <form action="#" class="signin-form">
-                    <div class="form-group">
+            <div className="row justify-content-center">
+              <div className="col-md-6 col-lg-4">
+                <div className="login-wrap p-0">
+                  <h3 className="mb-4 text-center">Tienes una cuenta?</h3>
+                  <form onSubmit={onSubmit} className="signin-form">
+                    <div className="form-group">
                       <input
                         type="email"
-                        class="form-control"
-                        placeholder="Email"
+                        name="email"
+                        id="email"
+                        placeholder="email"
+                        value={email}
+                        onChange={onChange}
+                        className="form-control"
                         required
                       />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <input
-                        id="password-field"
                         type="password"
-                        class="form-control"
-                        placeholder="Password"
+                        name="password"
+                        id="password-field"
+                        placeholder="contraseña"
+                        onChange={onChange}
+                        value={password}
+                        className="form-control"
                         required
                       />
                       <span
                         toggle="#password-field"
-                        class="fa fa-fw fa-eye field-icon toggle-password"
+                        className="fa fa-fw fa-eye field-icon toggle-password"
                       ></span>
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <button
                         type="submit"
-                        class="form-control btn btn-primary submit px-3"
+                        className="form-control btn btn-primary submit px-3"
                       >
                         Sign In
                       </button>
                     </div>
-                    <div class="form-group d-md-flex"></div>
+                    <div className="form-group d-md-flex"></div>
                   </form>
-                  <p class="w-100 text-center">
+                  <p className="w-100 text-center">
                     &mdash;&mdash;&mdash;&nbsp;
                     <Link to="/register"> O Registrate </Link>
                     &nbsp;&mdash;&mdash;&mdash;
@@ -62,6 +113,6 @@ function Login() {
       </body>
     </>
   );
-}
+};
 
 export default Login;
