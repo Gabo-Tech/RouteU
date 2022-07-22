@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../Login/Login.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { notification } from "antd";
-import { register, reset } from "../../../features/authSlice";
+import { register, reset } from "../../../features/auth/authSlice";
 
-function Register() {
+const Register = () => {
   const [formData, setFormData] = useState({
-    username: "",
+    name: "",
     email: "",
     password: "",
     password2: "",
   });
-  const { username, email, password, password2 } = formData;
+  const { name, email, password, password2 } = formData;
 
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const { isSuccess, message, isError } = useSelector((state) => state.auth);
 
   useEffect(() => {
@@ -48,55 +48,61 @@ function Register() {
       });
     } else {
       dispatch(register(formData));
-      // notification.success({
-      //   message: "Success",
-      //   description: "You have successfully registered",
-      // });
+      notification.success({
+        message: "Success",
+        description: "You have successfully registered",
+      });
+      setTimeout(function () {
+        navigate("/login");
+      }, 1000);
     }
   };
   return (
     <>
-      <body class="img js-fullheight principal">
-        <section class="ftco-section">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-md-6 text-center mb-5">
-                <h2 class="heading-section">RuteU</h2>
+      <body className="img js-fullheight principal">
+        <section className="ftco-section">
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className="col-md-6 text-center mb-5">
+                <h2 className="heading-section">RuteU</h2>
               </div>
             </div>
-            <div class="row justify-content-center">
-              <div class="col-md-6 col-lg-4">
-                <div class="login-wrap p-0">
-                  <h3 class="mb-4 text-center">Registrate</h3>
-                  <form onSubmit={onSubmit} class="signin-form">
-                    <div class="form-group">
+            <div className="row justify-content-center">
+              <div className="col-md-6 col-lg-4">
+                <div className="login-wrap p-0">
+                  <h3 className="mb-4 text-center">Registrate</h3>
+                  <form onSubmit={onSubmit} className="signin-form">
+                    <div className="form-group">
                       <input
-                        name="username"
+                        name="name"
                         type="text"
-                        class="form-control"
+                        className="form-control"
                         placeholder="Nombre de usuario"
-                        value={username}
+                        value={name}
                         onChange={handleChange}
                         validate={{ regexp: /^[a-z]/i }}
                         required
                       />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <input
+                        className="form-control"
                         type="email"
-                        class="form-control"
-                        placeholder="Email"
-                        value={email}
+                        name="email"
+                        id="email"
+                        placeholder="tu email"
                         onChange={handleChange}
+                        value={email}
                         required
                       />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <input
-                        id="password-field"
+                        className="form-control"
                         type="password"
-                        class="form-control"
-                        placeholder="Password"
+                        name="password"
+                        id="pwd"
+                        placeholder="tu Password"
                         onChange={handleChange}
                         value={password}
                         validate={{ regexp: /^([a-zA-Z0-9])/i }}
@@ -104,33 +110,35 @@ function Register() {
                       />
                       <span
                         toggle="#password-field"
-                        class="fa fa-fw fa-eye field-icon toggle-password"
+                        className="fa fa-fw fa-eye field-icon toggle-password"
                       ></span>
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <input
+                        className="form-control"
                         type="password"
-                        class="form-control"
-                        placeholder="Confirm Password"
-                        validate={{ regexp: /^([a-zA-Z0-9])/i }}
+                        name="password2"
+                        id="pwd2"
+                        placeholder="repita password"
                         onChange={handleChange}
                         value={password2}
+                        validate={{ regexp: /^([a-zA-Z0-9])/i }}
                         required
                       />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <button
                         type="submit"
-                        class="form-control btn btn-primary submit px-3"
+                        className="form-control btn btn-primary submit px-3"
                       >
-                        Register
+                        Registrate
                       </button>
                     </div>
-                    <div class="form-group d-md-flex"></div>
+                    <div className="form-group d-md-flex"></div>
                   </form>
-                  <p class="w-100 text-center">
+                  <p className="w-100 text-center">
                     &mdash;&mdash;&mdash;&nbsp;
-                    <Link to="/login">O haz Login</Link>&nbsp;
+                    <Link to="/login">O ya tienes cuenta?</Link>&nbsp;
                     &mdash;&mdash;&mdash;
                   </p>
                 </div>
@@ -141,6 +149,6 @@ function Register() {
       </body>
     </>
   );
-}
+};
 
 export default Register;
