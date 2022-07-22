@@ -7,6 +7,7 @@ import Profile from "./components/Profile/Profile";
 import MyRoutes from "./components/Routes/Routes";
 import Login from "./components/Auth/Login/Login";
 import Register from "./components/Auth/Register/Register";
+import NotFound from "./components/NotFound/NotFound";
 
 export default function App() {
   // const user = JSON.parse(localStorage.getItem('profile'));
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         {/* <Route path="*" exact element={NotFound} /> */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <AppBar />
     </BrowserRouter>
