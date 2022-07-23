@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Route.scss";
 
-const API_URL = "https://api-routes-data.herokuapp.com/getRoutes/";
 
 const Route = () => {
   const { routes } = useSelector((state) => state.routes);

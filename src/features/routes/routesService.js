@@ -1,14 +1,19 @@
 import axios from "axios";
 
-const API_URL = "https://api-routes-data.herokuapp.com";
+const API_URL = "http://localhost:8080/";
 
 const getAll = async () => {
-  const res = await axios.get(API_URL + "/getRoutes");
+  const res = await axios.get(API_URL + "routes/getAlldb");
   return res.data;
 };
 
-const getById = async (id) => {
-  const res = await axios.get(API_URL + "/getRouteById/" + id);
+const getById = async (_id) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const res = await axios.get(API_URL + `routes/getByIddb/${_id}`, {
+    headers: {
+      authorization: user?.token,
+    },
+  });
   return res.data;
 };
 

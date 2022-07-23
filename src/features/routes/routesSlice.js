@@ -15,7 +15,7 @@ export const getAll = createAsyncThunk("/getRoutes", async () => {
   }
 });
 
-export const getById = createAsyncThunk("/getRouteById", async (id) => {
+export const getById = createAsyncThunk("/getById", async (id) => {
   try {
     return await routesService.getById(id);
   } catch (err) {
@@ -39,7 +39,7 @@ export const routesSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(getById.fulfilled, (state, action) => {
-      state.post = action.payload;
+      state.route = action.payload;
     });
   },
 });
