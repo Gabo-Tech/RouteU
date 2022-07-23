@@ -8,7 +8,7 @@ const Route = () => {
   const { routes } = useSelector((state) => state.routes);
 
   const routeList = routes?.map((elements) => {
-    console.log("elements", elements);
+    console.log("elements", elements._id);
     return (
       <>
         <section class="py-5">
@@ -31,7 +31,7 @@ const Route = () => {
                   <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                     <div class="text-center">
                       {" "}
-                      <Link to={"/getRouteById/" + elements.route_id}>
+                      <Link to={"/getRouteById/" + elements._id}>
                         <a class="btn btn-outline-dark mt-auto" href="#">
                           Detalles
                         </a>
