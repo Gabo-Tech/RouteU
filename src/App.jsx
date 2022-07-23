@@ -8,6 +8,8 @@ import MyRoutes from "./components/Routes/Routes";
 import Login from "./components/Auth/Login/Login";
 import Register from "./components/Auth/Register/Register";
 import NotFound from "./components/NotFound/NotFound";
+import PrivateZone from "./guards/PrivateZone";
+// import AdminZone from "./guards/AdminZone";
 
 export default function App() {
   // const user = JSON.parse(localStorage.getItem('profile'));
@@ -23,6 +25,8 @@ export default function App() {
         <Route path="/register" element={<Register />} />
         {/* <Route path="*" exact element={NotFound} /> */}
         <Route path="*" element={<NotFound />} />
+        <Route path="/profile" element={<PrivateZone><Profile /></PrivateZone>}/>
+        {/* <Route path="/admin" element={ <AdminZone><Admin /></AdminZone> }/> */}
       </Routes>
       <AppBar />
     </BrowserRouter>
