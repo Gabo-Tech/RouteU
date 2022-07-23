@@ -1,13 +1,27 @@
-// import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import {  HeartIcon } from "@heroicons/react/outline";
+import { HeartIcon as HeartIconFilled } from "@heroicons/react/solid";
 import "./Route.scss";
+import { likeRoute, dislikeRoute } from "../../../../api/ApiIndex";
 
 
 const Route = () => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  const userId = user?.user?._id;
+ 
+  const [hasLiked, setHasLiked] = useState(false);
+
   const { routes } = useSelector((state) => state.routes);
 
   const routeList = routes?.map((elements) => {
+    const likeOneRoute = () => {
+      if(elements.likes.indexOf(userId)!==-1){
+        setHasLiked(true);
+      }
+      hasLiked === false ? likeRoute(elements._id) : dislikeRoute(elements._id);
+    };
     console.log("elements", elements._id);
     return (
       <>
@@ -28,7 +42,7 @@ const Route = () => {
                     </div>
                   </div>
 
-                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent routeFooter">
                     <div class="text-center">
                       {" "}
                       <Link to={"/getRouteById/" + elements._id}>                        
@@ -37,11 +51,18 @@ const Route = () => {
                         </a>
                       </Link>
                     </div>
+                    <div className="likeIcon">
+                        {hasLiked ? (
+                            <HeartIconFilled onClick={likeOneRoute} id="likeBtn" className="btn text-red-500"/>
+                        ) : (
+                            <HeartIcon onClick={likeOneRoute} id="likeBtn" className="btn"/>
+                        )}
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
         </section>
       </>
     );
