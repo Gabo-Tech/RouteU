@@ -21,3 +21,9 @@ export const signIn = (formData) => API.post('/users/login', formData);
 export const signUp = (formData) => API.post('/users', formData);
 export const logout = (formData) => API.put('/logout', formData);
 export const getAllUsers = () => API.get('/getAll');
+
+
+export const getAllComments = () => API.get('/comments');
+export const comment = (routeId, formData) => API.post(`/comments/${routeId}`, formData);
+export const deleteComment = (commentId) => API.del(`/comments/id/${commentId}`);
+export const editComment = (commentId, formData) => API.put(`/comments/id/${commentId}`, formData);

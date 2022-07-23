@@ -3,20 +3,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getById } from "../../features/routes/routesSlice";
 import { Space, Spin } from "antd";
+import{ TextArea } from "grommet";
 import "./RouteDetail.scss";
-
+import { comment, getAllComments } from "../../api/ApiIndex";
 function RouteDetail() {
   const { isLoading } = useSelector((state) => state.routes);
   const { route } = useSelector((state) => state.routes);
   const { _id } = useParams();
   const dispatch = useDispatch();
-
+  const [value, setValue] = React.useState('');
+  function commentRoute(){
+    comment(route._id,value);
+    setValue("¡Tu comentario se ha enviado con exito!");
+  }
   useEffect(() => {
     dispatch(getById(_id));
     // eslint-disable-next-line
   }, []);
 
-  console.log("route", route);
+  console.log("route", route._id);
 
   if (isLoading) {
     return (
@@ -82,7 +87,16 @@ function RouteDetail() {
               </div>
             </section>
           ))}
-          
+          <div>
+            <TextArea
+              placeholder="¿Te ha gustado la ruta? ¡Cuéntalo!"
+              value={value}
+              onChange={event => setValue(event.target.value)}
+            />
+            <div onClick={commentRoute} className="btn-card">
+              Enviar comentario
+            </div>
+          </div>
         </div>
       </div>
     </>

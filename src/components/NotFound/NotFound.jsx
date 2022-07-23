@@ -6,21 +6,21 @@ function NotFound() {
   return (
     <div className="container-fluid notfound">
       <div className="pic">
-        <div class="face">
-          <div class="band">
-            <div class="red"></div>
-            <div class="white"></div>
-            <div class="blue"></div>
+        <div className="face">
+          <div className="band">
+            <div className="red"></div>
+            <div className="white"></div>
+            <div className="blue"></div>
           </div>
-          <div class="eyes"></div>
-          <div class="dimples"></div>
-          <div class="mouth"></div>
+          <div className="eyes"></div>
+          <div className="dimples"></div>
+          <div className="mouth"></div>
         </div>
       </div>
 
-      <h1 class="message-404">Oops! Something went wrong!</h1>
+      <h1 className="message-404">Oops! Something went wrong!</h1>
       <Link to="/">
-        <div class="btn-404">Return to Home</div>
+        <div className="btn-404">Return to Home</div>
       </Link>
     </div>
   );
