@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getById } from "../../features/routes/routesSlice";
-import { Card } from "antd";
 import { Space, Spin } from "antd";
 
 function RouteDetail() {
@@ -13,6 +12,7 @@ function RouteDetail() {
 
   useEffect(() => {
     dispatch(getById(_id));
+    // eslint-disable-next-line
   }, []);
 
   console.log("route", route);

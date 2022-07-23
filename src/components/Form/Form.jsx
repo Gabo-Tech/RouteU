@@ -1,11 +1,11 @@
 //Registro y inicio de sesión
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 // import styles from './Auth.module.css';
-import { Box, Heading, TextInput, FormField, Button, Menu , Main/*Heading, Grommet, grommet*/ } from 'grommet';
+import { Box, Heading, Button, Menu , Main/*Heading, Grommet, grommet*/ } from 'grommet';
 
 export default function MyForm() {
-  const [favRoutes, setFavRoutes] = useState([]);
-  const initialState = { age: 'Edad', gender: 'Género', company: 'Acompañamiento', duration: '¿De cuánto tiempo dispones para realizar la ruta?', price: 'Coste dispuesto a pagar', difficulty: 'Dificultad', transport: 'Transporte', type: 'Tipo de ruta preferida', favouriteRoutes:favRoutes, sendBtn:'Enviar' };
+  const [favRoutes] = useState([]);
+  const initialState = { age: 'Año de nacimiento', gender: 'Género', companions: 'Acompañamiento', time: '¿De cuánto tiempo dispones para realizar la ruta?', price: 'Coste dispuesto a pagar', difficulty: 'Dificultad', transport: 'Transporte', route_type: 'Tipo de ruta preferida', favouriteRoutes:favRoutes, sendBtn:'Enviar' };
 	const [form, setForm] = useState(initialState);
 	const switchMode = () => {
         // setTimeout(setForm(initialState), 5000);
@@ -14,12 +14,7 @@ export default function MyForm() {
         // setForm({ ...form, favouriteRoutes:favRoutes });
         console.log(JSON.stringify(form));
     };
-  const selectSeveralRoutes= (e,routeId)=>{
-    e.preventDefault();
-    e.target.style.backgroundColor = 'blue';
-    setFavRoutes([...favRoutes, routeId])
-    setForm({ ...form, favouriteRoutes:favRoutes });
-  }
+  
   return (
     <>
         <Main id="Main" fill="vertical"  pad="xlarge">
@@ -28,10 +23,52 @@ export default function MyForm() {
           <Menu
             label={form?.age} 
             items={[
-              { label: '0-18', onClick: () => {setForm({...form, age: '0-18'}) } },
-              { label: '19-35', onClick: () => {setForm({...form, age: '19-35'}) } },
-              { label: '36-44', onClick: () => {setForm({...form, age: '36-44'}) } },
-              { label: '+45', onClick: () => {setForm({...form, age: '+45'}) } }
+              { label: '1960', onClick: () => {setForm({...form, age: 1960}) } },
+              { label: '1961', onClick: () => {setForm({...form, age: 1961}) } },
+              { label: '1962', onClick: () => {setForm({...form, age: 1962}) } },
+              { label: '1963', onClick: () => {setForm({...form, age: 1963}) } },
+              { label: '1964', onClick: () => {setForm({...form, age: 1964}) } },
+              { label: '1965', onClick: () => {setForm({...form, age: 1965}) } },
+              { label: '1966', onClick: () => {setForm({...form, age: 1966}) } },
+              { label: '1967', onClick: () => {setForm({...form, age: 1967}) } },
+              { label: '1968', onClick: () => {setForm({...form, age: 1968}) } },
+              { label: '1969', onClick: () => {setForm({...form, age: 1969}) } },
+              { label: '1970', onClick: () => {setForm({...form, age: 1970}) } },
+              { label: '1971', onClick: () => {setForm({...form, age: 1971}) } },
+              { label: '1972', onClick: () => {setForm({...form, age: 1972}) } },
+              { label: '1973', onClick: () => {setForm({...form, age: 1973}) } },
+              { label: '1974', onClick: () => {setForm({...form, age: 1974}) } },
+              { label: '1975', onClick: () => {setForm({...form, age: 1975}) } },
+              { label: '1976', onClick: () => {setForm({...form, age: 1976}) } },
+              { label: '1977', onClick: () => {setForm({...form, age: 1977}) } },
+              { label: '1978', onClick: () => {setForm({...form, age: 1978}) } },
+              { label: '1979', onClick: () => {setForm({...form, age: 1979}) } },
+              { label: '1980', onClick: () => {setForm({...form, age: 1980}) } },
+              { label: '1981', onClick: () => {setForm({...form, age: 1981}) } },
+              { label: '1982', onClick: () => {setForm({...form, age: 1982}) } },
+              { label: '1983', onClick: () => {setForm({...form, age: 1983}) } },
+              { label: '1984', onClick: () => {setForm({...form, age: 1984}) } },
+              { label: '1985', onClick: () => {setForm({...form, age: 1985}) } },
+              { label: '1986', onClick: () => {setForm({...form, age: 1986}) } },
+              { label: '1987', onClick: () => {setForm({...form, age: 1987}) } },
+              { label: '1988', onClick: () => {setForm({...form, age: 1988}) } },
+              { label: '1989', onClick: () => {setForm({...form, age: 1989}) } },
+              { label: '1990', onClick: () => {setForm({...form, age: 1990}) } },
+              { label: '1991', onClick: () => {setForm({...form, age: 1991}) } },
+              { label: '1992', onClick: () => {setForm({...form, age: 1992}) } },
+              { label: '1993', onClick: () => {setForm({...form, age: 1993}) } },
+              { label: '1994', onClick: () => {setForm({...form, age: 1994}) } },
+              { label: '1995', onClick: () => {setForm({...form, age: 1995}) } },
+              { label: '1996', onClick: () => {setForm({...form, age: 1996}) } },
+              { label: '1997', onClick: () => {setForm({...form, age: 1997}) } },
+              { label: '1998', onClick: () => {setForm({...form, age: 1998}) } },
+              { label: '1999', onClick: () => {setForm({...form, age: 1999}) } },
+              { label: '2000', onClick: () => {setForm({...form, age: 2000}) } },
+              { label: '2001', onClick: () => {setForm({...form, age: 2001}) } },
+              { label: '2002', onClick: () => {setForm({...form, age: 2002}) } },
+              { label: '2003', onClick: () => {setForm({...form, age: 2003}) } },
+              { label: '2004', onClick: () => {setForm({...form, age: 2004}) } },
+              
             ]}
           />
           <Menu
@@ -39,86 +76,72 @@ export default function MyForm() {
             items={[
               { label: 'Mujer', onClick: () => {setForm({...form, gender: 'Mujer'}) } },
               { label: 'Hombre', onClick: () => {setForm({...form, gender: 'Hombre'}) } },
-              { label: 'Prefiero no decirlo', onClick: () => {setForm({...form, gender: 'Prefiero no decirlo'}) } }
+              { label: 'Otro', onClick: () => {setForm({...form, gender: 'Otro'}) } }
             ]}
           />
+            <Menu
+              label={form?.time}
+              items={[
+                { label: '30 minutos', onClick: () => {setForm({...form, time: 30})} },
+                { label: '1 hora', onClick: () => {setForm({...form, time: 60})} },
+                { label: '1 hora y media', onClick: () => {setForm({...form, time: 90})} },
+                { label: '2 horas', onClick: () => {setForm({...form, time: 120})} },
+                { label: '2 hora y media', onClick: () => {setForm({...form, time: 150})} },
+                { label: '3 horas', onClick: () => {setForm({...form, time: 180})} },
+                { label: '3 horas y media', onClick: () => {setForm({...form, time: 210})} },
+                { label: '4 horas', onClick: () => {setForm({...form, time: 240})} },
+                { label: '4 horas y media', onClick: () => {setForm({...form, time: 270})} },
+                { label: '5 horas', onClick: () => {setForm({...form, time: 300})} },
+                { label: '5 horas y media', onClick: () => {setForm({...form, time: 330})} },
+                { label: '6 horas', onClick: () => {setForm({...form, time: 360})} },
+                { label: '6 horas y media', onClick: () => {setForm({...form, time: 390})} },
+                { label: '7 horas', onClick: () => {setForm({...form, time: 420})} },
+                { label: '7 horas y media', onClick: () => {setForm({...form, time: 450})} },
+                { label: '8 horas', onClick: () => {setForm({...form, time: 480})} },
+  
+              ]}
+            />
+            <Menu
+              label={form?.route_type}
+              items={[
+                { label: 'Histórica', onClick: () => {setForm({...form, route_type: 'Histórica'})} },
+                { label: 'Turística', onClick: () => {setForm({...form, route_type: 'Turística'})} },
+                { label: 'Literaria', onClick: () => {setForm({...form, route_type: 'Literaria'})} },
+                { label: 'Patrimonio', onClick: () => {setForm({...form, route_type: 'Patrimonio'})} },
+              ]}
+            />
+            <Menu
+              label={form?.price}
+              items={[
+                { label: 'Free', onClick: () => {setForm({...form, price: 'Free'})} },
+                { label: '1 - 50€', onClick: () => {setForm({...form, price: '1 - 50'})} },
+                { label: '+50€', onClick: () => {setForm({...form, price: '+50'})} }
+              ]}
+            />
+            <Menu
+              label={form?.difficulty}
+              items={[
+                { label: 'Alta', onClick: () => {setForm({...form, difficulty: 'alta'})} },
+                { label: 'Baja', onClick: () => {setForm({...form, difficulty: 'baja'})} }
+              ]}
+            />
           <Menu
-            label={form?.company}
+            label={form?.companions}
             items={[
-              { label: 'Sólo', onClick: () => {setForm({...form, company: 'Sólo'}) } },
-              { label: 'Pareja', onClick: () => {setForm({...form, company: 'Pareja'}) } },
-              { label: 'Familia', onClick: () => {setForm({...form, company: 'Familia'}) } }
-            ]}
-          />
-          <Menu
-            label={form?.duration}
-            items={[
-              { label: '1 - 2 horas', onClick: () => {setForm({...form, duration: '1 - 2 horas'})} },
-              { label: '3 - 4 horas', onClick: () => {setForm({...form, duration: '3 - 4 horas'})} },
-              { label: '5 - 6 horas', onClick: () => {setForm({...form, duration: '5 - 6 horas'})} },
-              { label: '7 - 8 horas', onClick: () => {setForm({...form, duration: '7 - 8 horas'})} },
-            ]}
-          />
-          <Menu
-            label={form?.price}
-            items={[
-              { label: 'Free', onClick: () => {setForm({...form, price: 'Free'})} },
-              { label: '1 - 50€', onClick: () => {setForm({...form, price: '1 - 50€'})} },
-              { label: '+50€', onClick: () => {setForm({...form, price: '+50€'})} }
-            ]}
-          />
-          <Menu
-            label={form?.difficulty}
-            items={[
-              { label: 'Alta', onClick: () => {setForm({...form, difficulty: 'Alta'})} },
-              { label: 'Baja', onClick: () => {setForm({...form, difficulty: 'Baja'})} }
+              { label: 'Sólo', onClick: () => {setForm({...form, companions: 'solo'}) } },
+              { label: 'Pareja', onClick: () => {setForm({...form, companions: 'pareja'}) } },
+              { label: 'Familia', onClick: () => {setForm({...form, companions: 'familia'}) } },
+              { label: 'Amigos', onClick: () => {setForm({...form, companions: 'amigos'}) } }
             ]}
           />
           <Menu
             label={form?.transport}
             items={[
               { label: 'A Pie', onClick: () => {setForm({...form, transport: 'A Pie'})} },
-              { label: 'En Bicicleta', onClick: () => {setForm({...form, transport: 'En Bicicleta'})} }
+              { label: 'En Bicicleta', onClick: () => {setForm({...form, transport: 'Bicicleta'})} }
             ]}
           />
-          <Menu
-            label={form?.type}
-            items={[
-              { label: 'Histórica', onClick: () => {setForm({...form, type: 'Histórica'})} },
-              { label: 'Turística', onClick: () => {setForm({...form, type: 'Turística'})} },
-              { label: 'Literaria', onClick: () => {setForm({...form, type: 'Literaria'})} },
-              { label: 'Patrimonio', onClick: () => {setForm({...form, type: 'Patrimonio'})} },
-            ]}
-          />
-          <Menu
-            label="Selecciona tu/s rutas favorita/s"
-            items={[
-              { label: 'Arbres monumentals i singulars', onClick: (e) => {selectSeveralRoutes(e,1)} },
-              { label: 'Arbres: La volta al món', onClick: (e) => {selectSeveralRoutes(e,2)} },
-              { label: 'Arbres: Els indians', onClick: (e) => {selectSeveralRoutes(e,3)} },
-              { label: 'Arbres: Un passeig per l’Albereda', onClick: (e) => {selectSeveralRoutes(e,4)} },
-              { label: 'Arbres: Un viatge pel Mediterrani', onClick: (e) => {selectSeveralRoutes(e,5)} },
-              { label: 'Ruta Carrer Russafa - la Llotja', onClick: (e) => {selectSeveralRoutes(e,6)} },
-              { label: 'Contes Blasco Ibañez – Ruta 1', onClick: (e) => {selectSeveralRoutes(e,7)} },
-              { label: 'Contes Blasco Ibañez – Ruta 2', onClick: (e) => {selectSeveralRoutes(e,8)} },
-              { label: 'Entre Naranjos', onClick: (e) => {selectSeveralRoutes(e,9)} },
-              { label: 'Glorieta-Santa Catalina', onClick: (e) => {selectSeveralRoutes(e,10)} },
-              { label: 'Jardins del Reial - Glorieta', onClick: (e) => {selectSeveralRoutes(e,11)} },
-              { label: 'La barraca', onClick: (e) => {selectSeveralRoutes(e,12)} },
-              { label: 'Ruta Cultural Anell Ciclista', onClick: (e) => {selectSeveralRoutes(e,13)} },
-              { label: 'Ruta de la Seda', onClick: (e) => {selectSeveralRoutes(e,14)} },
-              { label: "Ruta dels Pecats a l'entorn del Mercat Central", onClick: (e) => {selectSeveralRoutes(e,15)} },
-              { label: 'Ruta pel Centre Històric', onClick: (e) => {selectSeveralRoutes(e,16)} },
-              { label: "Ruta recinte enmurallat d'època islàmica", onClick: (e) => {selectSeveralRoutes(e,17)} },
-              { label: 'Ruta València en bicicleta', onClick: (e) => {selectSeveralRoutes(e,18)} },
-              { label: 'Sant Agustí – Pont de Fusta', onClick: (e) => {selectSeveralRoutes(e,19)} },
-              { label: 'Sant Agustí - Portal Nou', onClick: (e) => {selectSeveralRoutes(e,20)} },
-              { label: 'Serrans - Palau de la Generalitat', onClick: (e) => {selectSeveralRoutes(e,21)} },
-              { label: 'Torres de Quart - Temple', onClick: (e) => {selectSeveralRoutes(e,22)} },
-              { label: "Trinitat - L'Almodí", onClick: (e) => {selectSeveralRoutes(e,23)} },
-              { label: 'Ruta Valencia en la Memòria', onClick: (e) => {selectSeveralRoutes(e,24)} },
-            ]}
-          />
+         
           
           </Box>
           <Button label={form?.sendBtn} onClick={switchMode} pad="medium" margin={{vertical: 'large', horizontal: 'xsmall' }}/>

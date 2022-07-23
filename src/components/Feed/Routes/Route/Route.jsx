@@ -1,5 +1,5 @@
 // import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Route.scss";
 
@@ -31,7 +31,7 @@ const Route = () => {
                   <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                     <div class="text-center">
                       {" "}
-                      <Link to={"/getRouteById/" + elements._id}>
+                      <Link to={"/getRouteById/" + elements._id}>                        
                         <a class="btn btn-outline-dark mt-auto" href="#">
                           Detalles
                         </a>
