@@ -1,13 +1,15 @@
 import React from 'react'
 import styles from './Profile.module.css';
 import { Box, InfiniteScroll, Text, Avatar, Icons, Heading , Main} from 'grommet';
-import {User } from 'grommet-icons';
+
 
 export default function Profile() {
+  const user = JSON.parse(localStorage.getItem('user'));
+  const username = user?.user?.name.charAt(0).toUpperCase() + user?.user?.name.slice(1);
   return (
     <>
       <Main pad="xlarge">
-        <Heading>Hola Roberta!</Heading>
+        <Heading>Hola {username}!</Heading>
         <Box direction="row" justify="center" gap="small" pad="large">
           <Avatar size="xlarge" src="//s.gravatar.com/avatar/b7fb138d53ba0f573212ccce38a7c43b?s=80" />   
         </Box>
