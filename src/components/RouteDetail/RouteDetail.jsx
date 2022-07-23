@@ -5,7 +5,8 @@ import { getById } from "../../features/routes/routesSlice";
 import { Space, Spin } from "antd";
 import{ TextArea } from "grommet";
 import "./RouteDetail.scss";
-import { comment, getAllComments } from "../../api/ApiIndex";
+import { comment } from "../../api/ApiIndex";
+
 function RouteDetail() {
   const { isLoading } = useSelector((state) => state.routes);
   const { route } = useSelector((state) => state.routes);
@@ -77,9 +78,9 @@ function RouteDetail() {
                       <div className="card-desc">
                         <h3>Descripcion</h3>
                         <p>{el.description_es}</p>
-                        <a href="#" className="btn-card">
+                        <button href="#" className="btn-card">
                           Link al mapa
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>

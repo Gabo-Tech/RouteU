@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 import styles from './Profile.module.css';
 import { useSelector } from "react-redux";
-import { Box, InfiniteScroll, Text, Avatar, Icons, Heading , Main} from 'grommet';
+import { Box, Text, Avatar, Heading , Main} from 'grommet';
 import { Link } from "react-router-dom";
 
 export default function Profile() {

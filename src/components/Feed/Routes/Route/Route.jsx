@@ -1,28 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import {  HeartIcon } from "@heroicons/react/outline";
-import { HeartIcon as HeartIconFilled } from "@heroicons/react/solid";
 import "./Route.scss";
-import { likeRoute, dislikeRoute } from "../../../../api/ApiIndex";
+import { like, dislike } from "./../../../../features/routes/routesSlice"
+import { HeartOutlined, HeartFilled } from "@ant-design/icons";
 
-
-const Route = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
-  const userId = user?.user?._id;
- 
-  const [hasLiked, setHasLiked] = useState(false);
-
+const Route = () => {  
+  const { user } = useSelector(state => state.auth);
   const { routes } = useSelector((state) => state.routes);
+  const dispatch = useDispatch();
 
   const routeList = routes?.map((elements) => {
-    const likeOneRoute = () => {
-      if(elements.likes.indexOf(userId)!==-1){
-        setHasLiked(true);
-      }
-      hasLiked === false ? likeRoute(elements._id) : dislikeRoute(elements._id);
-    };
-    console.log("elements", elements._id);
+    const isAlreadyLiked = elements.likes?.includes(user?.user._id); 
+    
     return (
       <>
         <section id="mobileFirst" className="py-5">
@@ -46,18 +36,26 @@ const Route = () => {
                     <div className="text-center">
                       {" "}
                       <Link to={"/getRouteById/" + elements._id}>                        
-                        <a className="btn btn-outline-dark mt-auto" href="#">
+                        <button className="btn btn-outline-dark mt-auto" href="#">
                           Detalles
-                        </a>
+                        </button>
                       </Link>
                     </div>
-                    <div className="likeIcon">
-                        {hasLiked ? (
-                            <HeartIconFilled onClick={likeOneRoute} id="likeBtn" className="btn text-red-500"/>
-                        ) : (
-                            <HeartIcon onClick={likeOneRoute} id="likeBtn" className="btn"/>
-                        )}
-                  </div>
+                    <div className='iconos'>
+                {isAlreadyLiked ? (
+                  <HeartFilled
+                    className='heart'
+                    onClick={() => dispatch(dislike(elements._id))}
+                    style={{ color: '#FF0000' }}
+                  />
+                ) : (
+                  <HeartOutlined
+                    className='heart'
+                    onClick={() => dispatch(like(elements._id))}
+                  />
+                )}
+                <span>{elements.likes?.length}</span>
+              </div>
                 </div>
               </div>
             </div>

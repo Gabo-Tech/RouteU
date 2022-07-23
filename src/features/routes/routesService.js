@@ -17,9 +17,42 @@ const getById = async (_id) => {
   return res.data;
 };
 
+const like = async (_id) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const res = await axios.put(API_URL + `routes/likes/${_id}`,{}, {
+      headers: {
+        authorization: user?.token
+      },
+    } );
+  return res.data;
+};
+
+const dislike = async (_id) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const res = await axios.put(API_URL + `routes/dislike/${_id}`,{}, {
+      headers: {
+        authorization: user?.token
+      },
+    } );
+  return res.data;
+};
+
+const addComment = async (comment) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const res = await axios.post(API_URL + 'comments/', comment,  {
+    headers: {
+      authorization: user?.token,      
+    },
+  });  
+  return res.data;
+};
+
 const routesService = {
   getAll,
   getById,
+  like,
+  dislike,
+  addComment
 };
 
 export default routesService;
