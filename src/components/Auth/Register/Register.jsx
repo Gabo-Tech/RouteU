@@ -31,6 +31,7 @@ const Register = () => {
       notification.error({ message: "Error", description: message });
     }
     dispatch(reset());
+    // eslint-disable-next-line
   }, [isSuccess, isError, message]);
 
   const handleChange = (e) => {
@@ -90,7 +91,7 @@ const Register = () => {
                         type="email"
                         name="email"
                         id="email"
-                        placeholder="tu email"
+                        placeholder="Email"
                         onChange={handleChange}
                         value={email}
                         required
@@ -102,7 +103,7 @@ const Register = () => {
                         type="password"
                         name="password"
                         id="pwd"
-                        placeholder="contraseña"
+                        placeholder="Contraseña"
                         onChange={handleChange}
                         value={password}
                         validate={{ regexp: /^([a-zA-Z0-9])/i }}
@@ -119,7 +120,7 @@ const Register = () => {
                         type="password"
                         name="password2"
                         id="pwd2"
-                        placeholder="repita contraseña"
+                        placeholder="Repita contraseña"
                         onChange={handleChange}
                         value={password2}
                         validate={{ regexp: /^([a-zA-Z0-9])/i }}
@@ -138,7 +139,7 @@ const Register = () => {
                   </form>
                   <p className="w-100 text-center">
                     &mdash;&mdash;&mdash;&nbsp;
-                    <Link to="/login">O ya tienes cuenta?</Link>&nbsp;
+                    <Link to="/login">Ya tienes cuenta?</Link>&nbsp;
                     &mdash;&mdash;&mdash;
                   </p>
                 </div>

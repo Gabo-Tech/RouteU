@@ -45,6 +45,7 @@ const Login = () => {
     }
 
     dispatch(reset());
+    // eslint-disable-next-line
   }, [isError, isSuccess, message]);
 
   return (
@@ -67,7 +68,7 @@ const Login = () => {
                         type="email"
                         name="email"
                         id="email"
-                        placeholder="email"
+                        placeholder="Email"
                         value={email}
                         onChange={onChange}
                         className="form-control"
@@ -79,7 +80,7 @@ const Login = () => {
                         type="password"
                         name="password"
                         id="password-field"
-                        placeholder="contraseña"
+                        placeholder="Contraseña"
                         onChange={onChange}
                         value={password}
                         className="form-control"
@@ -102,7 +103,7 @@ const Login = () => {
                   </form>
                   <p className="w-100 text-center">
                     &mdash;&mdash;&mdash;&nbsp;
-                    <Link to="/register"> O Registrate </Link>
+                    <Link to="/register"> Registrate </Link>
                     &nbsp;&mdash;&mdash;&mdash;
                   </p>
                 </div>
