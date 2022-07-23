@@ -15,8 +15,10 @@ body {
 }
 #AppBar {
   height: 6vh;
-  position: absolute;
+  position: fixed;
   bottom: 0;
+  position: fixed;
+  left: 0;
   width: 100%;
   display: flex;
   justify-content: space-evenly;

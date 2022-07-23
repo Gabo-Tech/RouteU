@@ -11,7 +11,7 @@ export default function AppBar() {
 
   return (
     <>
-      <Nav id="AppBar" direction="row" background="brand" pad="medium">
+      <Nav id="AppBar"  direction="row" background="brand" pad="medium">
         <Link to="/feed">
           <Anchor icon={<HomeRounded />} hoverIndicator />
         </Link>
