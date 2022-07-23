@@ -25,11 +25,11 @@ const Route = () => {
     console.log("elements", elements._id);
     return (
       <>
-        <section className="py-5">
-          <div className="container px-4 px-lg-5 mt-5">
-            <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-              <div className="col mb-5">
-                <div className="card h-100">
+        <section id="mobileFirst" className="py-5">
+          <div id="mobileFirst" className="container px-4 px-lg-5 mt-5">
+            <div  className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+              <div id="noHoles" className="col mb-5">
+                <div  className="card h-100">
                   <img
                     className="card-img-top"
                     src={elements.image}
@@ -67,7 +67,7 @@ const Route = () => {
       </>
     );
   });
-  return <div className="group">{routeList}</div>;
+  return <div id="noHoles" className="group">{routeList}</div>;
 };
 
 export default Route;
