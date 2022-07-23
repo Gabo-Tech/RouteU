@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Route.scss";
 
+const API_URL = "https://api-routes-data.herokuapp.com/getRoutes/";
+
 const Route = () => {
   const { routes } = useSelector((state) => state.routes);
 
@@ -17,26 +19,24 @@ const Route = () => {
                 <div class="card h-100">
                   <img
                     class="card-img-top"
-                    src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                    alt="..."
+                    src={elements.image}
+                    alt="foto de la ruta"
                   />
 
                   <div class="card-body p-4">
                     <div class="text-center" key={elements._id}>
-                      <h5 class="fw-bolder">
-                        {" "}
-                        <Link to={"/getRouteById/" + elements.route_id}>
-                          {elements.name}
-                        </Link>
-                      </h5>
+                      <h5 class="fw-bolder">{elements.name}</h5>
                     </div>
                   </div>
 
                   <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                     <div class="text-center">
-                      <a class="btn btn-outline-dark mt-auto" href="#">
-                        Detalles
-                      </a>
+                      {" "}
+                      <Link to={"/getRouteById/" + elements.route_id}>
+                        <a class="btn btn-outline-dark mt-auto" href="#">
+                          Detalles
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
