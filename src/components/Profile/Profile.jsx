@@ -1,11 +1,56 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import styles from './Profile.module.css';
+import { useSelector } from "react-redux";
 import { Box, InfiniteScroll, Text, Avatar, Icons, Heading , Main} from 'grommet';
-
+import { Link } from "react-router-dom";
 
 export default function Profile() {
   const user = JSON.parse(localStorage.getItem('user'));
   const username = user?.user?.name.charAt(0).toUpperCase() + user?.user?.name.slice(1);
+  const userId = user?.user?._id;
+  const { routes } = useSelector((state) => state.routes);
+  function getFavouriteRoutes(arrayElement) {
+    const likes=arrayElement.likes;
+    const favRoute = likes.indexOf(userId);
+    const res = favRoute === -1 ? "no fav routes" : arrayElement ;
+    return res;
+  };
+  let routeList = [];  
+  const userFavouriteRoutes = routes.map((getFavouriteRoutes));
+if (userFavouriteRoutes.length >= 0){
+   routeList = "Oh oh... Parece que no tienes rutas favoritas todavía, ¡vuelve a la página de inicio para encontrar nuevos caminos por recorrer!"
+} else {
+   routeList = userFavouriteRoutes?.map((elements) => {
+    console.log("elements", elements._id);
+    return (
+      <>
+        <section className="py-5">
+        <Link to={"/getRouteById/" + elements._id}>
+          <div className="container px-4 px-lg-5 mt-5">
+            <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+              <div className="col mb-2">
+                <div className="card h-5">
+                  <img
+                    className="card-img-top"
+                    src={elements.image}
+                    alt="foto de la ruta"
+                  />
+
+                  <div className="card-body p-4">
+                    <div className="text-center" key={elements._id}>
+                      <h5 className="fw-bolder">{elements.name}</h5>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </Link>
+        </section>
+      </>
+    );
+  });
+}
   return (
     <>
       <Main pad="xlarge">
@@ -16,17 +61,7 @@ export default function Profile() {
         <Box direction="row" justify="center" gap="small">
           <Text direction="row" justify="center">Tus rutas favoritas</Text>
         </Box>
-        <InfiniteScroll favouriteRoutes={[1, 2, 3, 4, 5, 6, 7]}>
-          {(item) => (
-            <Box
-              flex={false}
-              pad="medium"
-              background={`dark-${(item % 3) + 1}`}
-            >
-              <Text>{item}</Text>
-            </Box>
-          )}
-        </InfiniteScroll>
+        <div className="group">{routeList}</div>
       </Main>
     </>
   )

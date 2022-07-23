@@ -13,7 +13,7 @@ function RouteDetail() {
   const dispatch = useDispatch();
   const [value, setValue] = React.useState('');
   function commentRoute(){
-    comment(route._id,value);
+    comment(_id,value);
     setValue("¡Tu comentario se ha enviado con exito!");
   }
   useEffect(() => {
