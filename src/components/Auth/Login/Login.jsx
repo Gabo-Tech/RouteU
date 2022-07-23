@@ -40,7 +40,7 @@ const Login = () => {
       notification.success({ message: "Exito", description: message });
 
       setTimeout(() => {
-        navigate("/routes");
+        navigate("/main");
       }, 2000);
     }
 
