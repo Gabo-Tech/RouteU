@@ -9,7 +9,7 @@ function Feed() {
           <div className="text-center text-white">
             <h1 className="display-4 fw-bolder">RouteU</h1>
             <p className="lead fw-normal text-white-50 mb-0">
-              Your routes companion
+              Tu compañero de Ruta
             </p>
           </div>
         </div>

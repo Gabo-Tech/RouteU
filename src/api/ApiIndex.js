@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({ baseURL: process.env.REACT_APP_API });
+const APIDATA = axios.create({ baseURL: process.env.REACT_APP_APIDATA });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('user')) {
@@ -27,3 +28,5 @@ export const getAllComments = () => API.get('/comments');
 export const comment = (routeId, formData) => API.post(`/comments/${routeId}`, formData);
 export const deleteComment = (commentId) => API.del(`/comments/id/${commentId}`);
 export const editComment = (commentId, formData) => API.put(`/comments/id/${commentId}`, formData);
+
+export const sendDataScienceForm = (formData) => APIDATA.post(`/postUser`, formData);

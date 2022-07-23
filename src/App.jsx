@@ -10,10 +10,14 @@ import NotFound from "./components/NotFound/NotFound";
 import PrivateZone from "./guards/PrivateZone";
 import Feed from "./components/Feed/Feed";
 import RouteDetail from "./components/RouteDetail/RouteDetail";
+import MyMap from "./components/MyMap/MyMap";
 
 // import AdminZone from "./guards/AdminZone";
 
 export default function App() {
+  const mapIsReadyCallback = (map) => {
+    console.log(map);
+  };
   // const user = JSON.parse(localStorage.getItem('profile'));
   return (
     <BrowserRouter>
@@ -22,6 +26,7 @@ export default function App() {
         <Route path="/feed" element={<Feed />} />
         <Route path="/getRouteById/:_id" element={<RouteDetail />} />
         <Route path="/form" element={<MyForm />} />
+        <Route path="/map" element={<MyMap mapIsReadyCallback={mapIsReadyCallback}/>} />
         <Route path="/profile" element={<Profile />} />
         {/* <Route path="/auth" element={<Auth />} /> */}
         <Route path="/login" element={<Login />} />
@@ -38,6 +43,7 @@ export default function App() {
         />
         {/* <Route path="/admin" element={ <AdminZone><Admin /></AdminZone> }/> */}
       </Routes>
+        
       <AppBar />
     </BrowserRouter>
   );

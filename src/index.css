@@ -19,11 +19,18 @@ body {
   bottom: 0;
   position: fixed;
   left: 0;
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+html,
+body,
+#root,
+#root > div {
+  height: 100%;
+  margin: 0;
 }

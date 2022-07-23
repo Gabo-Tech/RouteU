@@ -2,14 +2,15 @@
 import React, { useState } from 'react'
 // import styles from './Auth.module.css';
 import { Box, Heading, Button, Menu , Main/*Heading, Grommet, grommet*/ } from 'grommet';
-
+import { sendDataScienceForm } from '../../api/ApiIndex';
 export default function MyForm() {
   const [favRoutes] = useState([]);
-  const initialState = { age: 'Año de nacimiento', gender: 'Género', companions: 'Acompañamiento', time: '¿De cuánto tiempo dispones para realizar la ruta?', price: 'Coste dispuesto a pagar', difficulty: 'Dificultad', transport: 'Transporte', route_type: 'Tipo de ruta preferida', favouriteRoutes:favRoutes, sendBtn:'Enviar' };
+  const initialState = { age: 'Año de nacimiento', gender: 'Género', time: '¿De cuánto tiempo dispones para realizar la ruta?', route_type: 'Tipo de ruta preferida', price: 'Coste dispuesto a pagar', difficulty: 'Dificultad', companions: 'Acompañamiento', transport: 'Transporte', sendBtn:'Enviar' };
 	const [form, setForm] = useState(initialState);
 	const switchMode = () => {
         // setTimeout(setForm(initialState), 5000);
         console.log(JSON.stringify(favRoutes));
+        sendDataScienceForm()
         setForm({...form, sendBtn: '¡Enviado!'});
         // setForm({ ...form, favouriteRoutes:favRoutes });
         console.log(JSON.stringify(form));

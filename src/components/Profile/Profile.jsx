@@ -53,7 +53,7 @@ if (userFavouriteRoutes.length >= 0){
 }
   return (
     <>
-      <Main pad="xlarge">
+      <Main className={styles.full} pad="xlarge">
         <Heading>Hola {username}!</Heading>
         <Box direction="row" justify="center" gap="small" pad="large">
           <Avatar size="xlarge" src="//s.gravatar.com/avatar/b7fb138d53ba0f573212ccce38a7c43b?s=80" />   
@@ -61,7 +61,7 @@ if (userFavouriteRoutes.length >= 0){
         <Box direction="row" justify="center" gap="small">
           <Text direction="row" justify="center">Tus rutas favoritas</Text>
         </Box>
-        <div className="group">{routeList}</div>
+        <div  className={styles.centered}>{routeList}</div>
       </Main>
     </>
   )
