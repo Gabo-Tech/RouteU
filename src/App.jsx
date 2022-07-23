@@ -9,6 +9,7 @@ import Register from "./components/Auth/Register/Register";
 import NotFound from "./components/NotFound/NotFound";
 import PrivateZone from "./guards/PrivateZone";
 import Feed from "./components/Feed/Feed";
+import RouteDetail from "./components/RouteDetail/RouteDetail";
 
 // import AdminZone from "./guards/AdminZone";
 
@@ -19,7 +20,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/feed" element={<Feed />} />
-
+        <Route path="/getRouteById/:_id" element={<RouteDetail />} />
         <Route path="/form" element={<MyForm />} />
         <Route path="/profile" element={<Profile />} />
         {/* <Route path="/auth" element={<Auth />} /> */}

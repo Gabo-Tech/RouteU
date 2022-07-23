@@ -6,10 +6,8 @@ import "./Route.scss";
 const Route = () => {
   const { routes } = useSelector((state) => state.routes);
 
-  console.log(routes);
-
-  const routeList = routes[0]?.map((elements) => {
-    console.log(elements);
+  const routeList = routes?.map((elements) => {
+    console.log("elements", elements);
     return (
       <>
         <section class="py-5">
@@ -24,8 +22,13 @@ const Route = () => {
                   />
 
                   <div class="card-body p-4">
-                    <div class="text-center">
-                      <h5 class="fw-bolder">{elements.name}</h5>
+                    <div class="text-center" key={elements._id}>
+                      <h5 class="fw-bolder">
+                        {" "}
+                        <Link to={"/getRouteById/" + elements.route_id}>
+                          {elements.name}
+                        </Link>
+                      </h5>
                     </div>
                   </div>
 
