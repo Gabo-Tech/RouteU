@@ -8,7 +8,6 @@ import { like, dislike, rate } from "./../../../../features/routes/routesSlice"
 import { HeartOutlined, HeartFilled } from "@ant-design/icons";
 import { relativeTimeRounding } from 'moment';
 import axios from 'axios';
-<<<<<<< HEAD
 import { useTimeout } from '../../../../hooks/useTimeout';
 const Route = () => {  
     const { user } = useSelector(state => state.auth);
@@ -145,50 +144,6 @@ const Route = () => {
   
     const routeList = routes?.map((elements) => {
     const isAlreadyLiked = elements.likes?.includes(user?.user._id);   
-=======
-const Route = () => {  
-  const { user } = useSelector(state => state.auth);
-  const { routes } = useSelector((state) => state.routes);
-  // const { avgRate} = useSelector((state) => state.avgRate);
-  // console.log(avgRate)
-  const dispatch = useDispatch();
-
-
-    const [currentValue, setCurrentValue] = useState(2.5)
-    const [rates, setRates] = useState(2.5)
-  
-  
-
-  
-  
-    const routeList = routes?.map((elements) => {
-    const isAlreadyLiked = elements.likes?.includes(user?.user._id); 
-    async function rating(value,routeIdL){
-      // const routeComponentId= document.getElementById(value);
-      // console.log("THIS IS THE ID OF THE CLICKED COMPONENT", routeComponentId);
-      // if(elements._id=== routeIdL){
-        dispatch(rate(routeIdL));
-        const res = await axios.post(`http://localhost:8080/ratings/${routeIdL}`,{rating:value},{headers: {authorization: user?.token,}});
-        console.log("THIS IS THE RATE CALL:",res);
-        const resVal = await axios.get(`http://localhost:8080/ratings/`,{headers: {authorization: user?.token,}});
-        console.log("THIS IS THE GETRATE CALL:",resVal);
-        const array = resVal.data.ratings;
-        console.log("This is array",array);
-        const filteredArray = array.filter(element => element.routeId === routeIdL && element.rating !== null && element.rating !== undefined);
-        console.log("This is filteredArray",filteredArray);
-        const rateTotal = filteredArray.reduce(function(prev, cur) {
-          return prev + cur.rating;
-        }, 0);
-        const averageRate=rateTotal/filteredArray.length
-        setCurrentValue(averageRate);
-        const normalValue= parseFloat(averageRate).toFixed(2);
-        setCurrentValue(normalValue);
-        setRates(value);
-
-      // }
-    }
-  
->>>>>>> develop
     return (
       <>
         <section id="mobileFirst" className="py-5">
@@ -232,19 +187,12 @@ const Route = () => {
                 )}
                 <span>{elements.likes?.length}</span>
               </div>
-<<<<<<< HEAD
               <div id={elements._id} onClick={getElementOnClick}>
                 <Rate allowHalf defaultValue={2.5}  onFocus={(value) => {showValue(value)}} onChange={(value) => {rating(value, elements._id)}} value={rates}/>
               </div>
               
                 </div>
                 <p id={elements._id+"p"} onClick={getElementOnClick}> Puntuación media de la ruta {currentValue}</p>
-=======
-                <Rate id={elements._id} allowHalf defaultValue={2.5} onChange={(value) => {rating(value, elements._id)}} value={rates}/>
-              
-                </div>
-                <p> Puntuación media de la ruta {currentValue}</p>
->>>>>>> develop
               </div>
             </div>
           </div>
