@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import AppBar from "./components/AppBar/AppBar";
-
+import "antd/dist/antd.css";
 import MyForm from "./components/Form/Form";
 import Profile from "./components/Profile/Profile";
 import Login from "./components/Auth/Login/Login";

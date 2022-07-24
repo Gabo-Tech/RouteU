@@ -1,28 +1,31 @@
-import React, { useEffect } from "react";
+import "./RouteDetail.scss";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getById } from "../../features/routes/routesSlice";
+import { getById, reset } from "../../features/routes/routesSlice";
+import AddComment from "./AddComment/AddComment";
 import { Space, Spin } from "antd";
-import{ TextArea } from "grommet";
-import "./RouteDetail.scss";
-import { comment } from "../../api/ApiIndex";
+// import { Avatar, Comment } from 'antd';
 
 function RouteDetail() {
-  const { isLoading } = useSelector((state) => state.routes);
-  const { route } = useSelector((state) => state.routes);
   const { _id } = useParams();
   const dispatch = useDispatch();
-  const [value, setValue] = React.useState('');
-  function commentRoute(){
-    comment(_id,value);
-    setValue("¡Tu comentario se ha enviado con exito!");
+  const { isLoading } = useSelector((state) => state.routes);
+  const { route } = useSelector((state) => state.routes);  
+  
+  const getRoute = async (_id) => {
+    await dispatch(getById(_id));
+    dispatch(reset());
   }
+  
+  const { comments } = useSelector((state) => state.routes);
+  
   useEffect(() => {
-    dispatch(getById(_id));
+    getRoute(_id);
     // eslint-disable-next-line
-  }, []);
+  }, [comments]);
 
-  console.log("route", route._id);
+  console.log(_id)
 
   if (isLoading) {
     return (
@@ -88,15 +91,30 @@ function RouteDetail() {
               </div>
             </section>
           ))}
+          {/* <div>
+         {
+            route.route?.commentsId &&  route.route?.commentsId.map((e) => {              
+                    console.log(e)                     
+              return (
+                <div key={e._id}>
+                  <Comment
+                    author={<p>{route.route.userId?.name}</p>}
+                    avatar={
+                      <Avatar
+                        src="https://placeimg.com/380/230/arch"
+                        alt='Your ugly face'
+                      />
+                    }
+                    content={<p>{e.body}</p>}
+                  />    
+                                   
+                </div>
+              );
+            })            
+         }
+        </div> */}
           <div>
-            <TextArea
-              placeholder="¿Te ha gustado la ruta? ¡Cuéntalo!"
-              value={value}
-              onChange={event => setValue(event.target.value)}
-            />
-            <div onClick={commentRoute} className="btn-card">
-              Enviar comentario
-            </div>
+            <AddComment postId = {_id}/>
           </div>
         </div>
       </div>

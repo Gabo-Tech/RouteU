@@ -5,7 +5,8 @@ const initialState = {
   routes: [],
   isLoading: false,
   route: {},
-  comments:[]
+  comments:[],
+  avgRating: {}
 };
 
 export const getAll = createAsyncThunk("/getRoutes", async () => {
@@ -45,7 +46,7 @@ export const dislike = createAsyncThunk(
   }
 );
 
-export const addComment = createAsyncThunk("route/addComment", async (comment, thunkAPI) => {
+export const addComment = createAsyncThunk("addComment", async (comment, thunkAPI) => {
   try {
     return await routesService.addComment(comment)
   }catch (error) {
@@ -53,6 +54,24 @@ export const addComment = createAsyncThunk("route/addComment", async (comment, t
     return thunkAPI.rejectWithValue(message);
   }
 });
+
+export const avgRating = createAsyncThunk("route/avgRate", async (_id, thunkAPI) =>{
+  try {
+    return await routesService.avgRating(_id)
+  } catch (error){
+    const message = error.response.data;
+    return thunkAPI.rejectWithValue(message);
+  }
+});
+
+export const rate = createAsyncThunk("route/rate", async (_id, thunkAPI) =>{
+  try {
+    return await routesService.rate(_id)
+  } catch (error){
+    const message = error.response.data;
+    return thunkAPI.rejectWithValue(message);
+  }
+})
 
 export const routesSlice = createSlice({
   name: "routes",
@@ -63,16 +82,17 @@ export const routesSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(getAll.fulfilled, (state, action) => {
+    builder
+    .addCase(getAll.fulfilled, (state, action) => {
       state.routes = action.payload;
-    });
-    builder.addCase(getAll.pending, (state) => {
+    })
+    .addCase(getAll.pending, (state) => {
       state.isLoading = true;
-    });
-    builder.addCase(getById.fulfilled, (state, action) => {
+    })
+    .addCase(getById.fulfilled, (state, action) => {
       state.route = action.payload;
-    });
-    builder.addCase(like.fulfilled, (state, action) => {
+    })
+    .addCase(like.fulfilled, (state, action) => {
       const routes = state.routes.map((element) => {
         if (element._id === action.payload._id) {
           element = action.payload;
@@ -81,7 +101,7 @@ export const routesSlice = createSlice({
       });
       state.routes = routes;
     })
-    builder.addCase(dislike.fulfilled, (state, action) => {
+    .addCase(dislike.fulfilled, (state, action) => {
       const routes = state.routes.map((element) => {
         if (element._id === action.payload._id) {
           element = action.payload;
@@ -90,9 +110,12 @@ export const routesSlice = createSlice({
       });
       state.routes = routes;
     })
-    builder.addCase(addComment.fulfilled, (state, action) => {
+    .addCase(addComment.fulfilled, (state, action) => {
       state.comments =  action.payload;
     })
+    .addCase(avgRating.fulfilled, (state, action) => {
+      state.avgRating = action.payload;
+    })    
   },
 });
 export const { reset } = routesSlice.actions;

@@ -9,12 +9,13 @@ const Routes = () => {
   const dispatch = useDispatch();
 
   const getAllRoutesAndReset = async () => {
-    await dispatch(getAll());
+    await dispatch(getAll());    
     dispatch(reset());
   };
 
   useEffect(() => {
     getAllRoutesAndReset();
+    // eslint-disable-next-line
   }, []);
 
   if (isLoading) {
