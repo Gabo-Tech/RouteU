@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { Rate } from "antd";
 import routesService from "./routesService";
 
 const initialState = {
@@ -116,6 +117,9 @@ export const routesSlice = createSlice({
     .addCase(avgRating.fulfilled, (state, action) => {
       state.avgRating = action.payload;
     })    
+    .addCase(rate.fulfilled, (state, action) => {
+      state.rate = action.payload;
+    })
   },
 });
 export const { reset } = routesSlice.actions;
