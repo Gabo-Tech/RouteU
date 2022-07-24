@@ -16,19 +16,22 @@
   border-radius: 10px;
 }
 
-.routeFooter{
-  display:flex;
+.routeFooter {
+  display: flex;
   align-items: center;
   justify-content: space-around;
 }
-#likeBtn{
-height: 4em;
+#likeBtn {
+  height: 4em;
 }
-#mobileFirst{
-  width: 100vw !important;
+// #mobileFirst{
+//   width: 100vw !important;
 
-}
-#noHoles{
-  margin:0 !important;
+// }
+#noHoles {
+  margin: 0 !important;
   padding: 0 !important;
+}
+.hero {
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/7/72/Puerta_de_los_Serranos%2C_Valencia%2C_Espa%C3%B1a%2C_2014-06-30%2C_DD_86.JPG) !important;
 }

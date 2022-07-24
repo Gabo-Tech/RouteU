@@ -70,10 +70,7 @@ function RouteDetail() {
                   <div className="col-md-10">
                     <div className="card-content">
                       <div className="card-img">
-                        <img
-                          src="https://placeimg.com/380/230/arch"
-                          alt="mapa"
-                        />
+                        <Maps lat={el.latitude} lon={el.longitude} zoom="17" />
                         <span>
                           <h4>{el.name}</h4>
                         </span>
