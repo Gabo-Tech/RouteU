@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { getById, reset } from "../../features/routes/routesSlice";
 import AddComment from "./AddComment/AddComment";
 import { Space, Spin } from "antd";
+import Maps from "../../components/Maps/Maps";
 // import { Avatar, Comment } from 'antd';
 
 function RouteDetail() {
