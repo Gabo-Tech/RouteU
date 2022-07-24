@@ -6,7 +6,7 @@ import { getById, reset } from "../../features/routes/routesSlice";
 import AddComment from "./AddComment/AddComment";
 import { Space, Spin } from "antd";
 import Maps from "../../components/Maps/Maps";
-// import { Avatar, Comment } from 'antd';
+import { Avatar, Comment } from 'antd';
 
 function RouteDetail() {
   const { _id } = useParams();
@@ -18,15 +18,13 @@ function RouteDetail() {
     await dispatch(getById(_id));
     dispatch(reset());
   }
-  
+  console.log(route)
   const { comments } = useSelector((state) => state.routes);
   
   useEffect(() => {
     getRoute(_id);
     // eslint-disable-next-line
   }, [comments]);
-
-  console.log(_id)
 
   if (isLoading) {
     return (
@@ -89,14 +87,14 @@ function RouteDetail() {
               </div>
             </section>
           ))}
-          {/* <div>
+          <div>
          {
-            route.route?.commentsId &&  route.route?.commentsId.map((e) => {              
+            route.commentsId &&  route.commentsId.map((e) => {              
                     console.log(e)                     
               return (
                 <div key={e._id}>
                   <Comment
-                    author={<p>{route.route.userId?.name}</p>}
+                    author={<p>{route.userId?.name}</p>}
                     avatar={
                       <Avatar
                         src="https://placeimg.com/380/230/arch"
@@ -110,9 +108,9 @@ function RouteDetail() {
               );
             })            
          }
-        </div> */}
+        </div>
           <div>
-            <AddComment postId = {_id}/>
+            <AddComment routeId = {_id}/>
           </div>
         </div>
       </div>
