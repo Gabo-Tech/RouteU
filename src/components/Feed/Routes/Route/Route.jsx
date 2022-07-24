@@ -150,7 +150,7 @@ const Route = () => {
           <div id="mobileFirst" className="container px-4 px-lg-5 mt-5">
             <div  className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
               <div id="noHoles" className="col mb-5">
-                <div  className="card h-100">
+                <div  className="card each-card h-100">
                   <img
                     className="card-img-top"
                     src={elements.image}
