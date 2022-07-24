@@ -55,7 +55,7 @@ if (userFavouriteRoutes.length <= 0){
     <>
       <Main className={styles.full} pad="xlarge">
         <Heading>Hola {username}!</Heading>
-        <Box direction="row" justify="center" gap="small" pad="large">
+        <Box className={styles.pic} direction="row" justify="center" gap="small" pad="large">
           <Avatar size="xlarge" src="//s.gravatar.com/avatar/b7fb138d53ba0f573212ccce38a7c43b?s=80" />   
         </Box>
         <Box direction="row" justify="center" gap="small">
