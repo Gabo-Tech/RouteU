@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addComment } from "../../../features/routes/routesSlice";
 import { Button, Form, Input } from 'antd';
 const { TextArea } = Input;
 
 const AddComment = ({routeId}) => {
-    console.log(routeId)
+    
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -18,7 +18,7 @@ const AddComment = ({routeId}) => {
         body:''
     })
 
-    const { comment } = formData;
+    const { comment } = formData;   
 
     const onChange = (e) => {
         setFormData((prevState)=>({
@@ -28,6 +28,7 @@ const AddComment = ({routeId}) => {
     }
 
     const onSubmit = (e) => {
+      
         e.preventDefault()
         dispatch(addComment(formData))
     }

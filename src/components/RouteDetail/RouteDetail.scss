@@ -101,3 +101,15 @@ a.btn-card {
   color: #fff;
 }
 /* End card section */
+
+.comments {
+  padding-bottom: 8%;
+}
+.group2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  padding: 1em;
+  grid-gap: 20px;
+  margin-top: 2em;
+  border-radius: 10px;
+}
