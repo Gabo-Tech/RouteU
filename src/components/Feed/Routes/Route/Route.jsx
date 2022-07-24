@@ -1,13 +1,17 @@
 
+import { Rate } from 'antd';
+import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Route.scss";
-import { like, dislike } from "./../../../../features/routes/routesSlice"
+import { like, dislike,  } from "./../../../../features/routes/routesSlice"
 import { HeartOutlined, HeartFilled } from "@ant-design/icons";
 
 const Route = () => {  
   const { user } = useSelector(state => state.auth);
   const { routes } = useSelector((state) => state.routes);
+  // const { avgRate} = useSelector((state) => state.avgRate);
+  // console.log(avgRate)
   const dispatch = useDispatch();
 
   const routeList = routes?.map((elements) => {
@@ -31,7 +35,7 @@ const Route = () => {
                       <h5 className="fw-bolder">{elements.name}</h5>
                     </div>
                   </div>
-
+                              
                   <div className="card-footer p-4 pt-0 border-top-0 bg-transparent routeFooter">
                     <div className="text-center">
                       {" "}
@@ -56,6 +60,7 @@ const Route = () => {
                 )}
                 <span>{elements.likes?.length}</span>
               </div>
+                <Rate allowHalf defaultValue={2.5} />
                 </div>
               </div>
             </div>

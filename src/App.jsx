@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import AppBar from "./components/AppBar/AppBar";
-
+import "antd/dist/antd.css";
 import MyForm from "./components/Form/Form";
 import Profile from "./components/Profile/Profile";
 import Login from "./components/Auth/Login/Login";
@@ -11,6 +11,7 @@ import PrivateZone from "./guards/PrivateZone";
 import Feed from "./components/Feed/Feed";
 import RouteDetail from "./components/RouteDetail/RouteDetail";
 import MyMap from "./components/MyMap/MyMap";
+import Maps from "./components/Maps/Maps";
 
 // import AdminZone from "./guards/AdminZone";
 
@@ -26,13 +27,19 @@ export default function App() {
         <Route path="/feed" element={<Feed />} />
         <Route path="/getRouteById/:_id" element={<RouteDetail />} />
         <Route path="/form" element={<MyForm />} />
-        <Route path="/map" element={<MyMap mapIsReadyCallback={mapIsReadyCallback}/>} />
+        <Route
+          path="/map"
+          element={
+            /*<MyMap mapIsReadyCallback={mapIsReadyCallback}/>*/ <Maps />
+          }
+        />
         <Route path="/profile" element={<Profile />} />
         {/* <Route path="/auth" element={<Auth />} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         {/* <Route path="*" exact element={NotFound} /> */}
         <Route path="*" element={<NotFound />} />
+
         <Route
           path="/profile"
           element={
@@ -43,7 +50,7 @@ export default function App() {
         />
         {/* <Route path="/admin" element={ <AdminZone><Admin /></AdminZone> }/> */}
       </Routes>
-        
+
       <AppBar />
     </BrowserRouter>
   );

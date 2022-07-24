@@ -47,12 +47,23 @@ const addComment = async (comment) => {
   return res.data;
 };
 
+const avgRating = async (_id) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const res = await axios.get(API_URL + `avgRating/${_id}`,{
+    headers: {
+      authorization: user?.token,      
+    },
+  })  
+  return res.data;
+}
+
 const routesService = {
   getAll,
   getById,
   like,
   dislike,
-  addComment
+  addComment,
+  avgRating
 };
 
 export default routesService;

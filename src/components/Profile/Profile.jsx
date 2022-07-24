@@ -12,16 +12,16 @@ export default function Profile() {
   function getFavouriteRoutes(arrayElement) {
     const likes=arrayElement.likes;
     const favRoute = likes.indexOf(userId);
-    const res = favRoute === -1 ? "no fav routes" : arrayElement ;
+    const res = favRoute === -1 ? null : arrayElement ;
     return res;
   };
   let routeList = [];  
   const userFavouriteRoutes = routes.map((getFavouriteRoutes));
-if (userFavouriteRoutes.length >= 0){
+if (userFavouriteRoutes.length <= 0){
    routeList = "Oh oh... Parece que no tienes rutas favoritas todavía, ¡vuelve a la página de inicio para encontrar nuevos caminos por recorrer!"
 } else {
-   routeList = userFavouriteRoutes?.map((elements) => {
-    console.log("elements", elements._id);
+   const userFavouriteRoutesClean = userFavouriteRoutes.filter(arrayElement =>  arrayElement !== null);
+   routeList = userFavouriteRoutesClean?.map((elements) => {
     return (
       <>
         <section className="py-5">
@@ -55,7 +55,7 @@ if (userFavouriteRoutes.length >= 0){
     <>
       <Main className={styles.full} pad="xlarge">
         <Heading>Hola {username}!</Heading>
-        <Box direction="row" justify="center" gap="small" pad="large">
+        <Box className={styles.pic} direction="row" justify="center" gap="small" pad="large">
           <Avatar size="xlarge" src="//s.gravatar.com/avatar/b7fb138d53ba0f573212ccce38a7c43b?s=80" />   
         </Box>
         <Box direction="row" justify="center" gap="small">
