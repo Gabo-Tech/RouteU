@@ -3,18 +3,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getById } from "../../features/routes/routesSlice";
 import { Space, Spin } from "antd";
-import{ TextArea } from "grommet";
+import { TextArea } from "grommet";
 import "./RouteDetail.scss";
+import Maps from "../../components/Maps/Maps";
 import { comment } from "../../api/ApiIndex";
+import { element } from "prop-types";
 
 function RouteDetail() {
   const { isLoading } = useSelector((state) => state.routes);
   const { route } = useSelector((state) => state.routes);
   const { _id } = useParams();
   const dispatch = useDispatch();
-  const [value, setValue] = React.useState('');
-  function commentRoute(){
-    comment(_id,value);
+  const [value, setValue] = React.useState("");
+  console.log(route);
+  function commentRoute() {
+    comment(_id, value);
     setValue("¡Tu comentario se ha enviado con exito!");
   }
   useEffect(() => {
@@ -67,10 +70,7 @@ function RouteDetail() {
                   <div className="col-md-10">
                     <div className="card-content">
                       <div className="card-img">
-                        <img
-                          src="https://placeimg.com/380/230/arch"
-                          alt="mapa"
-                        />
+                        <Maps lat={el.latitude} lon={el.longitude} zoom="17" />
                         <span>
                           <h4>{el.name}</h4>
                         </span>
@@ -92,7 +92,7 @@ function RouteDetail() {
             <TextArea
               placeholder="¿Te ha gustado la ruta? ¡Cuéntalo!"
               value={value}
-              onChange={event => setValue(event.target.value)}
+              onChange={(event) => setValue(event.target.value)}
             />
             <div onClick={commentRoute} className="btn-card">
               Enviar comentario
