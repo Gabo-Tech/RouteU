@@ -1,19 +1,26 @@
 
 import { Rate } from 'antd';
-import React from 'react';
+import React, {useState} from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Route.scss";
-import { like, dislike,  } from "./../../../../features/routes/routesSlice"
+import { like, dislike, rate } from "./../../../../features/routes/routesSlice"
 import { HeartOutlined, HeartFilled } from "@ant-design/icons";
-
+import { relativeTimeRounding } from 'moment';
+import axios from 'axios';
 const Route = () => {  
   const { user } = useSelector(state => state.auth);
   const { routes } = useSelector((state) => state.routes);
   // const { avgRate} = useSelector((state) => state.avgRate);
   // console.log(avgRate)
   const dispatch = useDispatch();
-
+    const [currentValue, setCurrentValue] = useState(2.5)
+    async function rating(value,routeId){
+      dispatch(rate(routeId));
+      const res = await axios.post(`http://localhost:8080/ratings/${routeId}`,{rating:value},{headers: {authorization: user?.token,}});
+      console.log("THIS IS THE RATE CALL:",res);
+      setCurrentValue(value);
+    }
   const routeList = routes?.map((elements) => {
     const isAlreadyLiked = elements.likes?.includes(user?.user._id); 
     
@@ -60,8 +67,10 @@ const Route = () => {
                 )}
                 <span>{elements.likes?.length}</span>
               </div>
-                <Rate allowHalf defaultValue={2.5} />
+                <Rate allowHalf defaultValue={2.5} onChange={(value) => {rating(value, elements._id)}} value={currentValue}/>
+              
                 </div>
+                <p> Rating average={currentValue}</p>
               </div>
             </div>
           </div>
