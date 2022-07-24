@@ -36,7 +36,7 @@ const Route = () => {
         console.log("THIS IS THE GETRATE CALL:",resVal);
         const array = resVal.data.ratings;
         console.log("This is array",array);
-        const filteredArray = array.filter(element => element.routeId === routeIdL);
+        const filteredArray = array.filter(element => element.routeId === routeIdL && element.rating !== null && element.rating !== undefined);
         console.log("This is filteredArray",filteredArray);
         const rateTotal = filteredArray.reduce(function(prev, cur) {
           return prev + cur.rating;
