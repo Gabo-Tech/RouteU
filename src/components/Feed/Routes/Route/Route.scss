@@ -4,7 +4,6 @@
   padding: 2em;
   grid-gap: 20px;
   margin-top: 2em;
-  border-radius: 10px;
   background-color: white;
 }
 
@@ -30,4 +29,6 @@
 }
 .hero {
   background-image: url(https://upload.wikimedia.org/wikipedia/commons/7/72/Puerta_de_los_Serranos%2C_Valencia%2C_Espa%C3%B1a%2C_2014-06-30%2C_DD_86.JPG) !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
 }
