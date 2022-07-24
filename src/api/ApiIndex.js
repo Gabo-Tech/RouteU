@@ -29,4 +29,4 @@ export const comment = (routeId, formData) => API.post(`/comments/${routeId}`, f
 export const deleteComment = (commentId) => API.del(`/comments/id/${commentId}`);
 export const editComment = (commentId, formData) => API.put(`/comments/id/${commentId}`, formData);
 
-export const sendDataScienceForm = (formData) => APIDATA.post(`/postUser`, formData);
+export const sendDataScienceForm = (formData) => APIDATA.post(`/postUser/`, formData);
