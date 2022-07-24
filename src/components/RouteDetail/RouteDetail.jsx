@@ -36,15 +36,14 @@ function RouteDetail() {
   }
   return (
     <>
-      <div className="container mb-5">
+      <div className="container mb-5 bg-white">
         <h1 className="my-4">
-          {route.name}
-          <small> difficultad:( {route.difficulty} )</small>
+          {route.name} <small> difficultad:( {route.difficulty} )</small>
         </h1>
 
         <div className="row">
           <div className="col-md-8">
-            <img className="img-fluid" src={route.image} alt="" />
+            <img className="container" src={route.image} alt="" />
           </div>
 
           <div className="col-md-4">
@@ -62,7 +61,7 @@ function RouteDetail() {
 
         <h3 className="my-4">Puntos de interes</h3>
 
-        <div className=" group2">
+        <div className="group2">
           {route?.poi?.map((el) => (
             <section className="details-card">
               <div className="container">
@@ -88,15 +87,15 @@ function RouteDetail() {
               </div>
             </section>
           ))}
-          <div>
-            <TextArea
-              placeholder="¿Te ha gustado la ruta? ¡Cuéntalo!"
-              value={value}
-              onChange={(event) => setValue(event.target.value)}
-            />
-            <div onClick={commentRoute} className="btn-card">
-              Enviar comentario
-            </div>
+        </div>
+        <div className="comments">
+          <TextArea
+            placeholder="¿Te ha gustado la ruta? ¡Cuéntalo!"
+            value={value}
+            onChange={(event) => setValue(event.target.value)}
+          />
+          <div onClick={commentRoute} className="btn-card">
+            Enviar comentario
           </div>
         </div>
       </div>
