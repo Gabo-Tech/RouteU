@@ -11,6 +11,7 @@ import PrivateZone from "./guards/PrivateZone";
 import Feed from "./components/Feed/Feed";
 import RouteDetail from "./components/RouteDetail/RouteDetail";
 import MyMap from "./components/MyMap/MyMap";
+import Maps from "./components/Maps/Maps";
 
 // import AdminZone from "./guards/AdminZone";
 
@@ -26,7 +27,7 @@ export default function App() {
         <Route path="/feed" element={<Feed />} />
         <Route path="/getRouteById/:_id" element={<RouteDetail />} />
         <Route path="/form" element={<MyForm />} />
-        <Route path="/map" element={<MyMap mapIsReadyCallback={mapIsReadyCallback}/>} />
+        <Route path="/map" element={/*<MyMap mapIsReadyCallback={mapIsReadyCallback}/>*/<Maps/>} />
         <Route path="/profile" element={<Profile />} />
         {/* <Route path="/auth" element={<Auth />} /> */}
         <Route path="/login" element={<Login />} />
