@@ -3,8 +3,7 @@ import React, { useState } from "react";
 import "./Form.scss";
 // import styles from './Auth.module.css';
 import {
-  Box,
-  Heading,
+  Box,  
   Button,
   Menu,
   Main /*Heading, Grommet, grommet*/,

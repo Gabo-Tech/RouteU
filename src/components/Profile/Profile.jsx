@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 // import { get } from "ol/proj";
 import { logout } from "../../features/auth/authSlice";
 import { notification } from "antd";
-
+import { BackTop } from "antd";
 import "./Profile.scss";
 
 export default function Profile() {
@@ -115,6 +115,13 @@ export default function Profile() {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <BackTop />
+          Scroll down to see the bottom-right
+          <strong className="site-back-top-basic"> gray </strong>
+          button.
+
       </div>
       {/* <Main className={styles.full} pad="xlarge">
         <Heading>Hola {username}!</Heading>
