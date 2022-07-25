@@ -8,6 +8,9 @@ import { HeartOutlined, HeartFilled } from "@ant-design/icons";
 import { relativeTimeRounding } from "moment";
 import axios from "axios";
 import { useTimeout } from "../../../../hooks/useTimeout";
+import { BackTop } from "antd";
+
+
 const Route = () => {
   const { user } = useSelector((state) => state.auth);
   const { routes } = useSelector((state) => state.routes);
@@ -20,7 +23,7 @@ const Route = () => {
   //   return Math.round(value * inv) / inv;
   // }
   const [currentValue, setCurrentValue] = useState(
-    ".  Califica la ruta para ver la media"
+    "  ---"
   );
   const [rates, setRates] = useState(0);
 
@@ -35,7 +38,7 @@ const Route = () => {
     if (elementId === routeIdL) {
       dispatch(rate(routeIdL));
       await axios.post(
-        `https://routeu-backend.herokuapp.com/${routeIdL}`,
+        `https://routeu-backend.herokuapp.com/ratings/${routeIdL}`,
         { rating: value },
         { headers: { authorization: user?.token } }
       );
@@ -191,6 +194,7 @@ const Route = () => {
                         </button>
                       </Link>
                     </div>
+                    
                     <div className="iconos">
                       {isAlreadyLiked ? (
                         <HeartFilled
@@ -209,7 +213,7 @@ const Route = () => {
                     <div id={elements._id} onClick={getElementOnClick}>
                       <Rate
                         allowHalf
-                        defaultValue={2.5}
+                        defaultValue={0}
                         onFocus={(value) => {
                           showValue(value);
                         }}
@@ -220,24 +224,32 @@ const Route = () => {
                       />
                     </div>
                   </div>
-                  <span className="span-rating">
-                    <p id={elements._id + "p"} onClick={getElementOnClick}>
-                      {" "}
-                      Puntuación media de la ruta {currentValue}
-                    </p>
-                  </span>
+                  <div className="span-rating">
+                    <span >
+                      <p id={elements._id + "p"} onClick={getElementOnClick}>
+                        {" "}
+                        Puntuación media de la ruta <span className="currentValue">{currentValue}</span>
+                      </p>
+                    </span>
+
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        
       </>
     );
   });
   return (
-    <div id="noHoles" className="group">
-      {routeList}
-    </div>
+    <>      
+      <div id="noHoles" className="group">{routeList}</div>
+      <BackTop />
+        Scroll down to see the bottom-right
+        <strong className="site-back-top-basic"> gray </strong>
+        button.
+    </>
   );
 };
 
