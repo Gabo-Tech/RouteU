@@ -3,6 +3,7 @@ import styles from './Profile.module.css';
 import { useSelector } from "react-redux";
 import { Box, Text, Avatar, Heading , Main} from 'grommet';
 import { Link } from "react-router-dom";
+import { get } from 'ol/proj';
 
 export default function Profile() {
   const user = JSON.parse(localStorage.getItem('user'));
@@ -12,17 +13,23 @@ export default function Profile() {
   const routesLS= JSON.parse(localStorage.getItem('routes'));
   console.log("THIS IS ROUTES", routes, "THIS IS ROUTESLS", routesLS);
   function getFavouriteRoutes(arrayElement) {
-    const likes=arrayElement.likes;
-    const favRoute = likes.indexOf(userId);
+    console.log("THIS IS arrayElement", arrayElement);
+    const likes=arrayElement?.likes;
+    console.log("THIS IS likes", likes);
+    const favRoute = likes?.indexOf(userId);
+    console.log("THIS IS favRoute ",  favRoute);
     const res = favRoute === -1 ? null : arrayElement ;
+    console.log("THIS IS res ", res); //
     return res;
   };
   let routeList = [];  
-  const userFavouriteRoutes = routes.legth>=0 ? routes.map((getFavouriteRoutes)) : routesLS.map((getFavouriteRoutes));
+  console.log("thi is get favouriteRoutes", getFavouriteRoutes);
+  const userFavouriteRoutes = routes.length>=0 ? routes?.map(getFavouriteRoutes) : routesLS?.map(getFavouriteRoutes);
+  console.log("userFavouriteRoutes", userFavouriteRoutes);
 if (userFavouriteRoutes.length <= 0){
    routeList = "Oh oh... Parece que no tienes rutas favoritas todavía, ¡vuelve a la página de inicio para encontrar nuevos caminos por recorrer!"
 } else {
-   const userFavouriteRoutesClean = userFavouriteRoutes.filter(arrayElement =>  arrayElement !== null);
+   const userFavouriteRoutesClean = userFavouriteRoutes?.filter(arrayElement =>  arrayElement !== null);
    routeList = userFavouriteRoutesClean?.map((elements) => {
     return (
       <>
