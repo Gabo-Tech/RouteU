@@ -1,24 +1,38 @@
 // import React, { useEffect, useState } from "react";
 import styles from "./Profile.module.css";
-import { useSelector } from "react-redux";
-import { Box, Text, Avatar, Heading, Main } from "grommet";
-import { Link } from "react-router-dom";
-import { get } from 'ol/proj';
+import { useDispatch, useSelector } from "react-redux";
+// import { Box, Text, Avatar, Heading, Main } from "grommet";
+import { Link, useNavigate } from "react-router-dom";
+// import { get } from "ol/proj";
+import { logout } from "../../features/auth/authSlice";
+import { notification } from "antd";
+
+import "./Profile.scss";
 
 export default function Profile() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
   const username =
     user?.user?.name.charAt(0).toUpperCase() + user?.user?.name.slice(1);
   const userId = user?.user?._id;
   const { routes } = useSelector((state) => state.routes);
-  const routesLS= JSON.parse(localStorage.getItem('routes'));
-  console.log("THIS IS ROUTES", routes, "THIS IS ROUTESLS", routesLS);
+  console.log(user);
+  const routesLS = JSON.parse(localStorage.getItem("routes"));
+  // console.log("THIS IS ROUTES", routes, "THIS IS ROUTESLS", routesLS);
   function getFavouriteRoutes(arrayElement) {
     const likes = arrayElement.likes;
     const favRoute = likes.indexOf(userId);
     const res = favRoute === -1 ? null : arrayElement;
     return res;
   }
+
+  const onLogout = async () => {
+    await dispatch(logout());
+    notification.success({ message: "Hasta la proxima!" });
+    navigate("/login");
+  };
+
   let routeList = [];
   const userFavouriteRoutes = routes.map(getFavouriteRoutes);
   if (userFavouriteRoutes.length <= 0) {
@@ -60,7 +74,49 @@ export default function Profile() {
   }
   return (
     <>
-      <Main className={styles.full} pad="xlarge">
+      <div className="padding">
+        <div className="col-md-8">
+          <div className="card">
+            {" "}
+            <img
+              className="card-img-top"
+              src="http://placeimg.com/800/600/tech"
+              alt="Card image cap"
+            />
+            <div className="card-body little-profile text-center">
+              <div className="pro-img">
+                <img src="http://placeimg.com/800/600/people" alt="user" />
+              </div>
+              <h3 className="m-b-0">Hola {username}!</h3>
+              <p>{user.user.role}</p>{" "}
+              <button onClick={onLogout} className="btn btn-rounded btn-info">
+                Desconectar
+              </button>
+              <div className="row text-center m-t-20">
+                <div className="col-lg-4 col-md-4 m-t-20">
+                  <h3 className="m-b-0 font-light"></h3>
+                  <small></small>
+                </div>
+                <div className="col-lg-4 col-md-4 m-t-20">
+                  <h3 className="m-b-0 font-light">
+                    {userFavouriteRoutes.length}
+                  </h3>
+                  <small>Rutas Favoritas</small>
+                </div>
+                <div className="col-lg-4 col-md-4 m-t-20">
+                  <h3 className="m-b-0 font-light"></h3>
+                  <small></small>
+                </div>
+
+                <div id="list-fav" className={styles.centered}>
+                  {routeList}{" "}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* <Main className={styles.full} pad="xlarge">
         <Heading>Hola {username}!</Heading>
         <Box
           className={styles.pic}
@@ -77,7 +133,7 @@ export default function Profile() {
           </Text>
         </Box>
         <div className={styles.centered}>{routeList}</div>
-      </Main>
+      </Main> */}
     </>
   );
 }

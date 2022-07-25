@@ -9,7 +9,7 @@ const Routes = () => {
   const dispatch = useDispatch();
 
   const getAllRoutesAndReset = async () => {
-    await dispatch(getAll());    
+    await dispatch(getAll());
     dispatch(reset());
   };
 
@@ -20,7 +20,7 @@ const Routes = () => {
 
   if (isLoading) {
     return (
-      <Space className="spin">
+      <Space className="d-flex justify-content-center mt-5 spin">
         <Spin size="large" />
       </Space>
     );

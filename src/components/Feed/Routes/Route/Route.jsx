@@ -39,9 +39,12 @@ const Route = () => {
         { rating: value },
         { headers: { authorization: user?.token } }
       );
-      const resVal = await axios.get(`https://routeu-backend.herokuapp.com/ratings/`, {
-        headers: { authorization: user?.token },
-      });
+      const resVal = await axios.get(
+        `https://routeu-backend.herokuapp.com/ratings/`,
+        {
+          headers: { authorization: user?.token },
+        }
+      );
       const array = resVal.data.ratings;
       const filteredArray = array.filter(
         (element) =>
@@ -162,11 +165,13 @@ const Route = () => {
             <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
               <div id="noHoles" className="col mb-5">
                 <div className="card each-card h-100 shink">
-                  <img
-                    className="card-img-top"
-                    src={elements.image}
-                    alt="foto de la ruta"
-                  />
+                  <Link to={"/getRouteById/" + elements._id}>
+                    <img
+                      className="card-img-top"
+                      src={elements.image}
+                      alt="foto de la ruta"
+                    />
+                  </Link>
 
                   <div className="card-body p-4">
                     <div className="text-center" key={elements._id}>
