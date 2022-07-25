@@ -15,23 +15,25 @@ export default function Profile() {
     user?.user?.name.charAt(0).toUpperCase() + user?.user?.name.slice(1);
   const userId = user?.user?._id;
   const { routes } = useSelector((state) => state.routes);
-  console.log(user);
-  // const routesLS = JSON.parse(localStorage.getItem("routes"));
-  function getFavouriteRoutes(arrayElement) {
-    const likes = arrayElement.likes;
-    const favRoute = likes.indexOf(userId);
-    const res = favRoute === -1 ? null : arrayElement;
-    return res;
-  }
-
+  const routesLS= JSON.parse(localStorage.getItem('routes')); 
+  console.log("This is local routes",routesLS, "THIS IS REDUX ROUTES", routes);
+  function getFavouriteRoutes(arrayElement){
+    const likes=arrayElement?.likes;
+    console.log("THIS IS LIKES",likes) 
+    const favRoute = likes?.indexOf(userId);
+    console.log("THIS IS FAVROUTES",favRoute); 
+    const res = favRoute === -1 ? null : arrayElement ;
+    console.log("THIS IS RES",res); 
+    return res; 
+  }; 
+  let routeList = []; 
+  const userFavouriteRoutes = routes===[] ? routes?.map(getFavouriteRoutes) : routesLS?.map(getFavouriteRoutes);
   const onLogout = async () => {
     await dispatch(logout());
     notification.success({ message: "Hasta la proxima!" });
     navigate("/login");
   };
 
-  let routeList = [];
-  const userFavouriteRoutes = routes.map(getFavouriteRoutes);
   if (userFavouriteRoutes.length <= 0) {
     routeList =
       "Oh oh... Parece que no tienes rutas favoritas todavía, ¡vuelve a la página de inicio para encontrar nuevos caminos por recorrer!";
