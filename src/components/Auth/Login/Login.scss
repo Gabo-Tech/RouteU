@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
 
 :root {
   --blue: #007bff;
@@ -432,8 +432,10 @@ h6,
 }
 
 .lead {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 300;
+  color: #fff;
+  font-family: "Satisfy", cursive;
 }
 
 .display-1 {
@@ -5042,6 +5044,7 @@ input[type="button"].btn-block {
   width: 100%;
   border-top-left-radius: calc(0.25rem - 1px);
   border-top-right-radius: calc(0.25rem - 1px);
+  max-height: 32vh;
 }
 
 .card-img-bottom {
@@ -10709,9 +10712,9 @@ h5,
 }
 
 .heading-section {
-  font-size: 50px;
+  font-size: 4em;
   color: #fff;
-  font-family: 'Satisfy', cursive;
+  font-family: "Satisfy", cursive;
 }
 
 .img {

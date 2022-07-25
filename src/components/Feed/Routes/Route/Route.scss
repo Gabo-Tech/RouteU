@@ -8,7 +8,7 @@
 }
 
 .each-card {
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 4px 4px 4px 2px rgba(0, 0, 0, 0.2);
 }
 
 .routeFooter {
@@ -28,7 +28,38 @@
   padding: 0 !important;
 }
 .hero {
-  background-image: url(https://upload.wikimedia.org/wikipedia/commons/7/72/Puerta_de_los_Serranos%2C_Valencia%2C_Espa%C3%B1a%2C_2014-06-30%2C_DD_86.JPG) !important;
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/7/72/Puerta_de_los_Serranos%2C_Valencia%2C_Espa%C3%B1a%2C_2014-06-30%2C_DD_86.JPG) !important ;
   background-repeat: no-repeat !important;
-  background-size: cover !important;
+  // background-size: cover !important;
+  width: 100%;
+  height: auto;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+@media screen and (min-width: 1900px) {
+  /* Specific to this particular image */
+  .hero {
+    left: 50%;
+    margin-left: -720px; /* 50% */
+  }
+}
+
+.span-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.shink {
+  transition: box-shadow 0.6s;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+.shink:hover {
+  box-shadow: 0 0 11px rgba(22, 33, 33, 0.1);
 }

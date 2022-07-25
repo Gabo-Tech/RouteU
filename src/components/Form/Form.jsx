@@ -37,20 +37,20 @@ export default function MyForm() {
   return (
     <>
       <Main id="Main" fill="vertical" pad="xlarge">
-        <div class="container">
-          <div class="card-main">
-            <div class="card-image">
-              <h2 class="card-heading">
+        <div className="container">
+          <div className="card-main">
+            <div className="card-image">
+              <h2 className="card-heading">
                 Empecemos!
                 <small>Cuentanos un poco de ti</small>
               </h2>
             </div>
-            <form class="card-form container">
+            <form className="card-form container">
               <Box>
-                <div className="division">
-                  <div class="input">
+                <div classNameName="division">
+                  <div className="input">
                     <Menu
-                      class="input"
+                      className="input"
                       label={form?.age}
                       items={[
                         {
@@ -326,7 +326,7 @@ export default function MyForm() {
                       ]}
                     />
                   </div>
-                  <div class="input">
+                  <div className="input">
                     <Menu
                       label={form?.gender}
                       items={[
@@ -351,7 +351,7 @@ export default function MyForm() {
                       ]}
                     />
                   </div>
-                  <div class="input">
+                  <div className="input">
                     <Menu
                       label={form?.time}
                       items={[
@@ -455,8 +455,8 @@ export default function MyForm() {
                     />
                   </div>
                 </div>
-                <div className="division">
-                  <div class="input">
+                <div classNameName="division">
+                  <div className="input">
                     <Menu
                       label={form?.transport}
                       items={[
@@ -475,7 +475,7 @@ export default function MyForm() {
                       ]}
                     />
                   </div>
-                  <div class="input">
+                  <div className="input">
                     <Menu
                       label={form?.companions}
                       items={[
@@ -506,7 +506,7 @@ export default function MyForm() {
                       ]}
                     />
                   </div>
-                  <div class="input">
+                  <div className="input">
                     <Menu
                       label={form?.difficulty}
                       items={[
@@ -526,8 +526,8 @@ export default function MyForm() {
                     />
                   </div>
                 </div>
-                <div className="division">
-                  <div class="input">
+                <div classNameName="division">
+                  <div className="input">
                     <Menu
                       label={form?.price}
                       items={[
@@ -552,7 +552,7 @@ export default function MyForm() {
                       ]}
                     />
                   </div>
-                  <div class="input">
+                  <div className="input">
                     <Menu
                       label={form?.route_type}
                       items={[
@@ -585,9 +585,9 @@ export default function MyForm() {
                   </div>
                 </div>
               </Box>
-              <div class="action text-center">
+              <div className="action text-center">
                 <Button
-                  class="action-button"
+                  className="action-button"
                   label={form?.sendBtn}
                   onClick={switchMode}
                   pad="medium"
@@ -596,7 +596,7 @@ export default function MyForm() {
               </div>
             </form>
 
-            <div class="card-info">
+            <div className="card-info">
               <p>
                 Enviando Aceptas de este formulario los <Modale />
               </p>
