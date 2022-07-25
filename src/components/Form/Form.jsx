@@ -8,7 +8,7 @@ import {
   Menu,
   Main /*Heading, Grommet, grommet*/,
 } from "grommet";
-import { sendDataScienceForm } from "../../api/ApiIndex";
+import { sendDataScienceForm, updateUser, getDataScienceRecommendedRoute } from "../../api/ApiIndex";
 import Modale from "../Modale/Modale";
 export default function MyForm() {
   const [favRoutes] = useState([]);
@@ -24,13 +24,12 @@ export default function MyForm() {
     sendBtn: "Enviar",
   };
   const [form, setForm] = useState(initialState);
-  const switchMode = () => {
-    // setTimeout(setForm(initialState), 5000);
-    console.log(JSON.stringify(favRoutes));
-    sendDataScienceForm();
+  const switchMode = async () => {
     setForm({ ...form, sendBtn: "¡Enviado!" });
-    // setForm({ ...form, favouriteRoutes:favRoutes });
-    console.log(JSON.stringify(form));
+    const recommendedRouteUserId = await sendDataScienceForm(form);
+    updateUser(recommendedRouteUserId);
+    console.log("this is the recommendedRouteUserId",recommendedRouteUserId);
+    const recommendedRoute = await getDataScienceRecommendedRoute(65);
   };
 
   return (
@@ -462,7 +461,7 @@ export default function MyForm() {
                         {
                           label: "A Pie",
                           onClick: () => {
-                            setForm({ ...form, transport: "A Pie" });
+                            setForm({ ...form, transport: "A-Pie" });
                           },
                         },
                         {
@@ -533,13 +532,13 @@ export default function MyForm() {
                         {
                           label: "Free",
                           onClick: () => {
-                            setForm({ ...form, price: "Free" });
+                            setForm({ ...form, price: "gratis" });
                           },
                         },
                         {
                           label: "1 - 50€",
                           onClick: () => {
-                            setForm({ ...form, price: "1 - 50" });
+                            setForm({ ...form, price: "1-50" });
                           },
                         },
                         {
