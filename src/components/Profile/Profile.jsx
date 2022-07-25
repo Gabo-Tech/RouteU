@@ -9,6 +9,8 @@ export default function Profile() {
   const username = user?.user?.name.charAt(0).toUpperCase() + user?.user?.name.slice(1);
   const userId = user?.user?._id;
   const { routes } = useSelector((state) => state.routes);
+  const routesLS= JSON.parse(localStorage.getItem('routes'));
+  console.log("THIS IS ROUTES", routes, "THIS IS ROUTESLS", routesLS);
   function getFavouriteRoutes(arrayElement) {
     const likes=arrayElement.likes;
     const favRoute = likes.indexOf(userId);
@@ -16,7 +18,7 @@ export default function Profile() {
     return res;
   };
   let routeList = [];  
-  const userFavouriteRoutes = routes.map((getFavouriteRoutes));
+  const userFavouriteRoutes = routes.legth>=0 ? routes.map((getFavouriteRoutes)) : routesLS.map((getFavouriteRoutes));
 if (userFavouriteRoutes.length <= 0){
    routeList = "Oh oh... Parece que no tienes rutas favoritas todavía, ¡vuelve a la página de inicio para encontrar nuevos caminos por recorrer!"
 } else {

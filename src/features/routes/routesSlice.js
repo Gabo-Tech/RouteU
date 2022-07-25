@@ -85,6 +85,7 @@ export const routesSlice = createSlice({
   extraReducers: (builder) => {
     builder
     .addCase(getAll.fulfilled, (state, action) => {
+      localStorage.setItem('routes',JSON.stringify(action.payload));
       state.routes = action.payload;
     })
     .addCase(getAll.pending, (state) => {
