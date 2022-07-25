@@ -10,7 +10,6 @@ import axios from "axios";
 import { useTimeout } from "../../../../hooks/useTimeout";
 import { BackTop } from "antd";
 
-
 const Route = () => {
   const { user } = useSelector((state) => state.auth);
   const { routes } = useSelector((state) => state.routes);
@@ -22,9 +21,7 @@ const Route = () => {
   //   var inv = 1.0 / step;
   //   return Math.round(value * inv) / inv;
   // }
-  const [currentValue, setCurrentValue] = useState(
-    "  ---"
-  );
+  const [currentValue, setCurrentValue] = useState("  ---");
   const [rates, setRates] = useState(0);
 
   let elementId = "";
@@ -187,14 +184,14 @@ const Route = () => {
                       {" "}
                       <Link to={"/getRouteById/" + elements._id}>
                         <button
-                          className="btn btn-outline-dark mt-auto"
+                          className="btn btn-outline-dark mt-auto button-details"
                           href="#"
                         >
                           Detalles
                         </button>
                       </Link>
                     </div>
-                    
+
                     <div className="iconos">
                       {isAlreadyLiked ? (
                         <HeartFilled
@@ -225,30 +222,31 @@ const Route = () => {
                     </div>
                   </div>
                   <div className="span-rating">
-                    <span >
+                    <span>
                       <p id={elements._id + "p"} onClick={getElementOnClick}>
                         {" "}
-                        Puntuación media de la ruta <span className="currentValue">{currentValue}</span>
+                        Puntuación media de la ruta{" "}
+                        <span className="currentValue">{currentValue}</span>
                       </p>
                     </span>
-
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        
       </>
     );
   });
   return (
-    <>      
-      <div id="noHoles" className="group">{routeList}</div>
+    <>
+      <div id="noHoles" className="group">
+        {routeList}
+      </div>
       <BackTop />
-        Scroll down to see the bottom-right
-        <strong className="site-back-top-basic"> gray </strong>
-        button.
+      Scroll down to see the bottom-right
+      <strong className="site-back-top-basic"> gray </strong>
+      button.
     </>
   );
 };

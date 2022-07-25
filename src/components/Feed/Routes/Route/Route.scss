@@ -53,9 +53,9 @@
   justify-content: center;
   font-weight: bold;
   font-size: 1.2em;
-  background-color: darkgray;
-  color: #fff; 
-  padding: 0.25rem 0.5rem; 
+  background-color: rgb(5, 155, 255);
+  color: #fff;
+  padding: 0.25rem 0.5rem;
   border-radius: 3px;
   margin: 0 1em 1em 1em;
 }
@@ -75,17 +75,29 @@
 }
 
 .site-back-top-basic {
-  color: rgba(125,76,219,255);
+  color: rgba(125, 76, 219, 255);
   bottom: 65px;
 }
 
 .iconos {
   display: flex;
   align-items: center;
-  justify-content: space-between;  
+  justify-content: space-between;
 }
 
 .iconos span {
   margin-left: 10px;
   font-size: 1.6em;
+}
+
+.button-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Poppins", sans-serif;
+}
+
+.button-details:hover {
+  color: #fff;
+  background-color: rgba(94, 96, 206);
 }

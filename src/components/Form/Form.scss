@@ -142,4 +142,11 @@ input {
 .ant-btn {
   border-color: #ffffff !important;
   box-shadow: none !important;
+  background-color: rgba(105, 48, 195) !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .gtDtAk {
+    padding: 5px !important;
+  }
 }

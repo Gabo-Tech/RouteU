@@ -15,19 +15,22 @@ export default function Profile() {
     user?.user?.name.charAt(0).toUpperCase() + user?.user?.name.slice(1);
   const userId = user?.user?._id;
   const { routes } = useSelector((state) => state.routes);
-  const routesLS= JSON.parse(localStorage.getItem('routes')); 
-  console.log("This is local routes",routesLS, "THIS IS REDUX ROUTES", routes);
-  function getFavouriteRoutes(arrayElement){
-    const likes=arrayElement?.likes;
-    console.log("THIS IS LIKES",likes) 
+  const routesLS = JSON.parse(localStorage.getItem("routes"));
+  console.log("This is local routes", routesLS, "THIS IS REDUX ROUTES", routes);
+  function getFavouriteRoutes(arrayElement) {
+    const likes = arrayElement?.likes;
+    console.log("THIS IS LIKES", likes);
     const favRoute = likes?.indexOf(userId);
-    console.log("THIS IS FAVROUTES",favRoute); 
-    const res = favRoute === -1 ? null : arrayElement ;
-    console.log("THIS IS RES",res); 
-    return res; 
-  }; 
-  let routeList = []; 
-  const userFavouriteRoutes = routes===[] ? routes?.map(getFavouriteRoutes) : routesLS?.map(getFavouriteRoutes);
+    console.log("THIS IS FAVROUTES", favRoute);
+    const res = favRoute === -1 ? null : arrayElement;
+    console.log("THIS IS RES", res);
+    return res;
+  }
+  let routeList = [];
+  const userFavouriteRoutes =
+    routes === []
+      ? routes?.map(getFavouriteRoutes)
+      : routesLS?.map(getFavouriteRoutes);
   const onLogout = async () => {
     await dispatch(logout());
     notification.success({ message: "Hasta la proxima!" });
@@ -75,7 +78,7 @@ export default function Profile() {
     <>
       <div className="padding">
         <div className="col-md-8">
-          <div className="card">
+          <div className="card profile-card">
             {" "}
             <img
               className="card-img-top"
@@ -117,10 +120,9 @@ export default function Profile() {
       </div>
       <div>
         <BackTop />
-          Scroll down to see the bottom-right
-          <strong className="site-back-top-basic"> gray </strong>
-          button.
-
+        Scroll down to see the bottom-right
+        <strong className="site-back-top-basic"> gray </strong>
+        button.
       </div>
       {/* <Main className={styles.full} pad="xlarge">
         <Heading>Hola {username}!</Heading>

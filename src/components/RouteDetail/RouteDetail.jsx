@@ -17,6 +17,9 @@ function RouteDetail() {
   const dispatch = useDispatch();
   const { isLoading } = useSelector((state) => state.routes);
   const { route } = useSelector((state) => state.routes);
+  const user = JSON.parse(localStorage.getItem("user"));
+  const username =
+    user?.user?.name.charAt(0).toUpperCase() + user?.user?.name.slice(1);
 
   const getRoute = async (_id) => {
     await dispatch(getById(_id));
@@ -43,7 +46,7 @@ function RouteDetail() {
   return (
     <>
       <div className="container mb-5 bg-white">
-        <h1 className="my-4">
+        <h1 className="my-4 header-details">
           {route.name} <small> difficultad:( {route.difficulty} )</small>
         </h1>
 
@@ -67,17 +70,17 @@ function RouteDetail() {
 
         <h3 className="my-4">Puntos de interes</h3>
 
-        <div className="group2">
+        <div className="group2 h-100">
           {route?.poi?.map((el) => (
             <section className="details-card">
               <div className="container">
                 <div className="row">
                   <div className="col-md-10">
-                    <div className="card-content">
+                    <div className="card-content shink">
                       <div className="card-img">
                         <Maps lat={el.latitude} lon={el.longitude} zoom="17" />
-                        <span>
-                          <h4>{el.name}</h4>
+                        <span className="name-details">
+                          <h4 className="text-white">{el.name}</h4>
                         </span>
                       </div>
                       <div className="card-desc">
@@ -100,7 +103,7 @@ function RouteDetail() {
             </div>
             <Collapse
               className="ant-collapse"
-              defaultActiveKey={["1"]}
+              defaultActiveKey={["0"]}
               onChange={onChange}
             >
               <Panel header="Comentarios:" key="1">
@@ -112,7 +115,7 @@ function RouteDetail() {
                       return (
                         <div key={e._id}>
                           <Comment
-                            author={<p>{route.userId?.name}</p>}
+                            author={<p>{username}: </p>}
                             avatar={
                               <Avatar
                                 src="https://placeimg.com/380/230/arch"

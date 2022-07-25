@@ -18,7 +18,7 @@ const Modale = () => {
 
   return (
     <>
-      <Button type="button-antd secondary" onClick={showModal}>
+      <Button type="button-antd secondary bg-white" onClick={showModal}>
         Terminos y condiciones
       </Button>
       <Modal

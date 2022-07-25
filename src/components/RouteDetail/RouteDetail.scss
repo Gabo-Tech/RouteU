@@ -108,7 +108,7 @@ a.btn-card {
 .group2 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  padding: 1em;
+  padding: 0.01em;
   grid-gap: 20px;
   margin-top: 2em;
   border-radius: 10px;
@@ -121,4 +121,25 @@ a.btn-card {
 
 .hqmGbP {
   background-color: white;
+}
+
+.header-details {
+  background-color: rgb(78, 168, 222);
+  padding: 1em;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.name-details {
+  background-color: rgb(78, 168, 222) !important;
+  color: #fff !important;
+}
+
+.button-map-details {
+  background-color: rgb(78, 168, 222);
+  border-radius: 5px;
+  color: #fff;
+}
+.button-map-details:hover {
+  background-color: rgb(94, 96, 206);
 }
