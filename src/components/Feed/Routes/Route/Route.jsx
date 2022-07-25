@@ -35,11 +35,11 @@ const Route = () => {
     if (elementId === routeIdL) {
       dispatch(rate(routeIdL));
       await axios.post(
-        `http://localhost:8080/ratings/${routeIdL}`,
+        `https://routeu-backend.herokuapp.com/${routeIdL}`,
         { rating: value },
         { headers: { authorization: user?.token } }
       );
-      const resVal = await axios.get(`http://localhost:8080/ratings/`, {
+      const resVal = await axios.get(`https://routeu-backend.herokuapp.com/ratings/`, {
         headers: { authorization: user?.token },
       });
       const array = resVal.data.ratings;

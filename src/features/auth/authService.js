@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080";
+const API_URL = "https://routeu-backend.herokuapp.com";
 
 const register = async (userdata) => {
   const res = await axios.post(API_URL + "/users", userdata);
