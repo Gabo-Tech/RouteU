@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/";
+const API_URL = "https://routeu-backend.herokuapp.com/";
 
 const getAll = async () => {
   const res = await axios.get(API_URL + "routes/getAlldb");

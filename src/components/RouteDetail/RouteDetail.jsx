@@ -7,6 +7,10 @@ import AddComment from "./AddComment/AddComment";
 import { Space, Spin } from "antd";
 import Maps from "../../components/Maps/Maps";
 import { Avatar, Comment } from "antd";
+import LinkMaps from "../LinkMaps/LinkMaps";
+import { Collapse } from "antd";
+import "antd/dist/antd.css";
+const { Panel } = Collapse;
 
 function RouteDetail() {
   const { _id } = useParams();
@@ -33,6 +37,9 @@ function RouteDetail() {
       </Space>
     );
   }
+  const onChange = (key) => {
+    console.log(key);
+  };
   return (
     <>
       <div className="container mb-5 bg-white">
@@ -76,9 +83,8 @@ function RouteDetail() {
                       <div className="card-desc">
                         <h3>Descripcion</h3>
                         <p>{el.description_es}</p>
-                        <button href="#" className="btn-card">
-                          Link al mapa
-                        </button>
+
+                        <LinkMaps lon={el.latitude} lat={el.longitude} />
                       </div>
                     </div>
                   </div>
@@ -89,27 +95,38 @@ function RouteDetail() {
         </div>
         <div className="container pb-5">
           <div>
-            {route.commentsId &&
-              route.commentsId.map((e) => {
-                console.log(e);
-                return (
-                  <div key={e._id}>
-                    <Comment
-                      author={<p>{route.userId?.name}</p>}
-                      avatar={
-                        <Avatar
-                          src="https://placeimg.com/380/230/arch"
-                          alt="Your ugly face"
-                        />
-                      }
-                      content={<p>{e.body}</p>}
-                    />
-                  </div>
-                );
-              })}
-          </div>
-          <div>
-            <AddComment routeId={_id} />
+            <div>
+              <AddComment routeId={_id} />
+            </div>
+            <Collapse
+              className="ant-collapse"
+              defaultActiveKey={["1"]}
+              onChange={onChange}
+            >
+              <Panel header="Comentarios:" key="1">
+                <p>
+                  {" "}
+                  {route.commentsId &&
+                    route.commentsId.map((e) => {
+                      console.log(e);
+                      return (
+                        <div key={e._id}>
+                          <Comment
+                            author={<p>{route.userId?.name}</p>}
+                            avatar={
+                              <Avatar
+                                src="https://placeimg.com/380/230/arch"
+                                alt="Your ugly face"
+                              />
+                            }
+                            content={<p>{e.body}</p>}
+                          />
+                        </div>
+                      );
+                    })}
+                </p>
+              </Panel>
+            </Collapse>
           </div>
         </div>
       </div>

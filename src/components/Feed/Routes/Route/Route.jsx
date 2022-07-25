@@ -38,11 +38,11 @@ const Route = () => {
     if (elementId === routeIdL) {
       dispatch(rate(routeIdL));
       await axios.post(
-        `http://localhost:8080/ratings/${routeIdL}`,
+        `https://routeu-backend.herokuapp.com/${routeIdL}`,
         { rating: value },
         { headers: { authorization: user?.token } }
       );
-      const resVal = await axios.get(`http://localhost:8080/ratings/`, {
+      const resVal = await axios.get(`https://routeu-backend.herokuapp.com/ratings/`, {
         headers: { authorization: user?.token },
       });
       const array = resVal.data.ratings;
@@ -164,7 +164,7 @@ const Route = () => {
           <div id="mobileFirst" className="container px-4 px-lg-5 mt-5">
             <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
               <div id="noHoles" className="col mb-5">
-                <div className="card each-card h-100">
+                <div className="card each-card h-100 shink">
                   <img
                     className="card-img-top"
                     src={elements.image}
@@ -218,10 +218,12 @@ const Route = () => {
                       />
                     </div>
                   </div>
-                  <p id={elements._id + "p"} onClick={getElementOnClick}>
-                    {" "}
-                    Puntuación media de la ruta {currentValue}
-                  </p>
+                  <span className="span-rating">
+                    <p id={elements._id + "p"} onClick={getElementOnClick}>
+                      {" "}
+                      Puntuación media de la ruta {currentValue}
+                    </p>
+                  </span>
                 </div>
               </div>
             </div>
