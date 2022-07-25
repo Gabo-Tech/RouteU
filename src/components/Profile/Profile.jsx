@@ -1,9 +1,7 @@
-// import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./Profile.module.css";
 import { useDispatch, useSelector } from "react-redux";
-// import { Box, Text, Avatar, Heading, Main } from "grommet";
 import { Link, useNavigate } from "react-router-dom";
-// import { get } from "ol/proj";
 import { logout } from "../../features/auth/authSlice";
 import { notification } from "antd";
 import { BackTop } from "antd";
@@ -18,8 +16,7 @@ export default function Profile() {
   const userId = user?.user?._id;
   const { routes } = useSelector((state) => state.routes);
   console.log(user);
-  const routesLS = JSON.parse(localStorage.getItem("routes"));
-  // console.log("THIS IS ROUTES", routes, "THIS IS ROUTESLS", routesLS);
+  // const routesLS = JSON.parse(localStorage.getItem("routes"));
   function getFavouriteRoutes(arrayElement) {
     const likes = arrayElement.likes;
     const favRoute = likes.indexOf(userId);
