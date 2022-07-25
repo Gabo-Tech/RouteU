@@ -51,7 +51,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 10px;
+  font-weight: bold;
+  font-size: 1.2em;
+  background-color: darkgray;
+  color: #fff; 
+  padding: 0.25rem 0.5rem; 
+  border-radius: 3px;
+  margin: 0 1em 1em 1em;
+}
+
+.span-rating span {
+  margin-top: 0.9rem;
 }
 
 .shink {
@@ -66,4 +76,15 @@
 
 .site-back-top-basic {
   color: rgba(64, 64, 64, 0.6);
+}
+
+.iconos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;  
+}
+
+.iconos span {
+  margin-left: 10px;
+  font-size: 1.6em;
 }

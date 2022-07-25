@@ -23,7 +23,7 @@ const Route = () => {
   //   return Math.round(value * inv) / inv;
   // }
   const [currentValue, setCurrentValue] = useState(
-    ".  Califica la ruta para ver la media"
+    "  ---"
   );
   const [rates, setRates] = useState(0);
 
@@ -38,7 +38,7 @@ const Route = () => {
     if (elementId === routeIdL) {
       dispatch(rate(routeIdL));
       await axios.post(
-        `https://routeu-backend.herokuapp.com/${routeIdL}`,
+        `https://routeu-backend.herokuapp.com/ratings/${routeIdL}`,
         { rating: value },
         { headers: { authorization: user?.token } }
       );
@@ -189,6 +189,7 @@ const Route = () => {
                         </button>
                       </Link>
                     </div>
+                    
                     <div className="iconos">
                       {isAlreadyLiked ? (
                         <HeartFilled
@@ -207,7 +208,7 @@ const Route = () => {
                     <div id={elements._id} onClick={getElementOnClick}>
                       <Rate
                         allowHalf
-                        defaultValue={2.5}
+                        defaultValue={0}
                         onFocus={(value) => {
                           showValue(value);
                         }}
@@ -218,12 +219,15 @@ const Route = () => {
                       />
                     </div>
                   </div>
-                  <span className="span-rating">
-                    <p id={elements._id + "p"} onClick={getElementOnClick}>
-                      {" "}
-                      Puntuación media de la ruta {currentValue}
-                    </p>
-                  </span>
+                  <div className="span-rating">
+                    <span >
+                      <p id={elements._id + "p"} onClick={getElementOnClick}>
+                        {" "}
+                        Puntuación media de la ruta <span className="currentValue">{currentValue}</span>
+                      </p>
+                    </span>
+
+                  </div>
                 </div>
               </div>
             </div>
