@@ -5,7 +5,7 @@ const APIDATA = axios.create({ baseURL: process.env.REACT_APP_APIDATA });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('user')) {
-        req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('user')).token}`;
+        req.headers.Authorization = `${JSON.parse(localStorage.getItem('user')).token}`;
   }
   return req;
 });
@@ -22,7 +22,7 @@ export const signIn = (formData) => API.post('/users/login', formData);
 export const signUp = (formData) => API.post('/users', formData);
 export const logout = (formData) => API.put('/logout', formData);
 export const getAllUsers = () => API.get('/getAll');
-export const updateUser = (formData) => API.put('/users/', formData);
+export const updateUser = ({formData}) => API.put('/users/', formData);
 
 
 export const getAllComments = () => API.get('/comments');
@@ -31,4 +31,4 @@ export const deleteComment = (commentId) => API.del(`/comments/id/${commentId}`)
 export const editComment = (commentId, formData) => API.put(`/comments/id/${commentId}`, formData);
 
 export const sendDataScienceForm = (formData) => APIDATA.post(`/postUser/?age=${formData.age}&gender=${formData.gender}&time=${formData.time}&route_type=${formData.route_type}&price=${formData.price}&difficulty=${formData.difficulty}&companions=${formData.companions}&transport=${formData.transport}`);
-export const getDataScienceRecommendedRoute = (user_id) => APIDATA.post(`/getRecommendation/?id=${user_id}`);
+export const getDataScienceRecommendedRoute = (user_id) => APIDATA.get(`/getRecommendation/?id=${user_id}`);
