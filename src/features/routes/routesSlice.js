@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { Rate } from "antd";
 import routesService from "./routesService";
 
 const initialState = {
@@ -7,7 +6,8 @@ const initialState = {
   isLoading: false,
   route: {},
   comments:[],
-  avgRating: {}
+  avgRating: {},
+  recRoute:{}
 };
 
 export const getAll = createAsyncThunk("/getRoutes", async () => {
@@ -74,6 +74,15 @@ export const rate = createAsyncThunk("route/rate", async (_id, thunkAPI) =>{
   }
 })
 
+export const recRoute = createAsyncThunk("route/recommended", async (apiUser, thunkAPI) => {
+  try {
+    return await routesService.recRoute(apiUser);
+  } catch (error) {
+    const message = error.response.data;
+    return thunkAPI.rejectWithValue(message);  
+  }
+})
+
 export const routesSlice = createSlice({
   name: "routes",
   initialState,
@@ -120,6 +129,9 @@ export const routesSlice = createSlice({
     })    
     .addCase(rate.fulfilled, (state, action) => {
       state.rate = action.payload;
+    })
+    .addCase(recRoute.fulfilled, (state, action) => {      
+      state.recRoute = action.payload;
     })
   },
 });

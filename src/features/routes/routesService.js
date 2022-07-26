@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const API_URL = "https://routeu-backend.herokuapp.com/";
+const API_DATA = "https://api-routes-data.herokuapp.com/";
 
 const getAll = async () => {
   const res = await axios.get(API_URL + "routes/getAlldb");
@@ -66,6 +67,27 @@ const rateRoute = async (_id) => {
   return res.data;
 }
 
+const recRoute = async (apiUser) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const res = await axios.get(API_DATA + `getRecommendation/?id=${apiUser}`,
+
+  {
+    headers: {
+      authorization: user?.token,      
+    },
+  })
+  const routeId = res.data.recommended_route_id +1;
+  console.log(routeId)
+  const route = await axios.get(API_DATA + `getRouteById/?id=${routeId}`,
+  {
+    headers: {
+      authorization: user?.token,      
+    },
+  })
+  
+  return route.data;
+}
+
 
 const routesService = {
   getAll,
@@ -74,7 +96,8 @@ const routesService = {
   dislike,
   addComment,
   avgRating,
-  rateRoute 
+  rateRoute,
+  recRoute 
 };
 
 export default routesService;

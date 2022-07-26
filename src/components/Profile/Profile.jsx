@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Profile.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../features/auth/authSlice";
-import { getDataScienceRecommendedRoute, getRouteByIdData } from "../../api/ApiIndex"
+// import { getDataScienceRecommendedRoute, getRouteByIdData } from "../../api/ApiIndex"
+import { recRoute } from "../../features/routes/routesSlice";
 import { notification } from "antd";
 import { BackTop } from "antd";
 import "./Profile.scss";
@@ -16,15 +17,17 @@ export default function Profile() {
     user?.user?.name.charAt(0).toUpperCase() + user?.user?.name.slice(1);
   const userId = user?.user?._id;
   const { routes } = useSelector((state) => state.routes);
+  // const { recRoutes} = useSelector((state) => state.recRoutes);
+  // console.log(recRoutes)
   const routesLS = JSON.parse(localStorage.getItem("routes"));
-  console.log("This is local routes", routesLS, "THIS IS REDUX ROUTES", routes);
+  // console.log("This is local routes", routesLS, "THIS IS REDUX ROUTES", routes);
   function getFavouriteRoutes(arrayElement) {
     const likes = arrayElement?.likes;
-    console.log("THIS IS LIKES", likes);
+    // console.log("THIS IS LIKES", likes);
     const favRoute = likes?.indexOf(userId);
-    console.log("THIS IS FAVROUTES", favRoute);
+    // console.log("THIS IS FAVROUTES", favRoute);
     const res = favRoute === -1 ? null : arrayElement;
-    console.log("THIS IS RES", res);
+    // console.log("THIS IS RES", res);
     return res;
   }
   let routeList = [];
@@ -34,19 +37,20 @@ export default function Profile() {
       : routesLS?.map(getFavouriteRoutes);
   const onLogout = async () => {
     await dispatch(logout());
-    notification.success({ message: "Hasta la proxima!" });
+    notification.success({ message: "Hasta la próxima!" });
     navigate("/login");
   };
 
-  const getRecommendedRoute = async () => {    
-    const recommendedRoute = await getDataScienceRecommendedRoute(user.user.apiUser);    
-    const routeById = await getRouteByIdData(recommendedRoute.data.recommended_route_id);    
-    return routeById;
-  }
 
-  const routeById = getRecommendedRoute();
+  const getUserRoute = async () => {    
+    await dispatch(recRoute(user?.user?.apiUser));    
+  };
+  
 
-  console.log(routeById)
+  useEffect(() => {
+    getUserRoute();        
+    // eslint-disable-next-line
+  }, [recRoute]);
 
   if (userFavouriteRoutes.length <= 0) {
     routeList =
@@ -130,7 +134,7 @@ export default function Profile() {
         </div>
       </div>
       <div>
-        <h1>{routeById}</h1>
+        {/* <h1>{routeById}</h1> */}
       </div>
       <div>
         <BackTop />
