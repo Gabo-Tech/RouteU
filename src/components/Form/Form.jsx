@@ -28,7 +28,6 @@ export default function MyForm() {
     setForm({ ...form, sendBtn: "¡Enviado!" });
     const recommendedRouteUserId = await sendDataScienceForm(form);
     updateUser(recommendedRouteUserId.data);
-    console.log("this is the recommendedRouteUserId",recommendedRouteUserId.data.user_id);
     const recommendedRoute = await getDataScienceRecommendedRoute(recommendedRouteUserId.data.user_id);
   };
 
@@ -331,19 +330,19 @@ export default function MyForm() {
                         {
                           label: "Mujer",
                           onClick: () => {
-                            setForm({ ...form, gender: "Mujer" });
+                            setForm({ ...form, gender: "mujer" });
                           },
                         },
                         {
                           label: "Hombre",
                           onClick: () => {
-                            setForm({ ...form, gender: "Hombre" });
+                            setForm({ ...form, gender: "hombre" });
                           },
                         },
                         {
                           label: "Otro",
                           onClick: () => {
-                            setForm({ ...form, gender: "Otro" });
+                            setForm({ ...form, gender: "otro" });
                           },
                         },
                       ]}
@@ -461,13 +460,13 @@ export default function MyForm() {
                         {
                           label: "A Pie",
                           onClick: () => {
-                            setForm({ ...form, transport: "A-Pie" });
+                            setForm({ ...form, transport: "a pie" });
                           },
                         },
                         {
                           label: "En Bicicleta",
                           onClick: () => {
-                            setForm({ ...form, transport: "Bicicleta" });
+                            setForm({ ...form, transport: "bicicleta" });
                           },
                         },
                       ]}
@@ -557,25 +556,25 @@ export default function MyForm() {
                         {
                           label: "Histórica",
                           onClick: () => {
-                            setForm({ ...form, route_type: "Histórica" });
+                            setForm({ ...form, route_type: "historica" });
                           },
                         },
                         {
                           label: "Turística",
                           onClick: () => {
-                            setForm({ ...form, route_type: "Turística" });
+                            setForm({ ...form, route_type: "turistica" });
                           },
                         },
                         {
                           label: "Literaria",
                           onClick: () => {
-                            setForm({ ...form, route_type: "Literaria" });
+                            setForm({ ...form, route_type: "literaria" });
                           },
                         },
                         {
                           label: "Patrimonio",
                           onClick: () => {
-                            setForm({ ...form, route_type: "Patrimonio" });
+                            setForm({ ...form, route_type: "patrimonio" });
                           },
                         },
                       ]}

@@ -22,7 +22,7 @@ export const signIn = (formData) => API.post('/users/login', formData);
 export const signUp = (formData) => API.post('/users', formData);
 export const logout = (formData) => API.put('/logout', formData);
 export const getAllUsers = () => API.get('/getAll');
-export const updateUser = ({formData}) => API.put('/users/', formData);
+export const updateUser = (formData) => API.put('/users/', formData);
 
 
 export const getAllComments = () => API.get('/comments');
@@ -32,3 +32,4 @@ export const editComment = (commentId, formData) => API.put(`/comments/id/${comm
 
 export const sendDataScienceForm = (formData) => APIDATA.post(`/postUser/?age=${formData.age}&gender=${formData.gender}&time=${formData.time}&route_type=${formData.route_type}&price=${formData.price}&difficulty=${formData.difficulty}&companions=${formData.companions}&transport=${formData.transport}`);
 export const getDataScienceRecommendedRoute = (user_id) => APIDATA.get(`/getRecommendation/?id=${user_id}`);
+export const getRouteByIdData = (recommended_route_id) => APIDATA.get(`/getRouteById/?id=${recommended_route_id}`);

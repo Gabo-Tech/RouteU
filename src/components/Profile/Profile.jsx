@@ -3,6 +3,7 @@ import styles from "./Profile.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../features/auth/authSlice";
+import { getDataScienceRecommendedRoute, getRouteByIdData } from "../../api/ApiIndex"
 import { notification } from "antd";
 import { BackTop } from "antd";
 import "./Profile.scss";
@@ -36,6 +37,16 @@ export default function Profile() {
     notification.success({ message: "Hasta la proxima!" });
     navigate("/login");
   };
+
+  const getRecommendedRoute = async () => {    
+    const recommendedRoute = await getDataScienceRecommendedRoute(user.user.apiUser);    
+    const routeById = await getRouteByIdData(recommendedRoute.data.recommended_route_id);    
+    return routeById;
+  }
+
+  const routeById = getRecommendedRoute();
+
+  console.log(routeById)
 
   if (userFavouriteRoutes.length <= 0) {
     routeList =
@@ -117,6 +128,9 @@ export default function Profile() {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <h1>{routeById}</h1>
       </div>
       <div>
         <BackTop />
