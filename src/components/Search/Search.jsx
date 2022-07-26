@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getRouteByName } from "../../features/routes/routesSlice";
 import Route from "../Feed/Routes/Route/Route";
+import Hero from "../Hero/Hero";
+import "./Search.scss";
 
 const Search = () => {
   const { routeName } = useParams();
@@ -14,14 +16,21 @@ const Search = () => {
 
   return (
     <>
-      <div className="container">
-        <div className="col-lg-8 container-fluid">
-          <h2 className="text-center">resultados de la busqueda</h2>
-          <div>
-            <Route />
-          </div>
-        </div>
+      <Hero />
+      <div class="text">
+        <span>T</span>
+        <span>U</span>
+        <span></span>
+        <span>B</span>
+        <span>U</span>
+        <span>S</span>
+        <span>Q</span>
+        <span>U</span>
+        <span>E</span>
+        <span>D</span>
+        <span>A</span>
       </div>
+      <Route />
     </>
   );
 };
