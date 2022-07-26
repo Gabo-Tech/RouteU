@@ -6,8 +6,8 @@ const initialState = {
   routes: [],
   isLoading: false,
   route: {},
-  comments:[],
-  avgRating: {}
+  comments: [],
+  avgRating: {},
 };
 
 export const getAll = createAsyncThunk("/getRoutes", async () => {
@@ -25,6 +25,17 @@ export const getById = createAsyncThunk("/getById", async (id) => {
     console.error(err);
   }
 });
+
+export const getRouteByName = createAsyncThunk(
+  "routes/getRouteByName",
+  async (routeName) => {
+    try {
+      return await routesService.getRouteByName(routeName);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+);
 
 export const like = createAsyncThunk("route/like", async (_id, thunkAPI) => {
   try {
@@ -47,32 +58,38 @@ export const dislike = createAsyncThunk(
   }
 );
 
-export const addComment = createAsyncThunk("addComment", async (comment, thunkAPI) => {
+export const addComment = createAsyncThunk(
+  "addComment",
+  async (comment, thunkAPI) => {
+    try {
+      return await routesService.addComment(comment);
+    } catch (error) {
+      const message = error.response.data;
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const avgRating = createAsyncThunk(
+  "route/avgRate",
+  async (_id, thunkAPI) => {
+    try {
+      return await routesService.avgRating(_id);
+    } catch (error) {
+      const message = error.response.data;
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const rate = createAsyncThunk("route/rate", async (_id, thunkAPI) => {
   try {
-    return await routesService.addComment(comment)
-  }catch (error) {
+    return await routesService.rate(_id);
+  } catch (error) {
     const message = error.response.data;
     return thunkAPI.rejectWithValue(message);
   }
 });
-
-export const avgRating = createAsyncThunk("route/avgRate", async (_id, thunkAPI) =>{
-  try {
-    return await routesService.avgRating(_id)
-  } catch (error){
-    const message = error.response.data;
-    return thunkAPI.rejectWithValue(message);
-  }
-});
-
-export const rate = createAsyncThunk("route/rate", async (_id, thunkAPI) =>{
-  try {
-    return await routesService.rate(_id)
-  } catch (error){
-    const message = error.response.data;
-    return thunkAPI.rejectWithValue(message);
-  }
-})
 
 export const routesSlice = createSlice({
   name: "routes",
@@ -84,43 +101,46 @@ export const routesSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-    .addCase(getAll.fulfilled, (state, action) => {
-      localStorage.setItem('routes',JSON.stringify(action.payload));
-      state.routes = action.payload;
-    })
-    .addCase(getAll.pending, (state) => {
-      state.isLoading = true;
-    })
-    .addCase(getById.fulfilled, (state, action) => {
-      state.route = action.payload;
-    })
-    .addCase(like.fulfilled, (state, action) => {
-      const routes = state.routes.map((element) => {
-        if (element._id === action.payload._id) {
-          element = action.payload;
-        }
-        return element;
+      .addCase(getAll.fulfilled, (state, action) => {
+        localStorage.setItem("routes", JSON.stringify(action.payload));
+        state.routes = action.payload;
+      })
+      .addCase(getAll.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getById.fulfilled, (state, action) => {
+        state.route = action.payload;
+      })
+      .addCase(getRouteByName.fulfilled, (state, action) => {
+        state.routes = action.payload;
+      })
+      .addCase(like.fulfilled, (state, action) => {
+        const routes = state.routes.map((element) => {
+          if (element._id === action.payload._id) {
+            element = action.payload;
+          }
+          return element;
+        });
+        state.routes = routes;
+      })
+      .addCase(dislike.fulfilled, (state, action) => {
+        const routes = state.routes.map((element) => {
+          if (element._id === action.payload._id) {
+            element = action.payload;
+          }
+          return element;
+        });
+        state.routes = routes;
+      })
+      .addCase(addComment.fulfilled, (state, action) => {
+        state.comments = action.payload;
+      })
+      .addCase(avgRating.fulfilled, (state, action) => {
+        state.avgRating = action.payload;
+      })
+      .addCase(rate.fulfilled, (state, action) => {
+        state.rate = action.payload;
       });
-      state.routes = routes;
-    })
-    .addCase(dislike.fulfilled, (state, action) => {
-      const routes = state.routes.map((element) => {
-        if (element._id === action.payload._id) {
-          element = action.payload;
-        }
-        return element;
-      });
-      state.routes = routes;
-    })
-    .addCase(addComment.fulfilled, (state, action) => {
-      state.comments =  action.payload;
-    })
-    .addCase(avgRating.fulfilled, (state, action) => {
-      state.avgRating = action.payload;
-    })    
-    .addCase(rate.fulfilled, (state, action) => {
-      state.rate = action.payload;
-    })
   },
 });
 export const { reset } = routesSlice.actions;

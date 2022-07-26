@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Routes from "./Routes/Routes";
 import "./Feed.scss";
+import { useNavigate } from "react-router-dom";
 
 function Feed() {
+  const navigate = useNavigate();
+
+  const [text, setText] = useState("");
+
+  const handleChange = (e) => {
+    setText(e.target.value);
+    if (e.key === "Enter") {
+      navigate(`/search/${text}`);
+    }
+  };
   return (
     <>
       <header className="py-5 hero">
@@ -16,7 +27,19 @@ function Feed() {
             </p>
           </div>
         </div>
+        <div class="input-group search-bar">
+          <div class="form-outline ">
+            <input
+              autocomplete="off"
+              className="search-box form-control form-control-lg form-control-borderless"
+              onKeyUp={handleChange}
+              placeholder="Buscar..."
+              name="text"
+            />
+          </div>
+        </div>
       </header>
+
       <Routes />
     </>
   );

@@ -62,7 +62,12 @@ const Login = () => {
               <div className="col-md-6 col-lg-4">
                 <div className="login-wrap p-0">
                   <h3 className="mb-4 text-center">Tienes una cuenta?</h3>
-                  <form onSubmit={onSubmit} className="signin-form">
+                  <form
+                    role="presentation"
+                    autocomplete="off"
+                    onSubmit={onSubmit}
+                    className="signin-form"
+                  >
                     <div className="form-group">
                       <input
                         type="email"
@@ -72,6 +77,7 @@ const Login = () => {
                         value={email}
                         onChange={onChange}
                         className="form-control"
+                        autocomplete="off"
                         required
                       />
                     </div>
@@ -84,6 +90,7 @@ const Login = () => {
                         onChange={onChange}
                         value={password}
                         className="form-control"
+                        autocomplete="off"
                         required
                       />
                       <span
