@@ -29,8 +29,8 @@ export default function MyForm() {
     setForm({ ...form, sendBtn: "¡Enviado!" });
     const recommendedRouteUserId = await sendDataScienceForm(form);
     console.log(recommendedRouteUserId.data.user_id)    
-    const resultado = await dispatch (update(recommendedRouteUserId.data.user_id));
-    console.log(resultado)    
+    await dispatch (update(recommendedRouteUserId.data.user_id));
+        
   };
 
   return (

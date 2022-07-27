@@ -5,22 +5,15 @@ import { Link } from "react-router-dom";
 import "./Route.scss";
 import { like, dislike, rate } from "./../../../../features/routes/routesSlice";
 import { HeartOutlined, HeartFilled } from "@ant-design/icons";
-import { relativeTimeRounding } from "moment";
 import axios from "axios";
-import { useTimeout } from "../../../../hooks/useTimeout";
 import { BackTop } from "antd";
 
 const Route = () => {
   const { user } = useSelector((state) => state.auth);
   const { routes } = useSelector((state) => state.routes);
-  // const { avgRate} = useSelector((state) => state.avgRate);
-  // console.log(avgRate)
+ 
   const dispatch = useDispatch();
-  // function roundS(value, step) {
-  //   step || (step = 1.0);
-  //   var inv = 1.0 / step;
-  //   return Math.round(value * inv) / inv;
-  // }
+  
   const [currentValue, setCurrentValue] = useState("  ---");
   const [rates, setRates] = useState(0);
 
@@ -152,7 +145,7 @@ const Route = () => {
                                         </div>
                                       </li>
                                     </ul>`
-      // setRates(normalValue);
+      
     }
   }
 

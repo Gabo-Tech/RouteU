@@ -17,10 +17,6 @@ import Search from "./components/Search/Search";
 // import AdminZone from "./guards/AdminZone";
 
 export default function App() {
-  const mapIsReadyCallback = (map) => {
-    console.log(map);
-  };
-  // const user = JSON.parse(localStorage.getItem('profile'));
   return (
     <BrowserRouter>
       <Routes>
@@ -31,14 +27,12 @@ export default function App() {
         <Route
           path="/map"
           element={
-            /*<MyMap mapIsReadyCallback={mapIsReadyCallback}/>*/ <Maps />
+             <Maps />
           }
         />
-        <Route path="/profile" element={<Profile />} />
-        {/* <Route path="/auth" element={<Auth />} /> */}
+        <Route path="/profile" element={<Profile />} />        
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        {/* <Route path="*" exact element={NotFound} /> */}
+        <Route path="/register" element={<Register />} />        
         <Route path="*" element={<NotFound />} />
 
         <Route
@@ -48,8 +42,7 @@ export default function App() {
               <Profile />
             </PrivateZone>
           }
-        />
-        {/* <Route path="/admin" element={ <AdminZone><Admin /></AdminZone> }/> */}
+        />       
 
         <Route path="/search/:routeName" element={<Search />} />
       </Routes>

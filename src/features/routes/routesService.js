@@ -89,8 +89,7 @@ const recRoutes = async (apiUser) => {
       authorization: user?.token,      
     },
   })
-  const routeId = res.data.recommended_route_id +1;
-  console.log(routeId)
+  const routeId = res.data.recommended_route_id +1;  
   const route = await axios.get(API_DATA + `getRouteById/?id=${routeId}`,
   {
     headers: {

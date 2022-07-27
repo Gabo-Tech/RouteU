@@ -18,37 +18,32 @@ export default function Profile() {
   const userId = user?.user?._id;
   const { routes } = useSelector((state) => state.routes);
   const { recRoute } = useSelector((state) => state.routes);
-  console.log(recRoute)
   const routesLS = JSON.parse(localStorage.getItem("routes"));
-  // console.log("This is local routes", routesLS, "THIS IS REDUX ROUTES", routes);
   function getFavouriteRoutes(arrayElement) {
     const likes = arrayElement?.likes;
-    // console.log("THIS IS LIKES", likes);
     const favRoute = likes?.indexOf(userId);
-    // console.log("THIS IS FAVROUTES", favRoute);
     const res = favRoute === -1 ? null : arrayElement;
-    // console.log("THIS IS RES", res);
+
     return res;
   }
   let routeList = [];
   const userFavouriteRoutes =
     routes === []
       ? routes?.map(getFavouriteRoutes)
-      : routesLS?.map(getFavouriteRoutes);  
+      : routesLS?.map(getFavouriteRoutes);
   const onLogout = async () => {
     await dispatch(logout());
+    localStorage.removeItem("user");
     notification.success({ message: "Hasta la próxima!" });
     navigate("/login");
   };
 
-
-  const getUserRoute = async () => {    
-    await dispatch(recRoutes(user?.user?.apiUser));    
+  const getUserRoute = async () => {
+    await dispatch(recRoutes(user?.user?.apiUser));
   };
-  
 
   useEffect(() => {
-    getUserRoute();        
+    getUserRoute();
     // eslint-disable-next-line
   }, []);
 

@@ -24,8 +24,7 @@ function RouteDetail() {
   const getRoute = async (_id) => {
     await dispatch(getById(_id));
     dispatch(reset());
-  };
-  console.log(route);
+  };  
   const { comments } = useSelector((state) => state.routes);
 
   useEffect(() => {
@@ -110,8 +109,7 @@ function RouteDetail() {
                 <p>
                   {" "}
                   {route.commentsId &&
-                    route.commentsId.map((e) => {
-                      console.log(e);
+                    route.commentsId.map((e) => {                      
                       return (
                         <div key={e._id}>
                           <Comment
