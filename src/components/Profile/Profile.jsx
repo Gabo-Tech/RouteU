@@ -18,6 +18,7 @@ export default function Profile() {
   const userId = user?.user?._id;
   const { routes } = useSelector((state) => state.routes);
   const { recRoute } = useSelector((state) => state.routes);
+  console.log(recRoute);
   const routesLS = JSON.parse(localStorage.getItem("routes"));
   function getFavouriteRoutes(arrayElement) {
     const likes = arrayElement?.likes;
@@ -62,20 +63,17 @@ export default function Profile() {
         <>
           <section className="py-5">
             <Link to={"/getRouteById/" + elements._id}>
-              <div className="container px-4 px-lg-5 mt-5">
-                <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                  <div className="col mb-2">
-                    <div className="card h-5">
-                      <img
-                        className="card-img-top"
-                        src={elements.image}
-                        alt="foto de la ruta"
-                      />
-
-                      <div className="card-body p-4">
-                        <div className="text-center" key={elements._id}>
-                          <h5 className="fw-bolder">{elements.name}</h5>
-                        </div>
+              <div className="container px-4 px-lg-5 mt-5 ">
+                <div className=" card each-card h-100 shink">
+                  <div className="card h-5">
+                    <img
+                      className="card-img-top"
+                      src={elements.image}
+                      alt="foto de la ruta"
+                    />
+                    <div className="card-body p-4">
+                      <div className="text-center" key={elements._id}>
+                        <h5 className="fw-bolder">{elements.name}</h5>
                       </div>
                     </div>
                   </div>
@@ -102,27 +100,42 @@ export default function Profile() {
               <div className="pro-img">
                 <img src="http://placeimg.com/800/600/people" alt="user" />
               </div>
-              <h3 className="m-b-0">Hola {username}!</h3>
-              <p>{user.user.role}</p>{" "}
-              <button onClick={onLogout} className="btn btn-rounded btn-info">
-                Desconectar
-              </button>
-              <div className="row text-center m-t-20">
-                <div className="col-lg-4 col-md-4 m-t-20">
-                  <h3 className="m-b-0 font-light"></h3>
-                  <small></small>
-                </div>
-                <div className="col-lg-4 col-md-4 m-t-20">
-                  <h3 className="m-b-0 font-light">
-                    {userFavouriteRoutesClean.length}
-                  </h3>
-                  <small>Rutas Favoritas</small>
-                </div>
-                <div className="col-lg-4 col-md-4 m-t-20">
-                  <h3 className="m-b-0 font-light"></h3>
-                  <small></small>
-                </div>
+              <div>
+                <h3 className="m-b-0">Hola {username}!</h3>
+                <p>Tu suscripcion: {user.user.role}</p>{" "}
+                <button onClick={onLogout} className="btn btn-rounded btn-info">
+                  Desconectar
+                </button>
+              </div>
+              <br />
+              <div className="recommended">
+                <h2>
+                  <span className="routeu">RouteU</span> te recomienda!
+                </h2>
+                <hr />
+                <div className="card each-card h-100 shink">
+                  <img
+                    className="card-img-top"
+                    src={recRoute.image}
+                    alt="foto de la ruta"
+                  />
 
+                  <div className="card-body p-4">
+                    <div className="text-center">
+                      <h5 className="fw-bolder">{recRoute.name}</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="row text-center m-t-20">
+                <div className="col-lg-4 col-md-4 m-t-20"></div>
+                <div className="col-lg-4 col-md-4 m-t-20">
+                  <h4 className="m-b-0 font-light mt-5">
+                    Tienes {userFavouriteRoutesClean.length} rutas favoritas
+                  </h4>
+                  <br />
+                </div>
+                <div className="col-lg-4 col-md-4 m-t-20"></div>
                 <div id="list-fav" className={styles.centered}>
                   {routeList}{" "}
                 </div>
@@ -131,9 +144,7 @@ export default function Profile() {
           </div>
         </div>
       </div>
-      <div>
-        <h1>{recRoute.name}</h1>
-      </div>
+      <div></div>
       <div>
         <BackTop />
         Scroll down to see the bottom-right
