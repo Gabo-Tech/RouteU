@@ -1,16 +1,17 @@
-import React, { useState } from "react";
 import "./Form.scss";
-
+import React, { useState } from "react";
 import {
   Box,  
   Button,
   Menu,
-  Main /*Heading, Grommet, grommet*/,
+  Main,
 } from "grommet";
-import { sendDataScienceForm, updateUser, getDataScienceRecommendedRoute } from "../../api/ApiIndex";
+import { sendDataScienceForm } from "../../api/ApiIndex";
+import { update } from "../../features/auth/authSlice"
 import Modale from "../Modale/Modale";
-export default function MyForm() {
-  const [favRoutes] = useState([]);
+import { useDispatch } from "react-redux";
+
+export default function MyForm() {  
   const initialState = {
     age: "Año de nacimiento",
     gender: "Género",
@@ -22,11 +23,14 @@ export default function MyForm() {
     transport: "Transporte",
     sendBtn: "Enviar",
   };
+  const dispatch = useDispatch();
   const [form, setForm] = useState(initialState);
   const switchMode = async () => {
     setForm({ ...form, sendBtn: "¡Enviado!" });
-    const recommendedRouteUserId = await sendDataScienceForm(form);    
-    updateUser(recommendedRouteUserId.data);    
+    const recommendedRouteUserId = await sendDataScienceForm(form);
+    console.log(recommendedRouteUserId.data)    
+    await dispatch (update(recommendedRouteUserId.data));
+        
   };
 
   return (
