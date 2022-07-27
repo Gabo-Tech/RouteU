@@ -17,17 +17,13 @@ export default function Profile() {
     user?.user?.name.charAt(0).toUpperCase() + user?.user?.name.slice(1);
   const userId = user?.user?._id;
   const { routes } = useSelector((state) => state.routes);
-  const { recRoute } = useSelector((state) => state.routes);
-  console.log(recRoute)
-  const routesLS = JSON.parse(localStorage.getItem("routes"));
-  // console.log("This is local routes", routesLS, "THIS IS REDUX ROUTES", routes);
+  const { recRoute } = useSelector((state) => state.routes);  
+  const routesLS = JSON.parse(localStorage.getItem("routes"));  
   function getFavouriteRoutes(arrayElement) {
-    const likes = arrayElement?.likes;
-    // console.log("THIS IS LIKES", likes);
-    const favRoute = likes?.indexOf(userId);
-    // console.log("THIS IS FAVROUTES", favRoute);
+    const likes = arrayElement?.likes;    
+    const favRoute = likes?.indexOf(userId);    
     const res = favRoute === -1 ? null : arrayElement;
-    // console.log("THIS IS RES", res);
+    
     return res;
   }
   let routeList = [];
