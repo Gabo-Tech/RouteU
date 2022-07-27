@@ -5,7 +5,7 @@ const APIDATA = axios.create({ baseURL: process.env.REACT_APP_APIDATA });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('user')) {
-        req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('user')).token}`;
+        req.headers.Authorization = `${JSON.parse(localStorage.getItem('user')).token}`;
   }
   return req;
 });
@@ -31,4 +31,5 @@ export const deleteComment = (commentId) => API.del(`/comments/id/${commentId}`)
 export const editComment = (commentId, formData) => API.put(`/comments/id/${commentId}`, formData);
 
 export const sendDataScienceForm = (formData) => APIDATA.post(`/postUser/?age=${formData.age}&gender=${formData.gender}&time=${formData.time}&route_type=${formData.route_type}&price=${formData.price}&difficulty=${formData.difficulty}&companions=${formData.companions}&transport=${formData.transport}`);
-export const getDataScienceRecommendedRoute = (user_id) => APIDATA.post(`/getRecommendation/?id=${user_id}`);
+export const getDataScienceRecommendedRoute = (user_id) => APIDATA.get(`/getRecommendation/?id=${user_id}`);
+export const getRouteByIdData = (recommended_route_id) => APIDATA.get(`/getRouteById/?id=${recommended_route_id}`);

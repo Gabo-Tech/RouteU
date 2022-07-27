@@ -47,7 +47,7 @@ function RouteDetail() {
     <>
       <div className="container mb-5 bg-white">
         <h1 className="my-4 header-details">
-          {route.name} <small> difficultad:( {route.difficulty} )</small>
+          {route.name} <small> | dificultad:( {route.difficulty} )</small>
         </h1>
 
         <div className="row">

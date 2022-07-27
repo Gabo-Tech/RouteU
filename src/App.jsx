@@ -12,6 +12,7 @@ import Feed from "./components/Feed/Feed";
 import RouteDetail from "./components/RouteDetail/RouteDetail";
 import MyMap from "./components/MyMap/MyMap";
 import Maps from "./components/Maps/Maps";
+import Search from "./components/Search/Search";
 
 // import AdminZone from "./guards/AdminZone";
 
@@ -49,6 +50,8 @@ export default function App() {
           }
         />
         {/* <Route path="/admin" element={ <AdminZone><Admin /></AdminZone> }/> */}
+
+        <Route path="/search/:routeName" element={<Search />} />
       </Routes>
 
       <AppBar />
