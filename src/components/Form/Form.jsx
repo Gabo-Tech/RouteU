@@ -1,7 +1,6 @@
-//Registro y inicio de sesión
 import React, { useState } from "react";
 import "./Form.scss";
-// import styles from './Auth.module.css';
+
 import {
   Box,  
   Button,
@@ -26,10 +25,8 @@ export default function MyForm() {
   const [form, setForm] = useState(initialState);
   const switchMode = async () => {
     setForm({ ...form, sendBtn: "¡Enviado!" });
-    const recommendedRouteUserId = await sendDataScienceForm(form);
-    console.log(recommendedRouteUserId)
-    updateUser(recommendedRouteUserId.data);
-    // const recommendedRoute = await getDataScienceRecommendedRoute(recommendedRouteUserId.data.user_id);
+    const recommendedRouteUserId = await sendDataScienceForm(form);    
+    updateUser(recommendedRouteUserId.data);    
   };
 
   return (
