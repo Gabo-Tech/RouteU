@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../features/auth/authSlice";
 // import { getDataScienceRecommendedRoute, getRouteByIdData } from "../../api/ApiIndex"
-import { recRoute } from "../../features/routes/routesSlice";
+import { recRoutes } from "../../features/routes/routesSlice";
 import { notification } from "antd";
 import { BackTop } from "antd";
 import "./Profile.scss";
@@ -17,8 +17,8 @@ export default function Profile() {
     user?.user?.name.charAt(0).toUpperCase() + user?.user?.name.slice(1);
   const userId = user?.user?._id;
   const { routes } = useSelector((state) => state.routes);
-  // const { recRoutes} = useSelector((state) => state.recRoute);
-  // console.log(recRoutes)
+  const { recRoute } = useSelector((state) => state.routes);
+  console.log(recRoute)
   const routesLS = JSON.parse(localStorage.getItem("routes"));
   // console.log("This is local routes", routesLS, "THIS IS REDUX ROUTES", routes);
   function getFavouriteRoutes(arrayElement) {
@@ -34,7 +34,7 @@ export default function Profile() {
   const userFavouriteRoutes =
     routes === []
       ? routes?.map(getFavouriteRoutes)
-      : routesLS?.map(getFavouriteRoutes);
+      : routesLS?.map(getFavouriteRoutes);  
   const onLogout = async () => {
     await dispatch(logout());
     notification.success({ message: "Hasta la próxima!" });
@@ -43,14 +43,14 @@ export default function Profile() {
 
 
   const getUserRoute = async () => {    
-    await dispatch(recRoute(user?.user?.apiUser));    
+    await dispatch(recRoutes(user?.user?.apiUser));    
   };
   
 
   useEffect(() => {
     getUserRoute();        
     // eslint-disable-next-line
-  }, [recRoute]);
+  }, []);
 
   if (userFavouriteRoutes.length <= 0) {
     routeList =
@@ -134,7 +134,7 @@ export default function Profile() {
         </div>
       </div>
       <div>
-        {/* <h1>{routeById}</h1> */}
+        <h1>{recRoute.name}</h1>
       </div>
       <div>
         <BackTop />

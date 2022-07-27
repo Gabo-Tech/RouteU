@@ -74,9 +74,9 @@ export const rate = createAsyncThunk("route/rate", async (_id, thunkAPI) =>{
   }
 })
 
-export const recRoute = createAsyncThunk("route/recommended", async (apiUser, thunkAPI) => {
+export const recRoutes = createAsyncThunk("route/recommended", async (apiUser, thunkAPI) => {
   try {
-    return await routesService.recRoute(apiUser);
+    return await routesService.recRoutes(apiUser);
   } catch (error) {
     const message = error.response.data;
     return thunkAPI.rejectWithValue(message);  
@@ -130,7 +130,7 @@ export const routesSlice = createSlice({
     .addCase(rate.fulfilled, (state, action) => {
       state.rate = action.payload;
     })
-    .addCase(recRoute.fulfilled, (state, action) => {      
+    .addCase(recRoutes.fulfilled, (state, action) => {      
       state.recRoute = action.payload;
     })
   },

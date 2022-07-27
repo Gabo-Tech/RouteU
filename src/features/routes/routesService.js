@@ -67,7 +67,7 @@ const rateRoute = async (_id) => {
   return res.data;
 }
 
-const recRoute = async (apiUser) => {
+const recRoutes = async (apiUser) => {
   const user = JSON.parse(localStorage.getItem("user"));
   const res = await axios.get(API_DATA + `getRecommendation/?id=${apiUser}`,
 
@@ -96,7 +96,7 @@ const routesService = {
   addComment,
   avgRating,
   rateRoute,
-  recRoute 
+  recRoutes 
 };
 
 export default routesService;
