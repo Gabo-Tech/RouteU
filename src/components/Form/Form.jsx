@@ -8,10 +8,11 @@ import {
   Menu,
   Main /*Heading, Grommet, grommet*/,
 } from "grommet";
-import { sendDataScienceForm, updateUser, getDataScienceRecommendedRoute } from "../../api/ApiIndex";
+import { sendDataScienceForm } from "../../api/ApiIndex";
+import { update } from "../../features/auth/authSlice"
+
 import Modale from "../Modale/Modale";
-export default function MyForm() {
-  const [favRoutes] = useState([]);
+export default function MyForm() {  
   const initialState = {
     age: "Año de nacimiento",
     gender: "Género",
@@ -27,9 +28,8 @@ export default function MyForm() {
   const switchMode = async () => {
     setForm({ ...form, sendBtn: "¡Enviado!" });
     const recommendedRouteUserId = await sendDataScienceForm(form);
-    console.log(recommendedRouteUserId)
-    updateUser(recommendedRouteUserId.data);
-    // const recommendedRoute = await getDataScienceRecommendedRoute(recommendedRouteUserId.data.user_id);
+    console.log(recommendedRouteUserId.data.user_id)    
+    await update(recommendedRouteUserId.data.user_id);    
   };
 
   return (

@@ -29,10 +29,24 @@ const logout = async () => {
   return res.data;
 };
 
+const update = async (data) => {
+  const user = JSON.parse(localStorage.getItem("user"), data);
+  const res = await axios.put(API_URL + "/users/", {
+    headers: {
+      authorization: user?.token,
+    },
+  })
+  if (res.data) {
+    localStorage.setItem("user", JSON.stringify(res.data));
+  }
+  return res.data;
+}
+
 const authService = {
   register,
   login,
   logout,
+  update
 };
 
 export default authService;
