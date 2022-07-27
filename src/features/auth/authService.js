@@ -12,7 +12,6 @@ const login = async (userdata) => {
   if (res.data) {
     localStorage.setItem("user", JSON.stringify(res.data));
   }
-  console.log(res.data);
   return res.data;
 };
 
@@ -30,12 +29,12 @@ const logout = async () => {
 };
 
 const update = async (data) => {
-  const user = JSON.parse(localStorage.getItem("user"), data);
-  const res = await axios.put(API_URL + "/users/", {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const res = await axios.put(API_URL + "/users/", data, {
     headers: {
       authorization: user?.token,
     },
-  })
+  })  
   if (res.data) {
     localStorage.setItem("user", JSON.stringify(res.data));
   }
