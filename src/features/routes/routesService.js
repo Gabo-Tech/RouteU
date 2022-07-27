@@ -83,8 +83,7 @@ const recRoute = async (apiUser) => {
     headers: {
       authorization: user?.token,      
     },
-  })
-  
+  })  
   return route.data;
 }
 

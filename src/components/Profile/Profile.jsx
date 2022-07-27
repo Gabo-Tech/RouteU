@@ -17,7 +17,7 @@ export default function Profile() {
     user?.user?.name.charAt(0).toUpperCase() + user?.user?.name.slice(1);
   const userId = user?.user?._id;
   const { routes } = useSelector((state) => state.routes);
-  // const { recRoutes} = useSelector((state) => state.recRoutes);
+  // const { recRoutes} = useSelector((state) => state.recRoute);
   // console.log(recRoutes)
   const routesLS = JSON.parse(localStorage.getItem("routes"));
   // console.log("This is local routes", routesLS, "THIS IS REDUX ROUTES", routes);
