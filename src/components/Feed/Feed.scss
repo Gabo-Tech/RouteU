@@ -18,3 +18,22 @@
     background-color: white;
   }
 }
+
+.search-bar {
+  display: flex;
+  margin-left: -3%;
+  justify-content: right;
+  align-items: center;
+  margin-top: 2em;
+}
+
+.search-box {
+  background-color: rgba(2, 2, 2, 0.4);
+}
+
+@media (max-width: 400px) {
+  .search-bar {
+    justify-content: center;
+    margin-left: 0.5em;
+  }
+}

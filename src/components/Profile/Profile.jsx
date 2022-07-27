@@ -52,6 +52,9 @@ export default function Profile() {
     // eslint-disable-next-line
   }, []);
 
+  const userFavouriteRoutesClean = userFavouriteRoutes.filter(
+    (arrayElement) => arrayElement !== null
+  );
   if (userFavouriteRoutes.length <= 0) {
     routeList =
       "Oh oh... Parece que no tienes rutas favoritas todavía, ¡vuelve a la página de inicio para encontrar nuevos caminos por recorrer!";
@@ -116,7 +119,7 @@ export default function Profile() {
                 </div>
                 <div className="col-lg-4 col-md-4 m-t-20">
                   <h3 className="m-b-0 font-light">
-                    {userFavouriteRoutes.length}
+                    {userFavouriteRoutesClean.length}
                   </h3>
                   <small>Rutas Favoritas</small>
                 </div>

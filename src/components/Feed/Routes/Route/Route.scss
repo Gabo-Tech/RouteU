@@ -9,6 +9,8 @@
 
 .each-card {
   box-shadow: 4px 4px 4px 2px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .routeFooter {
@@ -39,7 +41,7 @@
   background-size: cover;
 }
 
-@media screen and (min-width: 2200px) {
+@media screen and (min-width: 8000px) {
   /* Specific to this particular image */
   .hero {
     left: 50%;
