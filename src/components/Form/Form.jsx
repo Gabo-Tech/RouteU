@@ -1,17 +1,15 @@
-//Registro y inicio de sesión
-import React, { useState } from "react";
 import "./Form.scss";
-// import styles from './Auth.module.css';
+import React, { useState } from "react";
 import {
   Box,  
   Button,
   Menu,
-  Main /*Heading, Grommet, grommet*/,
+  Main,
 } from "grommet";
 import { sendDataScienceForm } from "../../api/ApiIndex";
 import { update } from "../../features/auth/authSlice"
-
 import Modale from "../Modale/Modale";
+
 export default function MyForm() {  
   const initialState = {
     age: "Año de nacimiento",
@@ -29,7 +27,7 @@ export default function MyForm() {
     setForm({ ...form, sendBtn: "¡Enviado!" });
     const recommendedRouteUserId = await sendDataScienceForm(form);
     console.log(recommendedRouteUserId.data.user_id)    
-    await update(recommendedRouteUserId.data.user_id);    
+    await (update(recommendedRouteUserId.data.user_id));    
   };
 
   return (
