@@ -28,8 +28,8 @@ export default function MyForm() {
   const switchMode = async () => {
     setForm({ ...form, sendBtn: "¡Enviado!" });
     const recommendedRouteUserId = await sendDataScienceForm(form);
-    console.log(recommendedRouteUserId.data.user_id)    
-    await dispatch (update(recommendedRouteUserId.data.user_id));
+    console.log(recommendedRouteUserId.data)    
+    await dispatch (update(recommendedRouteUserId.data));
         
   };
 

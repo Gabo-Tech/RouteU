@@ -41,9 +41,9 @@ export const logout = createAsyncThunk("auth/logout", async () => {
   }
 })
 
-export const update = createAsyncThunk("auth/update", async () => {
+export const update = createAsyncThunk("auth/update", async (data) => {
   try {
-    return await authService.update();
+    return await authService.update(data);
   } catch (error) {
     console.error(error);
   }
