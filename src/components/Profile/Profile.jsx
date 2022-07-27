@@ -18,7 +18,7 @@ export default function Profile() {
   const userId = user?.user?._id;
   const { routes } = useSelector((state) => state.routes);
   const { recRoute } = useSelector((state) => state.routes);
-  console.log(recRoute)
+  console.log(recRoute);
   const routesLS = JSON.parse(localStorage.getItem("routes"));
   // console.log("This is local routes", routesLS, "THIS IS REDUX ROUTES", routes);
   function getFavouriteRoutes(arrayElement) {
@@ -34,21 +34,21 @@ export default function Profile() {
   const userFavouriteRoutes =
     routes === []
       ? routes?.map(getFavouriteRoutes)
-      : routesLS?.map(getFavouriteRoutes);  
+      : routesLS?.map(getFavouriteRoutes);
   const onLogout = async () => {
     await dispatch(logout());
+    localStorage.removeItem("user");
     notification.success({ message: "Hasta la próxima!" });
     navigate("/login");
   };
 
-  console.log(user.user.api)
-  const getUserRoute = async () => {    
-    await dispatch(recRoutes(user?.user?.apiUser));    
+  console.log(user.user.api);
+  const getUserRoute = async () => {
+    await dispatch(recRoutes(user?.user?.apiUser));
   };
-  
 
   useEffect(() => {
-    getUserRoute();        
+    getUserRoute();
     // eslint-disable-next-line
   }, []);
 

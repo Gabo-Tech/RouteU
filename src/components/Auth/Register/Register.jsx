@@ -21,7 +21,7 @@ const Register = () => {
   useEffect(() => {
     if (isSuccess) {
       notification.success({
-        message: "Success",
+        message: "Exito!",
 
         description: message,
       });
