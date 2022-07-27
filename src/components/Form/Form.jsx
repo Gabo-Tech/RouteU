@@ -1,17 +1,15 @@
 import "./Form.scss";
 import React, { useState } from "react";
-import {
-  Box,  
-  Button,
-  Menu,
-  Main,
-} from "grommet";
+import { Box, Button, Menu, Main } from "grommet";
 import { sendDataScienceForm } from "../../api/ApiIndex";
-import { update } from "../../features/auth/authSlice"
+import { update } from "../../features/auth/authSlice";
 import Modale from "../Modale/Modale";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-export default function MyForm() {  
+export default function MyForm() {
+  const navigate = useNavigate();
+
   const initialState = {
     age: "Año de nacimiento",
     gender: "Género",
@@ -28,9 +26,11 @@ export default function MyForm() {
   const switchMode = async () => {
     setForm({ ...form, sendBtn: "¡Enviado!" });
     const recommendedRouteUserId = await sendDataScienceForm(form);
-    console.log(recommendedRouteUserId.data)    
-    await dispatch (update(recommendedRouteUserId.data));
-        
+    console.log(recommendedRouteUserId.data);
+    await dispatch(update(recommendedRouteUserId.data));
+    setTimeout(() => {
+      navigate("/profile");
+    }, 2000);
   };
 
   return (
