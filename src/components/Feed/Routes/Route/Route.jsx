@@ -25,8 +25,9 @@ const Route = () => {
     setRates(value);
   }
   async function rating(value, routeIdL) {
+    localStorage.setItem(routeIdL, value);
     if (elementId === routeIdL) {
-      dispatch(rate(routeIdL));
+      // dispatch(rate(routeIdL));
       await axios.post(
         `https://routeu-backend.herokuapp.com/ratings/${routeIdL}`,
         { rating: value },
@@ -54,8 +55,8 @@ const Route = () => {
       averageRating.innerText = "Puntuación media de la ruta " + normalValue;
       const averageRatingStars = document.getElementById(elementId);
       averageRatingStars.innerHTML=`<ul class="ant-rate" tabindex="0" role="radiogroup">
-                                      <li class="ant-rate-star ant-rate-star-full">
-                                        <div role="radio" aria-checked="${normalValue>0?true:false}" aria-posinset="1" aria-setsize="5" tabindex="0">
+                                      <li class="ant-rate-star ant-rate-star-${normalValue>0?'full':'zero'}">
+                                        <div role="radio" aria-checked="${normalValue>0?"true":"false"}" aria-posinset="1" aria-setsize="5" tabindex="0">
                                           <div class="ant-rate-star-first">
                                             <span role="img" aria-label="star" class="anticon anticon-star">
                                               <svg viewBox="64 64 896 896" focusable="false" data-icon="star" width="1em" height="1em" fill="currentColor" aria-hidden="true">
@@ -72,8 +73,8 @@ const Route = () => {
                                           </div>
                                         </div>
                                       </li>
-                                      <li class="ant-rate-star ant-rate-star-full">
-                                        <div role="radio" aria-checked="${normalValue>=2?true:false}" aria-posinset="2" aria-setsize="5" tabindex="0">
+                                      <li class="ant-rate-star ant-rate-star-${normalValue>=2?'full':'zero'}">
+                                        <div role="radio" aria-checked="${normalValue>=2?"true":"false"}" aria-posinset="2" aria-setsize="5" tabindex="0">
                                           <div class="ant-rate-star-first">
                                             <span role="img" aria-label="star" class="anticon anticon-star">
                                               <svg viewBox="64 64 896 896" focusable="false" data-icon="star" width="1em" height="1em" fill="currentColor" aria-hidden="true">
@@ -90,8 +91,8 @@ const Route = () => {
                                           </div>
                                         </div>
                                       </li>
-                                      <li class="ant-rate-star ant-rate-star-full">
-                                        <div role="radio" aria-checked="${normalValue>=3?true:false}" aria-posinset="3" aria-setsize="5" tabindex="0">
+                                      <li class="ant-rate-star ant-rate-star-${normalValue>=3?'full':'zero'}">
+                                        <div role="radio" aria-checked="${normalValue>=3?"true":"false"}" aria-posinset="3" aria-setsize="5" tabindex="0">
                                           <div class="ant-rate-star-first">
                                             <span role="img" aria-label="star" class="anticon anticon-star">
                                               <svg viewBox="64 64 896 896" focusable="false" data-icon="star" width="1em" height="1em" fill="currentColor" aria-hidden="true">
@@ -108,8 +109,8 @@ const Route = () => {
                                           </div>
                                         </div>
                                       </li>
-                                      <li class="ant-rate-star ant-rate-star-zero">
-                                        <div role="radio" aria-checked="${normalValue>=4?true:false}" aria-posinset="4" aria-setsize="5" tabindex="0">
+                                      <li class="ant-rate-star ant-rate-star-${normalValue>=4?'full':'zero'}">
+                                        <div role="radio" aria-checked="${normalValue>=4?"true":"false"}" aria-posinset="4" aria-setsize="5" tabindex="0">
                                           <div class="ant-rate-star-first">
                                             <span role="img" aria-label="star" class="anticon anticon-star">
                                               <svg viewBox="64 64 896 896" focusable="false" data-icon="star" width="1em" height="1em" fill="currentColor" aria-hidden="true">
@@ -126,8 +127,8 @@ const Route = () => {
                                           </div>
                                         </div>
                                       </li>
-                                      <li class="ant-rate-star ant-rate-star-zero">
-                                        <div role="radio" aria-checked="${normalValue===5?true:false}" aria-posinset="5" aria-setsize="5" tabindex="0">
+                                      <li class="ant-rate-star ant-rate-star-${normalValue===5?'full':'zero'}">
+                                        <div role="radio" aria-checked="${normalValue===5?"true":"false"}" aria-posinset="5" aria-setsize="5" tabindex="0">
                                           <div class="ant-rate-star-first">
                                             <span role="img" aria-label="star" class="anticon anticon-star">
                                               <svg viewBox="64 64 896 896" focusable="false" data-icon="star" width="1em" height="1em" fill="currentColor" aria-hidden="true">
@@ -208,6 +209,7 @@ const Route = () => {
                           showValue(value);
                         }}
                         onChange={(value) => {
+                          // getElementOnClick();
                           rating(value, elements._id);
                         }}
                         value={rates}
