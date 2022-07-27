@@ -18,7 +18,7 @@ export default function Profile() {
   const userId = user?.user?._id;
   const { routes } = useSelector((state) => state.routes);
   const { recRoute } = useSelector((state) => state.routes);
-  console.log(recRoute);
+
   const routesLS = JSON.parse(localStorage.getItem("routes"));
   function getFavouriteRoutes(arrayElement) {
     const likes = arrayElement?.likes;
@@ -113,19 +113,21 @@ export default function Profile() {
                   <span className="routeu">RouteU</span> te recomienda!
                 </h2>
                 <hr />
-                <div className="card each-card h-100 shink">
-                  <img
-                    className="card-img-top"
-                    src={recRoute.image}
-                    alt="foto de la ruta"
-                  />
+                <Link to="/fav">
+                  <div className="card each-card h-100 shink">
+                    <img
+                      className="card-img-top"
+                      src={recRoute.image}
+                      alt="foto de la ruta"
+                    />
 
-                  <div className="card-body p-4">
-                    <div className="text-center">
-                      <h5 className="fw-bolder">{recRoute.name}</h5>
+                    <div className="card-body p-4">
+                      <div className="text-center">
+                        <h5 className="fw-bolder">{recRoute.name}</h5>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               </div>
               <div className="row text-center m-t-20">
                 <div className="col-lg-4 col-md-4 m-t-20"></div>
@@ -151,24 +153,6 @@ export default function Profile() {
         <strong className="site-back-top-basic"> gray </strong>
         button.
       </div>
-      {/* <Main className={styles.full} pad="xlarge">
-        <Heading>Hola {username}!</Heading>
-        <Box
-          className={styles.pic}
-          direction="row"
-          justify="center"
-          gap="small"
-          pad="large"
-        >
-          <Avatar size="xlarge" src="https://placeimg.com/380/230/arch" />
-        </Box>
-        <Box direction="row" justify="center" gap="small">
-          <Text direction="row" justify="center">
-            Tus rutas favoritas
-          </Text>
-        </Box>
-        <div className={styles.centered}>{routeList}</div>
-      </Main> */}
     </>
   );
 }

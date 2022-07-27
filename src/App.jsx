@@ -13,6 +13,7 @@ import RouteDetail from "./components/RouteDetail/RouteDetail";
 import MyMap from "./components/MyMap/MyMap";
 import Maps from "./components/Maps/Maps";
 import Search from "./components/Search/Search";
+import FavDetails from "./components/FavDetails/FavDetails";
 
 // import AdminZone from "./guards/AdminZone";
 
@@ -24,17 +25,12 @@ export default function App() {
         <Route path="/feed" element={<Feed />} />
         <Route path="/getRouteById/:_id" element={<RouteDetail />} />
         <Route path="/form" element={<MyForm />} />
-        <Route
-          path="/map"
-          element={
-             <Maps />
-          }
-        />
-        <Route path="/profile" element={<Profile />} />        
+        <Route path="/map" element={<Maps />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />        
+        <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
-
+        <Route path="/fav" element={<FavDetails />} />
         <Route
           path="/profile"
           element={
@@ -42,7 +38,7 @@ export default function App() {
               <Profile />
             </PrivateZone>
           }
-        />       
+        />
 
         <Route path="/search/:routeName" element={<Search />} />
       </Routes>
