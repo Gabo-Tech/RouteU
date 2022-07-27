@@ -41,7 +41,7 @@ export default function Profile() {
     navigate("/login");
   };
 
-
+  console.log(user.user.api)
   const getUserRoute = async () => {    
     await dispatch(recRoutes(user?.user?.apiUser));    
   };
