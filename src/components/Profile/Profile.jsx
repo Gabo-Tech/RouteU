@@ -20,18 +20,24 @@ export default function Profile() {
   const { recRoute } = useSelector((state) => state.routes);
 
   const routesLS = JSON.parse(localStorage.getItem("routes"));
-  function getFavouriteRoutes(arrayElement) {
+  console.log(routesLS);
+
+  function getFavouriteRoutes(arrayElement, index) {
     const likes = arrayElement?.likes;
     const favRoute = likes?.indexOf(userId);
-    const res = favRoute === -1 ? null : arrayElement;
 
+    const res = favRoute === -1 ? null : arrayElement;
     return res;
   }
   let routeList = [];
-  const userFavouriteRoutes =
-    routes === []
-      ? routes?.map(getFavouriteRoutes)
-      : routesLS?.map(getFavouriteRoutes);
+  let userFavouriteRoutes;
+  if (routes.length === 0) {
+    console.log("subiendoooo", routesLS);
+    userFavouriteRoutes = routesLS?.map(getFavouriteRoutes);
+  } else {
+    userFavouriteRoutes = routes?.map(getFavouriteRoutes);
+  }
+
   const onLogout = async () => {
     await dispatch(logout());
     localStorage.removeItem("user");
@@ -47,10 +53,10 @@ export default function Profile() {
     getUserRoute();
     // eslint-disable-next-line
   }, []);
-
   const userFavouriteRoutesClean = userFavouriteRoutes.filter(
     (arrayElement) => arrayElement !== null
   );
+
   if (userFavouriteRoutes.length <= 0) {
     routeList =
       "Oh oh... Parece que no tienes rutas favoritas todavía, ¡vuelve a la página de inicio para encontrar nuevos caminos por recorrer!";
