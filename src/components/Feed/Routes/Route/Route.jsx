@@ -11,7 +11,6 @@ import { BackTop } from "antd";
 const Route = () => {
   const { user } = useSelector((state) => state.auth);
   const { routes } = useSelector((state) => state.routes);
- 
   const dispatch = useDispatch();
   
   const [currentValue, setCurrentValue] = useState("  ---");
@@ -25,37 +24,38 @@ const Route = () => {
     setRates(value);
   }
   async function rating(value, routeIdL) {
-    localStorage.setItem(routeIdL, value);
     if (elementId === routeIdL) {
       // dispatch(rate(routeIdL));
       await axios.post(
         `https://routeu-backend.herokuapp.com/ratings/${routeIdL}`,
         { rating: value },
         { headers: { authorization: user?.token } }
-      );
-      const resVal = await axios.get(
-        `https://routeu-backend.herokuapp.com/ratings/`,
-        {
-          headers: { authorization: user?.token },
-        }
-      );
-      const array = resVal.data.ratings;
-      const filteredArray = array.filter(
-        (element) =>
-          element.routeId === routeIdL &&
-          element.rating !== null &&
-          element.rating !== undefined
-      );
-      const rateTotal = filteredArray.reduce(function (prev, cur) {
-        return prev + cur.rating;
-      }, 0);
-      const averageRate = rateTotal / filteredArray.length;
-      const normalValue = parseFloat(averageRate).toFixed(2);
-      const averageRating = document.getElementById(elementId + "p");
-      averageRating.innerText = "Puntuación media de la ruta " + normalValue;
-      const averageRatingStars = document.getElementById(elementId);
-      averageRatingStars.innerHTML=`<ul class="ant-rate" tabindex="0" role="radiogroup">
-                                      <li class="ant-rate-star ant-rate-star-${normalValue>0?'full':'zero'}">
+        );
+        const resVal = await axios.get(
+          `https://routeu-backend.herokuapp.com/ratings/`,
+          {
+            headers: { authorization: user?.token },
+          }
+          );
+          const array = resVal.data.ratings;
+          const filteredArray = array.filter(
+            (element) =>
+            element.routeId === routeIdL &&
+            element.rating !== null &&
+            element.rating !== undefined
+            );
+            const rateTotal = filteredArray.reduce(function (prev, cur) {
+              return prev + cur.rating;
+            }, 0);
+            const averageRate = rateTotal / filteredArray.length;
+            const normalValue = parseFloat(averageRate).toFixed(2);
+            const averageRating = document.getElementById(elementId + "p");
+            averageRating.innerText = "Puntuación media de la ruta " + normalValue;
+            console.log(parseFloat(normalValue).toFixed(0));
+            localStorage.setItem(routeIdL,parseFloat(normalValue).toFixed(0));
+            const averageRatingStars = document.getElementById(elementId);
+            averageRatingStars.innerHTML=`<ul class="ant-rate" tabindex="0" role="radiogroup">
+            <li class="ant-rate-star ant-rate-star-${normalValue>0?'full':'zero'}">
                                         <div role="radio" aria-checked="${normalValue>0?"true":"false"}" aria-posinset="1" aria-setsize="5" tabindex="0">
                                           <div class="ant-rate-star-first">
                                             <span role="img" aria-label="star" class="anticon anticon-star">
@@ -151,6 +151,13 @@ const Route = () => {
   }
 
   const routeList = routes?.map((elements) => {
+    var savedRating="";
+    const ratingStateController = JSON.parse(localStorage.getItem(elements._id));
+    console.log("this is ratingStateController",ratingStateController);
+    if (ratingStateController !== null){
+      savedRating=ratingStateController;
+      rating(ratingStateController, elements._id);
+    }
     const isAlreadyLiked = elements.likes?.includes(user?.user._id);
     return (
       <>
@@ -203,7 +210,6 @@ const Route = () => {
                     </div>
                     <div id={elements._id} onClick={getElementOnClick}>
                       <Rate
-                        allowHalf
                         defaultValue={0}
                         onFocus={(value) => {
                           showValue(value);
@@ -212,7 +218,7 @@ const Route = () => {
                           // getElementOnClick();
                           rating(value, elements._id);
                         }}
-                        value={rates}
+                        value={savedRating!==""?savedRating:rates}
                       />
                     </div>
                   </div>
