@@ -32,7 +32,7 @@ This website it's been deployed and made available to the public thanks to [Verc
 
 
 
-## Api documentation made with Swagger
+## Api documentation
 
 [Here is the API documentation.](https://github.com/Gabo-Tech/backend-tripulaciones)  
 
