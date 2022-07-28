@@ -28,10 +28,10 @@ function Hero() {
             </p>
           </div>
         </div>
-        <div class="input-group search-bar">
-          <div class="form-outline ">
+        <div className="input-group search-bar">
+          <div className="form-outline ">
             <input
-              autocomplete="off"
+              autoComplete="off"
               className="search-box form-control form-control-lg form-control-borderless"
               onKeyUp={handleChange}
               placeholder="Buscar..."

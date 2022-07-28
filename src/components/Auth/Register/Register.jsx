@@ -73,13 +73,13 @@ const Register = () => {
                 <div className="login-wrap p-0">
                   <h3 className="mb-4 text-center">Registrate</h3>
                   <form
-                    autocomplete="off"
+                    autoComplete="off"
                     onSubmit={onSubmit}
                     className="signin-form"
                   >
                     <div className="form-group">
                       <input
-                        autocomplete="off"
+                        autoComplete="off"
                         name="name"
                         type="text"
                         className="form-control"
@@ -92,7 +92,7 @@ const Register = () => {
                     </div>
                     <div className="form-group">
                       <input
-                        autocomplete="off"
+                        autoComplete="off"
                         className="form-control"
                         type="email"
                         name="email"
@@ -105,7 +105,7 @@ const Register = () => {
                     </div>
                     <div className="form-group">
                       <input
-                        autocomplete="off"
+                        autoComplete="off"
                         className="form-control"
                         type="password"
                         name="password"
@@ -123,7 +123,7 @@ const Register = () => {
                     </div>
                     <div className="form-group">
                       <input
-                        autocomplete="off"
+                        autoComplete="off"
                         className="form-control"
                         type="password"
                         name="password2"

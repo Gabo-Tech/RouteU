@@ -20,7 +20,6 @@ export default function Profile() {
   const { recRoute } = useSelector((state) => state.routes);
 
   const routesLS = JSON.parse(localStorage.getItem("routes"));
-  console.log(routesLS);
 
   function getFavouriteRoutes(arrayElement, index) {
     const likes = arrayElement?.likes;
@@ -32,7 +31,6 @@ export default function Profile() {
   let routeList = [];
   let userFavouriteRoutes;
   if (routes.length === 0) {
-    console.log("subiendoooo", routesLS);
     userFavouriteRoutes = routesLS?.map(getFavouriteRoutes);
   } else {
     userFavouriteRoutes = routes?.map(getFavouriteRoutes);
@@ -100,11 +98,11 @@ export default function Profile() {
             <img
               className="card-img-top"
               src="http://placeimg.com/800/600/tech"
-              alt="Card image cap"
+              alt="foto cabecera"
             />
             <div className="card-body little-profile text-center">
               <div className="pro-img">
-                <img src="http://placeimg.com/800/600/people" alt="user" />
+                <img src="http://placeimg.com/800/600/people" alt="avatar" />
               </div>
               <div>
                 <h3 className="m-b-0">Hola {username}!</h3>

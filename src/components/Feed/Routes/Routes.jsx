@@ -1,11 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getAll,
-  reset,
-  like,
-  dislike,
-} from "../../../features/routes/routesSlice";
+import { getAll, reset } from "../../../features/routes/routesSlice";
 import { Space, Spin } from "antd";
 import Route from "./Route/Route";
 
@@ -20,11 +15,8 @@ const Routes = () => {
 
   useEffect(() => {
     getAllRoutesAndReset();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // useEffect(() => {
-  //   getAllRoutesAndReset();
-  // }, []);
 
   if (isLoading) {
     return (
