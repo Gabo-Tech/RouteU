@@ -1,46 +1,61 @@
-# Getting Started with Create React App and Redux
+# RouteU
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
-## Available Scripts
+Well, this is just a fully open sourced Routes site made with the MERN stack.
 
-In the project directory, you can run:
+## Getting Started
 
-### `npm start`
+Well, just visit the website at [gabosl.com](https://www.gabosl.com/posts), sign up and enjoy! 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### You want to own this website?
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+On the other hand if you'd like to host this website on your local machine just clone this repository with ``` git clone https://github.com/Gabo-Tech/frontend-tripulaciones.git```. just copy and paste that command on your terminal, then write ```npm i```  to install all dependencies, and start a local servers with ```npm start```. That's it.
 
-### `npm test`
+## Deployment
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This website it's been deployed and made available to the public thanks to [Vercel](https://vercel.com), and [Heroku](https://heroku.com), which are completely free hosting services.
 
-### `npm run build`
+## Built With
+- [React.js](https://reactjs.org/) - Your favourite framework!
+- [Css](https://developer.mozilla.org/es/docs/Web/CSS) - Cascading Style Sheets.
+- [Bootstrap](https://getbootstrap.com/) - Powerful, extensible, and feature-packed frontend toolkit.
+- [Ant Design](https://ant.design/) - A design system for enterprise-level products. Create an efficient and enjoyable work experience.
+- [Grommet](https://v2.grommet.io/) - Streamline the way you develop apps.
+- [Sass](https://sass-lang.com/) - Sassy Style Sheets.
+- [HTML](https://html.com/) - Your Markup Languaje
+- [Axios](https://axios-http.com/) - Fetch APIS.
+- [React Router v6](https://reactrouter.com/) - When you just want to take the easy route.
+- [Mongo Atlas](https://www.mongodb.com/atlas/database) - Database. Deploy a multi-cloud database.
+- [Redux](https://redux.js.org/) - A Predictable State Container for JS Apps.
+- [Express](https://expressjs.com/) - Always fast and simple.
+- [Node](https://nodejs.org/) - A JavaScript runtime built on Chrome's V8 JavaScript engine.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Api documentation made with Swagger
 
-### `npm run eject`
+[Here is the API documentation.](https://github.com/Gabo-Tech/backend-tripulaciones)  
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Contributing
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  Like, share, subscribe, follow and join our Patreon! Just kidding this is totally for free. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Authors
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+* **Jorge Campo aka Yorch, Your backend guy.** - *Full backend and frontend logic.* - [Yorch](https://github.com/Yorch82)
+* **David Úbeda, aka David, "I got your styles bro".** - *Backend and frontend, also all styling.* - [David](https://github.com/Dubesor22)
+* **Gabriel Clemente, aka Gabo, your favorite web developer.** - *Initial work* - [Gabo](https://github.com/Gabo-Tech)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contributors
+
+Maybe it's you.
+
+## License
+
+This project is licensed under the Creative Commons Public Domain License - Feel free to copy the code, I did it too.
+
+![Creative Commons Public Domain License](https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Public_Domain_Mark_button.svg/220px-Public_Domain_Mark_button.svg.png)
+
+![This meme represents you](https://preview.redd.it/hwurhp7crzf81.png?auto=webp&s=3f230e79f360c9fbc9394e70ea72330391bf8f27)
