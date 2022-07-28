@@ -1,7 +1,62 @@
 # RouteU
+<div style="-webkit-box-sizing: border-box; box-sizing: border-box;">
+  <div class="gallery js-flickity" style="background: #EEE;"
+    data-flickity-options='{ "wrapAround": true }'>
+    <div class="gallery-cell" style="width: 66%;height: 200px;margin-right: 10px;background: #8C8;counter-increment: gallery-cell;">
+    <img src="https://github.com/Gabo-Tech/frontend-tripulaciones/blob/main/public/pitch/1.png?raw=true"/>
+    </div>
+    <div class="gallery-cell" style="width: 66%;height: 200px;margin-right: 10px;background: #8C8;counter-increment: gallery-cell;">
+    <img src="https://github.com/Gabo-Tech/frontend-tripulaciones/blob/main/public/pitch/2.png?raw=true"/>
+    </div>
+    <div class="gallery-cell" style="width: 66%;height: 200px;margin-right: 10px;background: #8C8;counter-increment: gallery-cell;">
+    <img src="https://github.com/Gabo-Tech/frontend-tripulaciones/blob/main/public/pitch/3.png?raw=true"/>
+    </div>
+    <div class="gallery-cell" style="width: 66%;height: 200px;margin-right: 10px;background: #8C8;counter-increment: gallery-cell;">
+    <img src="https://github.com/Gabo-Tech/frontend-tripulaciones/blob/main/public/pitch/4.png?raw=true"/>
+    </div>
+    <div class="gallery-cell" style="width: 66%;height: 200px;margin-right: 10px;background: #8C8;counter-increment: gallery-cell;">
+    <img src="https://github.com/Gabo-Tech/frontend-tripulaciones/blob/main/public/pitch/5.png?raw=true"/>
+    </div>
+    <div class="gallery-cell" style="width: 66%;height: 200px;margin-right: 10px;background: #8C8;counter-increment: gallery-cell;">
+    <img src="https://github.com/Gabo-Tech/frontend-tripulaciones/blob/main/public/pitch/6.png?raw=true"/>
+    </div>
+    <div class="gallery-cell" style="width: 66%;height: 200px;margin-right: 10px;background: #8C8;counter-increment: gallery-cell;">
+    <img src="https://github.com/Gabo-Tech/frontend-tripulaciones/blob/main/public/pitch/7.png?raw=true"/>
+    </div>
+    <div class="gallery-cell" style="width: 66%;height: 200px;margin-right: 10px;background: #8C8;counter-increment: gallery-cell;">
+    <img src="https://github.com/Gabo-Tech/frontend-tripulaciones/blob/main/public/pitch/8.png?raw=true"/>
+    </div>
+    <div class="gallery-cell" style="width: 66%;height: 200px;margin-right: 10px;background: #8C8;counter-increment: gallery-cell;">
+    <img src="https://github.com/Gabo-Tech/frontend-tripulaciones/blob/main/public/pitch/9.png?raw=true"/>
+    </div>
+    <div class="gallery-cell" style="width: 66%;height: 200px;margin-right: 10px;background: #8C8;counter-increment: gallery-cell;">
+    <img src="https://github.com/Gabo-Tech/frontend-tripulaciones/blob/main/public/pitch/10.png?raw=true"/>
+    </div>
+    <div class="gallery-cell" style="width: 66%;height: 200px;margin-right: 10px;background: #8C8;counter-increment: gallery-cell;">
+    <img src="https://github.com/Gabo-Tech/frontend-tripulaciones/blob/main/public/pitch/11.png?raw=true"/>
+    </div>
+    <div class="gallery-cell" style="width: 66%;height: 200px;margin-right: 10px;background: #8C8;counter-increment: gallery-cell;">
+    <img src="https://github.com/Gabo-Tech/frontend-tripulaciones/blob/main/public/pitch/12.png?raw=true"/>
+    </div>
+    <div class="gallery-cell" style="width: 66%;height: 200px;margin-right: 10px;background: #8C8;counter-increment: gallery-cell;">
+    <img src="https://github.com/Gabo-Tech/frontend-tripulaciones/blob/main/public/pitch/13.png?raw=true"/>
+    </div>
+    <div class="gallery-cell" style="width: 66%;height: 200px;margin-right: 10px;background: #8C8;counter-increment: gallery-cell;">
+    <img src="https://github.com/Gabo-Tech/frontend-tripulaciones/blob/main/public/pitch/14.png?raw=true"/>
+    </div>
+    <div class="gallery-cell" style="width: 66%;height: 200px;margin-right: 10px;background: #8C8;counter-increment: gallery-cell;">
+    <img src="https://github.com/Gabo-Tech/frontend-tripulaciones/blob/main/public/pitch/15.png?raw=true"/>
+    </div>
+    <div class="gallery-cell" style="width: 66%;height: 200px;margin-right: 10px;background: #8C8;counter-increment: gallery-cell;">
+    <img src="https://github.com/Gabo-Tech/frontend-tripulaciones/blob/main/public/pitch/16.png?raw=true"/>
+    </div>
+    <div class="gallery-cell" style="width: 66%;height: 200px;margin-right: 10px;background: #8C8;counter-increment: gallery-cell;">
+    <img src="https://github.com/Gabo-Tech/frontend-tripulaciones/blob/main/public/pitch/17.png?raw=true"/>
+    </div>
+  </div>
+</div>
 
-
-Well, this is just a fully open sourced Routes site made with the MERN stack.
+This is just a fully open sourced Routes site made with the MERN stack.
 
 ## Getting Started
 
