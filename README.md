@@ -64,7 +64,7 @@ Well, just visit the website at [https://route-u.vercel.app](https://route-u.ver
 
 ### You want to own this website?
 
-On the other hand if you'd like to host this website on your local machine just clone this repository with ``` git clone https://github.com/Gabo-Tech/frontend-tripulaciones.git```. just copy and paste that command on your terminal, then write ```npm i```  to install all dependencies, and start a local servers with ```npm start```. That's it.
+On the other hand if you'd like to host this website on your local machine just clone this repository with ``` git clone https://github.com/Gabo-Tech/RouteU.git```. just copy and paste that command on your terminal, then write ```npm i```  to install all dependencies, and start a local servers with ```npm start```. That's it.
 
 ## Deployment
 
