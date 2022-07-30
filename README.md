@@ -60,7 +60,7 @@ This is just a fully open sourced Routes site made with the MERN stack.
 
 ## Getting Started
 
-Well, just visit the website at [frontend-tripulaciones.vercel.app](https://frontend-tripulaciones.vercel.app/login), sign up and enjoy! 
+Well, just visit the website at [https://route-u.vercel.app](https://route-u.vercel.app), sign up and enjoy! 
 
 ### You want to own this website?
 
