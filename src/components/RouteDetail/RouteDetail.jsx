@@ -24,7 +24,7 @@ function RouteDetail() {
   const getRoute = async (_id) => {
     await dispatch(getById(_id));
     dispatch(reset());
-  };  
+  };
   const { comments } = useSelector((state) => state.routes);
 
   useEffect(() => {
@@ -46,7 +46,12 @@ function RouteDetail() {
     <>
       <div className="container mb-5 bg-white">
         <h1 className="my-4 header-details">
-          {route.name} <small> | dificultad:( {route.difficulty} )</small>
+          {route.name}{" "}
+          <small>
+            {" "}
+            | Dificultad:({" "}
+            {isNaN(route.difficulty) ? "Media" : route.difficulty} )
+          </small>
         </h1>
 
         <div className="row">
@@ -109,7 +114,7 @@ function RouteDetail() {
                 <p>
                   {" "}
                   {route.commentsId &&
-                    route.commentsId.map((e) => {                      
+                    route.commentsId.map((e) => {
                       return (
                         <div key={e._id}>
                           <Comment

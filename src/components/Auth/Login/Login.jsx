@@ -64,7 +64,7 @@ const Login = () => {
                   <h3 className="mb-4 text-center">Tienes una cuenta?</h3>
                   <form
                     role="presentation"
-                    autocomplete="off"
+                    autoComplete="off"
                     onSubmit={onSubmit}
                     className="signin-form"
                   >
@@ -77,7 +77,7 @@ const Login = () => {
                         value={email}
                         onChange={onChange}
                         className="form-control"
-                        autocomplete="off"
+                        autoComplete="off"
                         required
                       />
                     </div>
@@ -90,7 +90,7 @@ const Login = () => {
                         onChange={onChange}
                         value={password}
                         className="form-control"
-                        autocomplete="off"
+                        autoComplete="off"
                         required
                       />
                       <span

@@ -17,7 +17,7 @@ const Search = () => {
   return (
     <>
       <Hero />
-      <div class="text">
+      <div className="text">
         <span>T</span>
         <span>U</span>
         <span></span>

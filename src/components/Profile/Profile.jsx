@@ -20,18 +20,22 @@ export default function Profile() {
   const { recRoute } = useSelector((state) => state.routes);
 
   const routesLS = JSON.parse(localStorage.getItem("routes"));
-  function getFavouriteRoutes(arrayElement) {
+
+  function getFavouriteRoutes(arrayElement, index) {
     const likes = arrayElement?.likes;
     const favRoute = likes?.indexOf(userId);
-    const res = favRoute === -1 ? null : arrayElement;
 
+    const res = favRoute === -1 ? null : arrayElement;
     return res;
   }
   let routeList = [];
-  const userFavouriteRoutes =
-    routes === []
-      ? routes?.map(getFavouriteRoutes)
-      : routesLS?.map(getFavouriteRoutes);
+  let userFavouriteRoutes;
+  if (routes.length === 0) {
+    userFavouriteRoutes = routesLS?.map(getFavouriteRoutes);
+  } else {
+    userFavouriteRoutes = routes?.map(getFavouriteRoutes);
+  }
+
   const onLogout = async () => {
     await dispatch(logout());
     localStorage.removeItem("user");
@@ -47,10 +51,10 @@ export default function Profile() {
     getUserRoute();
     // eslint-disable-next-line
   }, []);
-
   const userFavouriteRoutesClean = userFavouriteRoutes.filter(
     (arrayElement) => arrayElement !== null
   );
+
   if (userFavouriteRoutes.length <= 0) {
     routeList =
       "Oh oh... Parece que no tienes rutas favoritas todavía, ¡vuelve a la página de inicio para encontrar nuevos caminos por recorrer!";
@@ -94,11 +98,11 @@ export default function Profile() {
             <img
               className="card-img-top"
               src="http://placeimg.com/800/600/tech"
-              alt="Card image cap"
+              alt="foto cabecera"
             />
             <div className="card-body little-profile text-center">
               <div className="pro-img">
-                <img src="http://placeimg.com/800/600/people" alt="user" />
+                <img src="http://placeimg.com/800/600/people" alt="avatar" />
               </div>
               <div>
                 <h3 className="m-b-0">Hola {username}!</h3>

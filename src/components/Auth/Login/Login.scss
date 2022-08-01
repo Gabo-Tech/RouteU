@@ -427,8 +427,10 @@ h6,
 }
 
 .principal {
+  position: absolute;
   background-image: url(../../../assets/img/bg.jpg);
   height: 100vh;
+  overflow: hidden;
 }
 
 .lead {
