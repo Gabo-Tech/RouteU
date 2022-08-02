@@ -50,6 +50,13 @@
   }
 }
 
+@media screen and (max-width: 500px) {
+  /* Specific to this particular image */
+  .hero {
+    background-position: center;
+  }
+}
+
 .span-rating {
   display: flex;
   align-items: center;
